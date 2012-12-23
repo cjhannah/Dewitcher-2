@@ -8,6 +8,7 @@ namespace dewitcher
     /// </summary>
     public static class Console
     {
+        private static int indent = 0;
         /// <summary>
         /// ForegroundColor Property
         /// </summary>
@@ -39,15 +40,15 @@ namespace dewitcher
         /// <param name="color">The color of the text</param>
         /// <param name="xcenter">Horizontal centered?</param>
         /// <param name="ycenter">Vertical centered?</param>
-        public static void Write(string text = null, ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
+        public static void Write(string text = "", ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
         {
             ConsoleColor originalColor = Console.ForegroundColor;
             Console.ForegroundColor = color;
-            int X = Console.CursorLeft;
+            int X = Console.CursorLeft + indent;
             if (xcenter) Console.CursorLeft = ((Console.WindowWidth / 2) - (text.Length / 2));
             int Y = Console.CursorTop;
             if (ycenter) Console.CursorTop = ((Console.WindowHeight / 2) - 1);
-            Console.Write(text);
+            System.Console.Write(text);
             if (xcenter) Console.CursorLeft = X;
             if (ycenter) Console.CursorTop = Y;
             Console.ForegroundColor = originalColor;
@@ -59,15 +60,15 @@ namespace dewitcher
         /// <param name="color">The color of the text</param>
         /// <param name="xcenter">Horizontal centered?</param>
         /// <param name="ycenter">Vertical centered?</param>
-        public static void WriteLine(string text = null, ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
+        public static void WriteLine(string text = "", ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
         {
             ConsoleColor originalColor = Console.ForegroundColor;
             Console.ForegroundColor = color;
-            int X = Console.CursorLeft;
+            int X = Console.CursorLeft + indent;
             if (xcenter) Console.CursorLeft = ((Console.WindowWidth / 2) - (text.Length / 2));
             int Y = Console.CursorTop;
             if (ycenter) Console.CursorTop = ((Console.WindowHeight / 2) - 1);
-            Console.WriteLine(text);
+            System.Console.WriteLine(text);
             if (xcenter) Console.CursorLeft = X;
             if (ycenter) Console.CursorTop = Y;
             Console.ForegroundColor = originalColor;
@@ -83,8 +84,8 @@ namespace dewitcher
         /// <param name="color">The color of the text</param>
         public static void DrawLogoBar(string text, ConsoleColor color)
         {
-            int top = Console.CursorTop;
-            int left = Console.CursorLeft;
+            int curTop = Console.CursorTop;
+            int curLeft = Console.CursorLeft;
             for (int i = 0; i < 2; i++)
             {
                 Console.CursorTop = i;
@@ -92,8 +93,27 @@ namespace dewitcher
             }
             Console.CursorTop = 0;
             Console.WriteLine(text, color, true);
-            Console.CursorTop = top;
-            Console.CursorLeft = left;
+            if (curTop >= 2) Console.CursorTop = curTop;
+            else Console.CursorTop = 2;
+            Console.CursorLeft = curLeft;
+        }
+        public static void CrLf() { Console.WriteLine(); }
+        public static void WaitForKeypress() { System.Console.ReadKey(); }
+        public static void SetIndent(int _indent)
+        {
+            Console.indent = _indent;
+        }
+        /// <summary>
+        /// Set the Resolution to 1024x768
+        /// </summary>
+        public static void SetMode1024x768()
+        {
+            System.Console.Clear();
+            System.Console.BufferWidth = 1024;
+            System.Console.BufferHeight = 768;
+            System.Console.WindowWidth = 1024;
+            System.Console.WindowHeight = 768;
+            System.Console.Clear();
         }
     }
 }

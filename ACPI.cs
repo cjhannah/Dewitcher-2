@@ -228,8 +228,28 @@ namespace dewitcher
             }
             return false;
         }
+        /// <summary>
+        /// Shutdown
+        /// </summary>
         public static void Shutdown()
         {
+            Console.Clear();
+            if (PM1a_CNT == null) Init();
+            if (pm1aIO != null)
+            {
+                pm1aIO.Word = (ushort)(SLP_TYPa | SLP_EN);
+                if (PM1b_CNT != null)
+                    pm1bIO.Word = (ushort)(SLP_TYPb | SLP_EN);
+            }
+            Console.WriteLine("Its now safe to turn off the computer.");
+        }
+        /// <summary>
+        /// Call Kernel.BeforeShutdown() and Shutdown
+        /// </summary>
+        /// <param name="krnl"></param>
+        public static void Shutdown(this Kernel krnl)
+        {
+            krnl.BeforeShutdown();
             Console.Clear();
             if (PM1a_CNT == null) Init();
             if (pm1aIO != null)
