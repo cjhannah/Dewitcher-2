@@ -42,16 +42,16 @@ namespace dewitcher
         /// <param name="ycenter">Vertical centered?</param>
         public static void Write(string text = "", ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
         {
-            ConsoleColor originalColor = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-            int X = Console.CursorLeft + indent;
-            if (xcenter) Console.CursorLeft = ((Console.WindowWidth / 2) - (text.Length / 2));
-            int Y = Console.CursorTop;
-            if (ycenter) Console.CursorTop = ((Console.WindowHeight / 2) - 1);
+            ConsoleColor originalColor = ForegroundColor;
+            ForegroundColor = color;
+            int X = CursorLeft + indent;
+            if (xcenter) CursorLeft = ((WindowWidth / 2) - (text.Length / 2));
+            int Y = CursorTop;
+            if (ycenter) CursorTop = ((WindowHeight / 2) - 1);
             System.Console.Write(text);
-            if (xcenter) Console.CursorLeft = X;
-            if (ycenter) Console.CursorTop = Y;
-            Console.ForegroundColor = originalColor;
+            if (xcenter) CursorLeft = X;
+            if (ycenter) CursorTop = Y;
+            ForegroundColor = originalColor;
         }
         /// <summary>
         /// WriteLine Method
@@ -62,58 +62,82 @@ namespace dewitcher
         /// <param name="ycenter">Vertical centered?</param>
         public static void WriteLine(string text = "", ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
         {
-            ConsoleColor originalColor = Console.ForegroundColor;
-            Console.ForegroundColor = color;
-            int X = Console.CursorLeft + indent;
-            if (xcenter) Console.CursorLeft = ((Console.WindowWidth / 2) - (text.Length / 2));
-            int Y = Console.CursorTop;
-            if (ycenter) Console.CursorTop = ((Console.WindowHeight / 2) - 1);
+            ConsoleColor originalColor = ForegroundColor;
+            ForegroundColor = color;
+            int X = CursorLeft + indent;
+            if (xcenter) CursorLeft = ((WindowWidth / 2) - (text.Length / 2));
+            int Y = CursorTop;
+            if (ycenter) CursorTop = ((WindowHeight / 2) - 1);
             System.Console.WriteLine(text);
-            if (xcenter) Console.CursorLeft = X;
-            if (ycenter) Console.CursorTop = Y;
-            Console.ForegroundColor = originalColor;
+            if (xcenter) CursorLeft = X;
+            if (ycenter) CursorTop = Y;
+            ForegroundColor = originalColor;
         }
         /// <summary>
         /// Clear Method
         /// </summary>
-        public static void Clear() { System.Console.Clear(); Console.CursorTop = 2; }
+        public static void Clear(bool usingDrawLogoBar = false) { System.Console.Clear(); if (usingDrawLogoBar) CursorTop = 2; }
         /// <summary>
-        /// Wipes the first two lines and writes a text like (e.g. "YourOS v0.3") at the horizontal center of the screen
+        /// Extended Clear Method
+        /// </summary>
+        /// <param name="BackgroundColor"></param>
+        /// <param name="usingDrawLogoBar"></param>
+        public static void ClearExtended(ConsoleColor BackgroundColor, bool usingDrawLogoBar = false)
+        {
+            Clear();
+            for (int i = 0; i < WindowWidth; i++)
+            {
+                for (int ix = 0; ix < WindowHeight; ix++) Write(" ", BackgroundColor);
+            }
+            if (!usingDrawLogoBar) CursorTop = 0;
+            else CursorTop = 2;
+        }
+        /// <summary>
+        /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen
         /// </summary>
         /// <param name="text">The text to write</param>
         /// <param name="color">The color of the text</param>
         public static void DrawLogoBar(string text, ConsoleColor color)
         {
-            int curTop = Console.CursorTop;
-            int curLeft = Console.CursorLeft;
+            int curTop = CursorTop;
+            int curLeft = CursorLeft;
             for (int i = 0; i < 2; i++)
             {
-                Console.CursorTop = i;
-                for (int ix = 0; ix < Console.WindowWidth; ix++) Console.Write(" ");
+                CursorTop = i;
+                for (int ix = 0; ix < WindowWidth; ix++) Write(" ");
             }
-            Console.CursorTop = 0;
-            Console.WriteLine(text, color, true);
-            if (curTop >= 2) Console.CursorTop = curTop;
-            else Console.CursorTop = 2;
-            Console.CursorLeft = curLeft;
-        }
-        public static void CrLf() { Console.WriteLine(); }
-        public static void WaitForKeypress() { System.Console.ReadKey(); }
-        public static void SetIndent(int _indent)
-        {
-            Console.indent = _indent;
+            CursorTop = 0;
+            WriteLine(text, color, true);
+            if (curTop >= 2) CursorTop = curTop;
+            else CursorTop = 2;
+            CursorLeft = curLeft;
         }
         /// <summary>
-        /// Set the Resolution to 1024x768
+        /// Inserts a line break
         /// </summary>
-        public static void SetMode1024x768()
+        public static void NewLine() { WriteLine(); }
+        /// <summary>
+        /// System.Console.Read()-Implementation
+        /// </summary>
+        /// <returns></returns>
+        public static int Read() { return System.Console.Read(); }
+        /// <summary>
+        /// System.Console.ReadKey()-Implementation
+        /// </summary>
+        /// <returns></returns>
+        public static ConsoleKeyInfo ReadKey() { return System.Console.ReadKey(); }
+        /// <summary>
+        /// System.Console.ReadLine()-Implementation
+        /// </summary>
+        /// <returns></returns>
+        public static string ReadLine() { return System.Console.ReadLine(); }
+        /// <summary>
+        /// Sets a custom indent
+        /// </summary>
+        /// <param name="_indent"></param>
+        public static void SetIndent(int _indent)
         {
-            System.Console.Clear();
-            System.Console.BufferWidth = 1024;
-            System.Console.BufferHeight = 768;
-            System.Console.WindowWidth = 1024;
-            System.Console.WindowHeight = 768;
-            System.Console.Clear();
+            indent = _indent;
         }
     }
 }

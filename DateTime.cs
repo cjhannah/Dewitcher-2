@@ -14,7 +14,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the hour as string in format hh
             /// </summary>
-            public static string HourString { get { return Cosmos.Hardware.RTC.Hour.TryAppend(); } }
+            public static string HourString { get { return Hour.TryAppend(); } }
 
             /// <summary>
             /// Returns the minute
@@ -23,7 +23,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the minute as string in format mm
             /// </summary>
-            public static string MinuteString { get { return Cosmos.Hardware.RTC.Minute.TryAppend(); } }
+            public static string MinuteString { get { return Minute.TryAppend(); } }
 
             /// <summary>
             /// Returns the second
@@ -32,7 +32,7 @@ namespace dewitcher
             /// /// <summary>
             /// Returns the second as string in format ss
             /// </summary>
-            public static string SecondString { get { return Cosmos.Hardware.RTC.Second.TryAppend(); } }
+            public static string SecondString { get { return Second.TryAppend(); } }
 
             /// <summary>
             /// Returns the century
@@ -41,7 +41,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the century as string in format xx ( x = any number )
             /// </summary>
-            public static string CenturyString { get { return ((byte)(Cosmos.Hardware.RTC.Century)).TryAppend(); } }
+            public static string CenturyString { get { return Century.TryAppend(); } }
 
             /// <summary>
             /// Returns the year (e.g. 2012)
@@ -56,11 +56,28 @@ namespace dewitcher
             /// Returns the day of the month
             /// </summary>
             public static byte DayOfTheMonth { get { return Cosmos.Hardware.RTC.DayOfTheMonth; } }
+            /// <summary>
+            /// Returns the day of the month in format xx ( x = any number )
+            /// </summary>
+            public static string DayOfTheMonthString { get { return DayOfTheMonth.TryAppend(); } }
+
+            /// <summary>
+            /// Returns the day of the year
+            /// </summary>
+            public static byte DayOfTheYear { get { return ((byte)(DayOfTheMonth * Month)); } }
+            /// <summary>
+            /// Returns the day of the year in format xxx ( x = any number )
+            /// </summary>
+            public static string DayOfTheYearString { get { return DayOfTheYear.TryAppendYear(); } }
 
             /// <summary>
             /// Returns the day of the week
             /// </summary>
             public static byte DayOfTheWeek { get { return Cosmos.Hardware.RTC.DayOfTheWeek; } }
+            /// <summary>
+            /// Returns the day of the week in format xx ( x = any number )
+            /// </summary>
+            public static string DayOfTheWeekString { get { return DayOfTheWeek.TryAppend(); } }
 
             /// <summary>
             /// Returns the month
@@ -69,27 +86,29 @@ namespace dewitcher
             /// <summary>
             /// Returns the month in format xx ( x = any number )
             /// </summary>
-            public static string MonthString { get { return Cosmos.Hardware.RTC.Month.TryAppend(); } }
+            public static string MonthString { get { return Month.TryAppend(); } }
 
             /// <summary>
             /// DateFormat
             /// </summary>
-            public enum DateFormat : byte { YYYY_MM_DD, DD_MM_YYYY, YYYY_DD_MM }
+            public enum DateFormat : byte { YYYY_MM_DD, DD_MM_YYYY, MM_DD_YYYY, YYYY_DD_MM }
             /// <summary>
             /// Returns the date in the specified date format
             /// </summary>
             /// <param name="format">Date Format</param>
             /// <returns>the date in the specified date format</returns>
-            public static string GetDate(DateFormat format)
+            public static string GetDate(DateFormat format, char separator = '.')
             {
                 if (format == DateFormat.DD_MM_YYYY)
-                    return (DayOfTheMonth.ToString() + "." + Month.ToString() + "." + Year.ToString());
+                    return (DayOfTheMonthString + separator + MonthString + separator + YearString);
                 else if (format == DateFormat.YYYY_MM_DD)
-                    return (YearString + "." + MonthString + "." + DayOfTheMonth.ToString());
+                    return (YearString + separator + MonthString + separator + DayOfTheMonthString);
                 else if (format == DateFormat.YYYY_DD_MM)
-                    return (Year.ToString() + "." + DayOfTheMonth.ToString() + "." + MonthString);
+                    return (YearString + "." + DayOfTheMonthString + separator + MonthString);
+                else if (format == DateFormat.MM_DD_YYYY)
+                    return (MonthString + "." + DayOfTheMonthString + separator + YearString);
                 else
-                    return "Failure";
+                    return "ERROR";
             }
 
             /// <summary>
@@ -110,7 +129,7 @@ namespace dewitcher
                 else if (format == TimeFormat.mm_ss)
                     return (MinuteString + ":" + SecondString);
                 else
-                    return "Failure";
+                    return "ERROR";
             }
         }
         /// <summary>
@@ -118,11 +137,26 @@ namespace dewitcher
         /// </summary>
         /// <param name="value">byte</param>
         /// <returns>new value as string</returns>
-        public static string TryAppend(this byte value)
+        internal static string TryAppend(this byte value)
         {
             string val = value.ToString();
             if (val.Length < 2)
                 return ("0" + val);
+            else
+                return val;
+        }
+        /// <summary>
+        /// Function that tries to set the numbers length to 3
+        /// </summary>
+        /// <param name="value">byte</param>
+        /// <returns>new value as string</returns>
+        internal static string TryAppendYear(this byte value)
+        {
+            string val = value.ToString();
+            if (val.Length < 2)
+                return ("0" + val);
+            else if (val.Length < 3)
+                return ("00" + val);
             else
                 return val;
         }

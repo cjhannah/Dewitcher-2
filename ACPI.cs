@@ -247,9 +247,9 @@ namespace dewitcher
         /// Call Kernel.BeforeShutdown() and Shutdown
         /// </summary>
         /// <param name="krnl"></param>
-        public static void Shutdown(this Kernel krnl)
+        public static void __Shutdown()
         {
-            krnl.BeforeShutdown();
+            //krnl.BeforeShutdown();
             Console.Clear();
             if (PM1a_CNT == null) Init();
             if (pm1aIO != null)
