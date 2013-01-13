@@ -7,19 +7,20 @@ using Cosmos.Core;
 
 namespace dewitcher
 {
+    // You will have so much fun while reading that code xP
     public static unsafe class ACPI
     {
-        private static int* SMI_CMD;
-        private static byte ACPI_ENABLE;
-        private static byte ACPI_DISABLE;
-        private static int* PM1a_CNT;
-        private static int* PM1b_CNT;
-        private static short SLP_TYPa;
-        private static short SLP_TYPb;
-        private static short SLP_EN;
-        private static short SCI_EN;
-        private static byte PM1_CNT_LEN;
-        static int Compare(string c1, byte* c2)
+        internal static int* SMI_CMD;
+        internal static byte ACPI_ENABLE;
+        internal static byte ACPI_DISABLE;
+        internal static int* PM1a_CNT;
+        internal static int* PM1b_CNT;
+        internal static short SLP_TYPa;
+        internal static short SLP_TYPb;
+        internal static short SLP_EN;
+        internal static short SCI_EN;
+        internal static byte PM1_CNT_LEN;
+        internal static int Compare(string c1, byte* c2)
         {
 
             for (int i = 0; i < c1.Length; i++)
@@ -29,33 +30,33 @@ namespace dewitcher
             return 0;
         }
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        struct RSDPtr
+        internal struct RSDPtr
         {
-            public fixed byte Signature[8];
-            public byte CheckSum;
-            public fixed byte OemID[6];
-            public byte Revision;
-            public int RsdtAddress;
+            internal fixed byte Signature[8];
+            internal byte CheckSum;
+            internal fixed byte OemID[6];
+            internal byte Revision;
+            internal int RsdtAddress;
         };
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
-        struct FACP
+        internal struct FACP
         {
-            public fixed byte Signature[4];
-            public int Length;
-            public fixed byte unneded1[40 - 8];
-            public int* DSDT;
-            public fixed byte unneded2[48 - 44];
-            public int* SMI_CMD;
-            public byte ACPI_ENABLE;
-            public byte ACPI_DISABLE;
-            public fixed byte unneded3[64 - 54];
-            public int* PM1a_CNT_BLK;
-            public int* PM1b_CNT_BLK;
-            public fixed byte unneded4[89 - 72];
-            public byte PM1_CNT_LEN;
+            internal fixed byte Signature[4];
+            internal int Length;
+            internal fixed byte unneded1[40 - 8];
+            internal int* DSDT;
+            internal fixed byte unneded2[48 - 44];
+            internal int* SMI_CMD;
+            internal byte ACPI_ENABLE;
+            internal byte ACPI_DISABLE;
+            internal fixed byte unneded3[64 - 54];
+            internal int* PM1a_CNT_BLK;
+            internal int* PM1b_CNT_BLK;
+            internal fixed byte unneded4[89 - 72];
+            internal byte PM1_CNT_LEN;
         };
-        static byte* Facp = null;
-        static int* facpget(int number)
+        internal static byte* Facp = null;
+        internal static int* facpget(int number)
         {
 
             if (number == 0) { return (int*)*((int*)(Facp + 40)); }
@@ -64,14 +65,14 @@ namespace dewitcher
             else if (number == 3) { return (int*)*((int*)(Facp + 68)); }
             else { return null; }
         }
-        static byte facpbget(int number)
+        internal static byte facpbget(int number)
         {
             if (number == 0) { return *(Facp + 52); }
             else if (number == 1) { return *(Facp + 53); }
             else if (number == 2) { return *(Facp + 89); }
             else return 0;
         }
-        static uint* acpiCheckRSDPtr(uint* ptr)
+        internal static uint* acpiCheckRSDPtr(uint* ptr)
         {
             string sig = "RSD PTR ";
             RSDPtr* rsdp = (RSDPtr*)ptr;
@@ -95,7 +96,7 @@ namespace dewitcher
             }
             return null;
         }
-        static unsafe uint RSDPAddress()
+        internal static unsafe uint RSDPAddress()
         {
             for (uint addr = 0xE0000; addr < 0x100000; addr += 4)
                 if (Compare("RSD PTR ", (byte*)addr) == 0)
@@ -108,11 +109,11 @@ namespace dewitcher
                     return addr;
             return 0;
         }
-        static int acpiCheckHeader(byte* ptr, string sig)
+        internal static int acpiCheckHeader(byte* ptr, string sig)
         {
             return Compare(sig, ptr);
         }
-        static bool Check_RSD(uint address)
+        internal static bool Check_RSD(uint address)
         {
             byte sum = 0;
             byte* check = (byte*)address;
@@ -120,8 +121,8 @@ namespace dewitcher
                 sum += *(check++);
             return (sum == 0);
         }
-        private static Cosmos.Core.IOPort smiIO, pm1aIO, pm1bIO;
-        public static bool Enable()
+        internal static Cosmos.Core.IOPort smiIO, pm1aIO, pm1bIO;
+        internal static bool Enable()
         {
             if (pm1aIO.Word == 0)
             {
@@ -147,8 +148,8 @@ namespace dewitcher
             }
             else return true;
         }
-        public static void Disable() { smiIO.Byte = ACPI_DISABLE; }
-        public static bool Init()
+        internal static void Disable() { smiIO.Byte = ACPI_DISABLE; }
+        internal static bool Init()
         {
             byte* ptr = (byte*)RSDPAddress(); int addr = 0;
             for (int i = 19; i >= 16; i--)
@@ -233,23 +234,6 @@ namespace dewitcher
         /// </summary>
         public static void Shutdown()
         {
-            Console.Clear();
-            if (PM1a_CNT == null) Init();
-            if (pm1aIO != null)
-            {
-                pm1aIO.Word = (ushort)(SLP_TYPa | SLP_EN);
-                if (PM1b_CNT != null)
-                    pm1bIO.Word = (ushort)(SLP_TYPb | SLP_EN);
-            }
-            Console.WriteLine("Its now safe to turn off the computer.");
-        }
-        /// <summary>
-        /// Call Kernel.BeforeShutdown() and Shutdown
-        /// </summary>
-        /// <param name="krnl"></param>
-        public static void __Shutdown()
-        {
-            //krnl.BeforeShutdown();
             Console.Clear();
             if (PM1a_CNT == null) Init();
             if (pm1aIO != null)

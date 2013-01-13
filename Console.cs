@@ -34,6 +34,10 @@ namespace dewitcher
         /// </summary>
         public static int WindowHeight { get { return System.Console.WindowHeight; } set { System.Console.WindowHeight = value; } }
         /// <summary>
+        /// KeyAvailable Property
+        /// </summary>
+        public static bool KeyAvailable { get { return System.Console.KeyAvailable; } }
+        /// <summary>
         /// Write Method
         /// </summary>
         /// <param name="text">The text to write</param>
