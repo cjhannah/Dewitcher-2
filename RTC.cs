@@ -7,7 +7,7 @@ namespace dewitcher
         public static class Sleep
         {
             /// <summary>
-            /// NOT RECOMMENDED! Waits for a given amount of ticks. It extremely depends on the CPU speed.
+            /// NOT RECOMMENDED! Waits for a given amount of ticks. It depends on the CPU speed.
             /// </summary>
             /// <param name="ticks">Amount</param>
             public static void SleepTicks(int ticks)
