@@ -7,59 +7,103 @@ namespace dewitcher
 {
     public static class Bluescreen
     {
-        private const string bserr = "Something has gone wrong!";
-        private const string bsdesc = "The Kernel throwed an exception.\nThe exception is undefined,\nso I don't know what kind of error it is.\nSorry :(";
-        public static void Show(bool critical = false, string error = bserr, string description = bsdesc)
+        /// <summary>
+        /// Initiates a Bluescreen.
+        /// </summary>
+        /// <param name="error">Error title or exception name</param>
+        /// <param name="description">Error description</param>
+        /// <param name="critical">Critical error?</param>
+        public static void Init(
+            string error = "Something went wrong!",
+            string description = "Unknown exception",
+            bool critical = false)
         {
-            Console.ClearExtended(ConsoleColor.Blue);
             DrawOOPS();
-            if (description.Length + 70 < Console.WindowHeight)
+            if (description.Length + 33 < Console.WindowHeight)
             {
-                Console.CursorTop = 2; Console.CursorLeft = 70;
+                Console.CursorTop = 2; Console.CursorLeft = 33;
                 ConsoleColor errcolor = ConsoleColor.White;
                 if (critical) errcolor = ConsoleColor.Red;
-                Console.WriteLine(error, errcolor);
+                Console.WriteLineEx(error, errcolor, ConsoleColor.Blue);
                 Console.CursorTop = 4; Console.CursorLeft = 70;
-                Console.WriteLine(description, ConsoleColor.White);
+                Console.WriteLineEx(description, ConsoleColor.White, ConsoleColor.Blue);
             }
             else
             {
                 Console.CursorTop = 12; Console.CursorLeft = 2;
                 ConsoleColor errcolor = ConsoleColor.White;
                 if (critical) errcolor = ConsoleColor.Red;
-                Console.WriteLine(error, errcolor);
+                Console.WriteLineEx(error, errcolor, ConsoleColor.Blue);
                 Console.CursorTop = 14; Console.CursorLeft = 2;
-                Console.WriteLine(description, ConsoleColor.White);
+                Console.WriteLineEx(description, ConsoleColor.White, ConsoleColor.Blue);
             }
             if (!critical)
             {
                 Console.CursorTop = Console.WindowHeight - 1;
-                Console.WriteLine("Press the [Enter]-key to resume");
+                Console.WriteLineEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.ReadLine();
+                Console.Clear();
             }
             else
             {
                 Console.CursorTop = Console.WindowHeight - 2;
-                Console.WriteLine("Press the [Enter]-key to shutdown");
-                Console.WriteLine("If it doesn't work, press the RESET-button on your computer.");
+                Console.WriteLineEx("Press the [Enter]-key to shutdown", ConsoleColor.White, ConsoleColor.Blue);
+                Console.WriteLineEx("If it doesn't work, press the RESET-button on your computer.", ConsoleColor.White, ConsoleColor.Blue);
+                Console.ReadLine();
+                ACPI.Shutdown();
+            }
+        }
+        public static void Init(Exception ex, bool critical = false)
+        {
+            DrawOOPS();
+            if (ex.Message.Length + 33 < Console.WindowHeight)
+            {
+                Console.CursorTop = 2; Console.CursorLeft = 33;
+                ConsoleColor errcolor = ConsoleColor.White;
+                if (critical) errcolor = ConsoleColor.Red;
+                Console.WriteLineEx(ex.Source, errcolor, ConsoleColor.Blue);
+                Console.CursorTop = 4; Console.CursorLeft = 70;
+                Console.WriteLineEx(ex.Message, ConsoleColor.White, ConsoleColor.Blue);
+            }
+            else
+            {
+                Console.CursorTop = 12; Console.CursorLeft = 2;
+                ConsoleColor errcolor = ConsoleColor.White;
+                if (critical) errcolor = ConsoleColor.Red;
+                Console.WriteLineEx(ex.Source, errcolor, ConsoleColor.Blue);
+                Console.CursorTop = 14; Console.CursorLeft = 2;
+                Console.WriteLineEx(ex.Message, ConsoleColor.White, ConsoleColor.Blue);
+            }
+            if (!critical)
+            {
+                Console.CursorTop = Console.WindowHeight - 1;
+                Console.WriteLineEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.ReadLine();
+                Console.Clear();
+            }
+            else
+            {
+                Console.CursorTop = Console.WindowHeight - 2;
+                Console.WriteLineEx("Press the [Enter]-key to shutdown", ConsoleColor.White, ConsoleColor.Blue);
+                Console.WriteLineEx("If it doesn't work, press the RESET-button on your computer.", ConsoleColor.White, ConsoleColor.Blue);
+                Console.ReadLine();
+                ACPI.Shutdown();
             }
         }
         private static void DrawOOPS()
         {
+            Console.SetBackground(ConsoleColor.Blue);
             string[] arrOOPS = new string[] {
-                "==============  ==============  =============   =============   ==",
-                "=            =  =            =  =           ==  =               ==",
-                "=            =  =            =  =            =  =               ==",
-                "=            =  =            =  =           ==  =               ==",
-                "=            =  =            =  =============   =============   ==",
-                "=            =  =            =  =                           =   ==",
-                "=            =  =            =  =                           =     ",
-                "=            =  =            =  =                           =     ",
-                "==============  ==============  =               =============   ==" };
+                "======  ======  =====  =====  =",
+                "=    =  =    =  =   =  =      =",
+                "=    =  =    =  =====  =====  =",
+                "=    =  =    =  =          =   ",
+                "======  ======  =      =====  ="};
             Console.CursorTop = 2;
-            Console.CursorLeft = 4;
             foreach (string str in arrOOPS)
             {
-                Console.WriteLine(str, ConsoleColor.White);
+                Console.CursorLeft = 2;
+                Console.WriteLineEx(str, ConsoleColor.White, ConsoleColor.Blue);
             }
         }
     }

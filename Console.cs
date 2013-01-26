@@ -58,6 +58,30 @@ namespace dewitcher
             ForegroundColor = originalColor;
         }
         /// <summary>
+        /// Write Method
+        /// </summary>
+        /// <param name="text">The text to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="backcolor">The background color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void WriteEx(string text = "", ConsoleColor color = ConsoleColor.White, ConsoleColor backcolor = ConsoleColor.Black, bool xcenter = false, bool ycenter = false)
+        {
+            ConsoleColor originalColor = ForegroundColor;
+            ConsoleColor originalColor2 = BackgroundColor;
+            ForegroundColor = color;
+            BackgroundColor = backcolor;
+            int X = CursorLeft + indent;
+            if (xcenter) CursorLeft = ((WindowWidth / 2) - (text.Length / 2));
+            int Y = CursorTop;
+            if (ycenter) CursorTop = ((WindowHeight / 2) - 1);
+            System.Console.Write(text);
+            if (xcenter) CursorLeft = X;
+            if (ycenter) CursorTop = Y;
+            ForegroundColor = originalColor;
+            BackgroundColor = originalColor2;
+        }
+        /// <summary>
         /// WriteLine Method
         /// </summary>
         /// <param name="text">The text to write</param>
@@ -78,23 +102,71 @@ namespace dewitcher
             ForegroundColor = originalColor;
         }
         /// <summary>
+        /// WriteLine Method
+        /// </summary>
+        /// <param name="text">The text to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="backcolor">The background color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void WriteLineEx(string text = "", ConsoleColor color = ConsoleColor.White, ConsoleColor backcolor = ConsoleColor.Black, bool xcenter = false, bool ycenter = false)
+        {
+            ConsoleColor originalColor = ForegroundColor;
+            ConsoleColor originalColor2 = BackgroundColor;
+            ForegroundColor = color;
+            BackgroundColor = backcolor;
+            int X = CursorLeft + indent;
+            if (xcenter) CursorLeft = ((WindowWidth / 2) - (text.Length / 2));
+            int Y = CursorTop;
+            if (ycenter) CursorTop = ((WindowHeight / 2) - 1);
+            System.Console.WriteLine(text);
+            if (xcenter) CursorLeft = X;
+            if (ycenter) CursorTop = Y;
+            ForegroundColor = originalColor;
+            BackgroundColor = originalColor2;
+        }
+        public static void SetBackground(ConsoleColor color)
+        {
+            Console.Clear();
+            ConsoleColor backup = Console.BackgroundColor;
+            Console.BackgroundColor = color;
+            for (int ih = 0; ih < Console.WindowHeight; ++ih)
+            {
+                Console.CursorTop = ih;
+                for (int iw = 0; iw < Console.WindowWidth; ++iw)
+                {
+                    Console.CursorLeft = iw;
+                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.Write(" ");
+                }
+            }
+            Console.BackgroundColor = backup;
+        }
+        /// <summary>
         /// Clear Method
         /// </summary>
-        public static void Clear(bool usingDrawLogoBar = false) { System.Console.Clear(); if (usingDrawLogoBar) CursorTop = 2; }
+        public static void Clear() { System.Console.Clear(); }
         /// <summary>
         /// Extended Clear Method
         /// </summary>
         /// <param name="BackgroundColor"></param>
         /// <param name="usingDrawLogoBar"></param>
-        public static void ClearExtended(ConsoleColor BackgroundColor, bool usingDrawLogoBar = false)
+        public static void ClearExtended(ConsoleColor BackgroundColor)
         {
             Clear();
-            for (int i = 0; i < WindowWidth; i++)
+            CursorTop = 0;
+            CursorLeft = 1;
+            for (int i = 0; i < WindowHeight; i++)
             {
-                for (int ix = 0; ix < WindowHeight; ix++) Write(" ", BackgroundColor);
+                CursorTop = i;
+                for (int ix = 0; ix < WindowWidth; ix++)
+                {
+                    CursorLeft = ix;
+                    Write(" ", BackgroundColor);
+                }
             }
-            if (!usingDrawLogoBar) CursorTop = 0;
-            else CursorTop = 2;
+            CursorTop = 0;
+            CursorLeft = 0;
         }
         /// <summary>
         /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen
