@@ -6,7 +6,7 @@ namespace dewitcher
     {
         public enum Effect : byte
         { SlideFromLeft, SlideFromRight, SlideFromTop, SlideFromBottom, Typewriter, Matrix }
-        public static void Show(string OSname, Effect efx, ConsoleColor color, int ticks = 1000000)
+        public static void Show(string OSname, Effect efx, ConsoleColor color, int ticks = 750000)
         {
             switch (efx)
             {
@@ -20,7 +20,7 @@ namespace dewitcher
                         for (int x = 0; x < i; x++) fill += " ";
                         Console.Write(fill);
                         Console.Write(OSname, color, false, true);
-                        RTC.Sleep.SleepTicks(ticks);
+                        RTC.SleepTicks(ticks);
                     } break;
 
                 case Effect.SlideFromRight:
@@ -31,7 +31,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorLeft = i;
                         Console.Write(OSname, color, false, true);
-                        RTC.Sleep.SleepTicks(ticks);
+                        RTC.SleepTicks(ticks);
                     } break;
 
                 case Effect.SlideFromTop:
@@ -41,7 +41,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.Sleep.SleepTicks(ticks);
+                        RTC.SleepTicks(ticks);
                     } break;
 
                 case Effect.SlideFromBottom:
@@ -51,7 +51,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.Sleep.SleepTicks(ticks);
+                        RTC.SleepTicks(ticks);
                     } break;
 
                 case Effect.Typewriter:
@@ -60,7 +60,7 @@ namespace dewitcher
                     foreach (char chr in OSname)
                     {
                         Console.Write(chr.ToString(), color, false, true);
-                        RTC.Sleep.SleepTicks(ticks);
+                        RTC.SleepTicks(ticks);
                     } break;
 
                 case Effect.Matrix:
@@ -86,11 +86,11 @@ namespace dewitcher
                                 if (tmrx == 4) tmrx = 0;
                                 tmr++;
                                 if (tmr == 0) Console.Write("#", ConsoleColor.Magenta);
-                                else if (tmrx == 3) Console.Write("*", ConsoleColor.Green);
-                                else if (tmr == 2) { Console.Write(";", ConsoleColor.Red); ++tmrx; }
-                                else if (tmrx == 1) Console.Write("+", ConsoleColor.Yellow);
-                                else if (tmr == 4) { Console.Write("~", ConsoleColor.Blue); ++tmrx; }
-                                else if (tmrx == 2) Console.Write("&", ConsoleColor.Cyan);
+                                if (tmrx == 3) Console.Write("*", ConsoleColor.Green);
+                                if (tmr == 2) { Console.Write(";", ConsoleColor.Red); ++tmrx; }
+                                if (tmrx == 1) Console.Write("+", ConsoleColor.Yellow);
+                                if (tmr == 4) { Console.Write("~", ConsoleColor.Blue); ++tmrx; }
+                                if (tmrx == 2) Console.Write("&", ConsoleColor.Cyan);
                                 Console.Write(OSname, ConsoleColor.White, true, true);
                             }
                         }

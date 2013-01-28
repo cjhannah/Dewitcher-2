@@ -92,7 +92,7 @@ namespace dewitcher
         }
         private static void DrawOOPS()
         {
-            Console.SetBackground(ConsoleColor.Blue);
+            Console.Fill(ConsoleColor.Blue);
             string[] arrOOPS = new string[] {
                 "======  ======  =====  =====  =",
                 "=    =  =    =  =   =  =      =",

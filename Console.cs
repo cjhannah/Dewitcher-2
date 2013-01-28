@@ -6,7 +6,7 @@ namespace dewitcher
     /// <summary>
     /// A Console class that contains so much cool features for OS developing ;)
     /// </summary>
-    public static class Console
+    public static partial class Console
     {
         private static int indent = 0;
         /// <summary>
@@ -125,15 +125,15 @@ namespace dewitcher
             ForegroundColor = originalColor;
             BackgroundColor = originalColor2;
         }
-        public static void SetBackground(ConsoleColor color)
+        public static void Fill(ConsoleColor color)
         {
             Console.Clear();
             ConsoleColor backup = Console.BackgroundColor;
             Console.BackgroundColor = color;
-            for (int ih = 0; ih < Console.WindowHeight; ++ih)
+            for (int ih = 0; ih < Cosmos.Hardware.Global.TextScreen.Rows; ++ih)
             {
                 Console.CursorTop = ih;
-                for (int iw = 0; iw < Console.WindowWidth; ++iw)
+                for (int iw = 0; iw < Cosmos.Hardware.Global.TextScreen.Cols; ++iw)
                 {
                     Console.CursorLeft = iw;
                     Console.BackgroundColor = ConsoleColor.Blue;
@@ -153,20 +153,7 @@ namespace dewitcher
         /// <param name="usingDrawLogoBar"></param>
         public static void ClearExtended(ConsoleColor BackgroundColor)
         {
-            Clear();
-            CursorTop = 0;
-            CursorLeft = 1;
-            for (int i = 0; i < WindowHeight; i++)
-            {
-                CursorTop = i;
-                for (int ix = 0; ix < WindowWidth; ix++)
-                {
-                    CursorLeft = ix;
-                    Write(" ", BackgroundColor);
-                }
-            }
-            CursorTop = 0;
-            CursorLeft = 0;
+            Fill(BackgroundColor);
         }
         /// <summary>
         /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen

@@ -8,6 +8,18 @@ namespace dewitcher.Extensions
     /// </summary>
     public static class StringExtensions
     {
+        public static string rot13(this string str)
+        {
+            return Crypto.ROT13.encrypt(str);
+        }
+        public static string rot47(this string str)
+        {
+            return Crypto.ROT13.encrypt(str);
+        }
+        public static string md5(this string str)
+        {
+            return Crypto.MD5.hash(str);
+        }
         /// <summary>
         /// Checks if the string starts with a given string
         /// </summary>
@@ -54,7 +66,13 @@ namespace dewitcher.Extensions
         /// <returns></returns>
         public static char _GetCharAt(this string __str, int __null_based_index)
         {
-            return __str[__null_based_index];
+            if (__null_based_index >= 0 && __null_based_index < __str.Length)
+                return __str[__null_based_index];
+            else
+            {
+                Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
+                return char.MinValue;
+            }
         }
         /// <summary>
         /// Removes the char at position string[index]
@@ -66,72 +84,15 @@ namespace dewitcher.Extensions
         {
             if (__null_based_index < __str.Length)
             {
-                string str = string.Empty;
+                string str = "";
                 for (int i = 0; i < __null_based_index; i++) str += __str[i];
                 for (int i = __null_based_index + 1; i < __str.Length; i++) str += __str[i];
                 return str;
             }
-            else return __str;
-        }
-        /// <summary>
-        /// Returns a part of a string
-        /// </summary>
-        /// <param name="__str"></param>
-        /// <param name="start">start-index</param>
-        /// <param name="end">end-index</param>
-        /// <returns></returns>
-        public static string _Substring(this string __str, int start, int end = -1)
-        {
-            if (end != -1)
-            {
-                if (start < end && end <= __str.Length - 1)
-                {
-                    string str = string.Empty;
-                    for (int i = start; i < end; i++) str += __str[i];
-                    return str;
-                }
-                else return __str;
-            }
             else
             {
-                if (start < __str.Length - 1)
-                {
-                    string str = string.Empty;
-                    for (int i = start; i < str.Length; i++) str += __str[i];
-                    return str;
-                }
-                else return __str;
-            }
-        }
-        /// <summary>
-        /// Substring Backup
-        /// </summary>
-        /// <param name="__str"></param>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <returns></returns>
-        [Obsolete]
-        public static string _Substring_Test(this string __str, int start, int end = -1)
-        {
-            if (end != -1)
-            {
-                if (start < end && end < __str.Length)
-                {
-                    string str = string.Empty;
-                    for (int i = start; i < end; ++i) str += __str[i];
-                    return str;
-                }
-                else return __str;
-            }
-            else
-            {
-                if (start < __str.Length)
-                {
-                    string str = string.Empty;
-                    for (int i = start; i < str.Length - 1; ++i) str += __str[i];
-                    return str;
-                }
-                else return __str;
+                Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
+                return __str;
             }
         }
     }
