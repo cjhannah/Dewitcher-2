@@ -11,7 +11,7 @@ namespace dewitcher
     public static class Kenneth
     {
         /// <summary>
-        /// Burn the witchcode | ProgressBar demonstration
+        /// Burn the witchcode
         /// </summary>
         public static void Burn()
         {
@@ -21,22 +21,25 @@ namespace dewitcher
             Console.WriteLine("Kenneth   is burning your witchcode...");
             Console.WriteLine("\n");
             Console.CursorTop = 5;
-            Console.WriteLine("Step 1...");
+            Console.WriteLine("Preparing...");
             Console.ProgressBar pb = new Console.ProgressBar(0, false);
-            do { pb.Increment(); RTC.SleepTicks(1000000); } while (pb.Value < 100);
+            do { pb.Increment(); RTC.SleepTicks(500000); } while (pb.Value < 100);
             Console.CursorTop = 5;
-            Console.WriteLine("Step 2...");
+            Console.WriteLine("Burning witchcode...");
             pb = new Console.ProgressBar(0, false);
-            do { pb.Increment(); RTC.SleepTicks(1000000); } while (pb.Value < 100);
-            Console.CursorTop = 5;
-            Console.WriteLine("Finalizing...");
-            pb = new Console.ProgressBar(0, false);
-            do { pb.Increment(); RTC.SleepTicks(1000000); } while (pb.Value < 100);
-            Console.CursorTop = 5;
-            Console.WriteLine("Done! 917384618467296694136487 Errors");
-            Console.WriteLine("\n\n\n\nKenneth burned your witchcode.\nThat's a problem because dewitcher is a whole bunch of witchcode.\n\nSorry :/\n\n\nPress [Enter] to restore the witchcode");
+            // This script will TOTALLY fuck your memory =P
+            unsafe
+            {
+                int* ptr = (int*)0;
+                for (int i = 0; i > -1; i++)
+                {
+                    pb.Increment();
+                    // Fuck memory
+                    ptr[i] = (int)~ptr[i];
+                }
+            }
             Console.ReadLine();
-            Console.Clear();
+            ACPI.Shutdown();
         }
     }
 }

@@ -136,7 +136,7 @@ namespace dewitcher
                 for (int iw = 0; iw < Cosmos.Hardware.Global.TextScreen.Cols; ++iw)
                 {
                     Console.CursorLeft = iw;
-                    Console.BackgroundColor = ConsoleColor.Blue;
+                    Console.BackgroundColor = color;
                     Console.Write(" ");
                 }
             }
@@ -150,7 +150,6 @@ namespace dewitcher
         /// Extended Clear Method
         /// </summary>
         /// <param name="BackgroundColor"></param>
-        /// <param name="usingDrawLogoBar"></param>
         public static void ClearExtended(ConsoleColor BackgroundColor)
         {
             Fill(BackgroundColor);

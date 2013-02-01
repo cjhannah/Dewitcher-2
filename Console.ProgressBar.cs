@@ -26,11 +26,11 @@ namespace dewitcher
             /// Initialize a new ProgressBar
             /// </summary>
             /// <param name="startValue">Value</param>
-            /// <param name="redrawFlickering">true = Very cool effect =)</param>
-            public ProgressBar(int startValue, bool redrawFlickering)
+            /// <param name="Flicker">true = Very cool effect =)</param>
+            public ProgressBar(int startValue, bool Flicker = false)
             {
                 this.Value = startValue;
-                this.flicker = redrawFlickering;
+                this.flicker = Flicker;
                 this.Refresh();
             }
             public void Increment()

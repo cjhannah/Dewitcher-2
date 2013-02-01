@@ -106,5 +106,19 @@ namespace dewitcher
                 Console.WriteLineEx(str, ConsoleColor.White, ConsoleColor.Blue);
             }
         }
+        /// <summary>
+        /// Kernel Panic
+        /// </summary>
+        public static void Panic()
+        {
+            Console.Clear();
+            Console.Fill(ConsoleColor.Red);
+            Console.WriteLine("\n");
+            Console.WriteLineEx("KERNEL PANIC", ConsoleColor.White, ConsoleColor.Red, true);
+            Console.WriteLine("\n");
+            string message = "* CRITICAL KERNEL EXCEPTION\n* PLEASE CONTACT YOUR SOFTWARE MANUFACTURER";
+            Console.WriteLineEx(message, ConsoleColor.White, ConsoleColor.Red, true);
+            Cosmos.Core.Global.CPU.Halt();
+        }
     }
 }
