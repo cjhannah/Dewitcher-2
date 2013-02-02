@@ -61,3 +61,5 @@ echo "#############################################"
 echo "#            Uploading content..            #"
 echo "#############################################"
 git push -u dewitcher master
+
+# End of Script
