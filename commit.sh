@@ -9,7 +9,7 @@ git gc
 # Commit
 echo "Type a message for this commit:"
 read msg
-git commit -m $msg
+git commit -m "Added Stream class under dewitcher.IO"
  
 # Push
 git push -u dewitcher master

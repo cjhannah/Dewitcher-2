@@ -57,6 +57,8 @@
     <Compile Include="Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions.StringExtensions.cs" />
     <Compile Include="dev\PLang.Brainfuck.cs" />
+    <Compile Include="IO\MemoryStream.cs" />
+    <Compile Include="IO\Stream.cs" />
     <Compile Include="Kenneth.cs" />
     <Compile Include="KeyboardLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

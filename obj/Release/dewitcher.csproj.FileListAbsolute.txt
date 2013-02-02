@@ -33,3 +33,23 @@ C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Release\Cosmos.Asse
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Release\Cosmos.Assembler.XSharp.pdb
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Release\Cosmos.Assembler.pdb
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Release\Cosmos.Assembler.x86.pdb
+C:\Users\Grunt\dewitcherframework\obj\Release\dewitcher.csprojResolveAssemblyReference.cache
+C:\Users\Grunt\dewitcherframework\obj\Release\dewitcher.dll
+C:\Users\Grunt\dewitcherframework\obj\Release\dewitcher.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\dewitcher.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\dewitcher.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Core.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Hardware.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.System.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Assembler.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Assembler.x86.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Debug.Kernel.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Common.Extensions.dll
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Assembler.XSharp.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Core.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Hardware.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.System.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Assembler.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Assembler.x86.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Debug.Kernel.pdb
+C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.Common.Extensions.pdb
