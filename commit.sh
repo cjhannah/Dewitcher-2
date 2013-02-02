@@ -9,7 +9,7 @@ git gc
 # Commit
 echo "Type a message for this commit:"
 read msg
-git commit -m "Added BinaryWriter class under dewitcher.IO"
+git commit -m "$msg"
  
 # Push
 git push -u dewitcher master
