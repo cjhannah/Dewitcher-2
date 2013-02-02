@@ -51,12 +51,13 @@
     <Compile Include="ACPI.cs" />
     <Compile Include="Bluescreen.cs" />
     <Compile Include="Console.ProgressBar.cs" />
+    <Compile Include="Console.VideoBuffer.cs" />
     <Compile Include="Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
     <Compile Include="Console.cs" />
     <Compile Include="Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions.StringExtensions.cs" />
-    <Compile Include="dev\PLang.Brainfuck.cs" />
+    <Compile Include="dev\Brainfuck.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
