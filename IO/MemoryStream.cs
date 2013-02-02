@@ -7,15 +7,19 @@ namespace dewitcher.IO
 {
     public unsafe class MemoryStream : Stream
     {
+        private bool eof;
+        public bool EOF { get { return eof; } }
         private byte* data;
         private uint length;
         public MemoryStream(byte* dat)
         {
+            eof = false;
             length = sizeof(uint);
             data = dat;
         }
         public MemoryStream(byte[] dat)
         {
+            eof = false;
             length = (uint)dat.Length;
             fixed (byte* ptr = dat)
             {
@@ -25,13 +29,13 @@ namespace dewitcher.IO
         protected override byte ReadByte(uint p)
         {
             if (p > length)
-                throw new Exception("End of Stream!");
+                eof = true;
             return data[p];
         }
         protected override void WriteByte(uint p, byte b)
         {
             if (p > length)
-                throw new Exception("End of Stream!");
+                eof = true;
             data[p] = b;
         }
     }
