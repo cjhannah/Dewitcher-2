@@ -118,7 +118,10 @@ namespace dewitcher
             Console.WriteLine("\n");
             string message = "* CRITICAL KERNEL EXCEPTION\n* PLEASE CONTACT YOUR SOFTWARE MANUFACTURER";
             Console.WriteLineEx(message, ConsoleColor.White, ConsoleColor.Red, true);
-            Cosmos.Core.Global.CPU.Halt();
+            while (true)
+            {
+
+            }
         }
     }
 }
