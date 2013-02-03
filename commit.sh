@@ -36,7 +36,7 @@ echo "# DONE Adding content                       #"
 echo "#############################################"
 echo "#            Cleaning Repository            #"
 echo "#############################################"
-git clean -d -x -n
+# git clean -d -x -n
 
 clear
 echo "#############################################"
