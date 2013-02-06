@@ -55,26 +55,27 @@ namespace dewitcher
             public static void SetContent(string name)
             {
                 bool found = false;
-                foreach (VideoBuffer vb in vBuffers)
+                for (int i = 0; i < vBuffers.Count; i++)
                 {
-                    if (vb.id == name)
+                    if (vBuffers[i].id == name)
                     {
                         found = true;
                         // Delete old content
-                        vb.X = 0;
-                        vb.Y = 0;
-                        vb.id = "";
-                        vb.data = new byte[] { };
+                        vBuffers[i].X = 0;
+                        vBuffers[i].Y = 0;
+                        vBuffers[i].id = "";
+                        vBuffers[i].data = new byte[] { };
                         // Set new content
                         byte* vram = (byte*)0xB8000;
-                        vb.data = new byte[4250];
-                        for (int i = 0; i < 4250; i++)
+                        vBuffers[i].data = new byte[4250];
+                        for (int _i = 0; i < 4250; i++)
                         {
                             byte b = vram[i];
-                            vb.data[i] = b;
+                            vBuffers[i].data[_i] = b;
                         }
-                        vb.X = CursorLeft;
-                        vb.Y = CursorTop;
+                        vBuffers[i].X = CursorLeft;
+                        vBuffers[i].Y = CursorTop;
+                        break;
                     }
                 }
                 if (!found)
@@ -89,6 +90,7 @@ namespace dewitcher
                     }
                     vb.X = CursorLeft;
                     vb.Y = CursorTop;
+                    vBuffers.Add(vb);
                 }
             }
             /// <summary>
@@ -97,18 +99,19 @@ namespace dewitcher
             /// <param name="name"></param>
             public static void RetContent(string name)
             {
-                foreach (VideoBuffer vb in vBuffers)
+                for (int i = 0; i < vBuffers.Count; i++)
                 {
-                    if (vb.id == name)
+                    if (vBuffers[i].id == name)
                     {
                         // restore content
                         byte* vram = (byte*)0xB8000;
-                        for (int i = 0; i < 4250; i++)
+                        for (int _i = 0; i < 4250; i++)
                         {
-                            vram[i] = vb.data[i];
+                            vram[_i] = vBuffers[i].data[_i];
                         }
-                        CursorLeft = vb.X;
-                        CursorTop = vb.Y;
+                        CursorLeft = vBuffers[i].X;
+                        CursorTop = vBuffers[i].Y;
+                        break;
                     }
                 }
             }
