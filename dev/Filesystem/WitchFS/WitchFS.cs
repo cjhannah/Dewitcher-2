@@ -9,7 +9,6 @@ namespace dewitcher.Dev.Filesystem
         private AtaPio ATA = null;
         private Partition OSPartition = null;
         private Cosmos.System.Filesystem.FileSystem FS = null;
-        private List<Cosmos.System.Filesystem.Listing.Base> FileList;
         private string osname;
         /// <summary>
         /// Initialize the Filesystem

@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using Cosmos.Core;
 
 namespace dewitcher
 {
-    // You will have so much fun while reading that code xP
+    // You'll have so much fun while reading that code xP
     public static unsafe class ACPI
     {
         internal static int* SMI_CMD;
