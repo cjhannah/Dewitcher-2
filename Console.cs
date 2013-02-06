@@ -126,6 +126,10 @@ namespace dewitcher
             ForegroundColor = originalColor;
             BackgroundColor = originalColor2;
         }
+        /// <summary>
+        /// Fills the Console Background with a color
+        /// </summary>
+        /// <param name="color"></param>
         public static void Fill(ConsoleColor color)
         {
             Console.Clear();
@@ -142,19 +146,12 @@ namespace dewitcher
                 }
             }
             Console.BackgroundColor = backup;
+            Console.CursorTop = 0;
         }
         /// <summary>
         /// Clear Method
         /// </summary>
         public static void Clear() { System.Console.Clear(); }
-        /// <summary>
-        /// Extended Clear Method
-        /// </summary>
-        /// <param name="BackgroundColor"></param>
-        public static void ClearExtended(ConsoleColor BackgroundColor)
-        {
-            Fill(BackgroundColor);
-        }
         /// <summary>
         /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen
         /// </summary>

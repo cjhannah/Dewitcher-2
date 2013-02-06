@@ -33,14 +33,14 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cosmos.Assembler.XSharp">
-      <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.XSharp.dll</HintPath>
-    </Reference>
     <Reference Include="Cosmos.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.Hardware, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Hardware.dll</HintPath>
+    </Reference>
+    <Reference Include="Cosmos.IL2CPU.Plugs">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.IL2CPU.Plugs.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System.dll</HintPath>
@@ -51,13 +51,14 @@
     <Compile Include="ACPI.cs" />
     <Compile Include="Bluescreen.cs" />
     <Compile Include="Console.ProgressBar.cs" />
-    <Compile Include="Console.VideoBuffer.cs" />
+    <Compile Include="Console.VideoRAM.cs" />
+    <Compile Include="Core\INTs.cs" />
     <Compile Include="Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
     <Compile Include="Console.cs" />
+    <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
     <Compile Include="Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions.StringExtensions.cs" />
-    <Compile Include="dev\Brainfuck.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
@@ -68,10 +69,15 @@
     <Compile Include="Bootscreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dev\Filesystem\WitchFS.cs" />
+    <Compile Include="dev\Filesystem\WitchFS\WitchFS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto.Rot.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dev\Filesystem\GLNFS\" />
+    <Folder Include="dev\Filesystem\NoobFS\" />
+    <Folder Include="dev\Filesystem\VFS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

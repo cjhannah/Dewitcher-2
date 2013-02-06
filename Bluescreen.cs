@@ -113,11 +113,12 @@ namespace dewitcher
         {
             Console.Clear();
             Console.Fill(ConsoleColor.Red);
-            Console.WriteLine("\n");
+            Console.CursorTop = 2;
             Console.WriteLineEx("KERNEL PANIC", ConsoleColor.White, ConsoleColor.Red, true);
             Console.WriteLine("\n");
             string message = "CRITICAL KERNEL EXCEPTION\nPLEASE CONTACT YOUR SOFTWARE MANUFACTURER";
             Console.WriteLineEx(message, ConsoleColor.White, ConsoleColor.Red, true);
+            // Enter an infinite loop
             while (true)
             {
 
