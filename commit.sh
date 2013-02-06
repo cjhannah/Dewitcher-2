@@ -36,7 +36,8 @@ echo "# DONE Adding content                       #"
 echo "#############################################"
 echo "#            Cleaning Repository            #"
 echo "#############################################"
-# git clean -d -x -n  <= WTF this seems to cause loads of errors on codeplex..
+git clean -d -f -x
+git gc
 
 clear
 echo "#############################################"
