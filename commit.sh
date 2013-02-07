@@ -36,8 +36,8 @@ echo "# DONE Adding content                       #"
 echo "#############################################"
 echo "#            Cleaning Repository            #"
 echo "#############################################"
-git clean -d -f -x
-git gc
+# nothing to do
+# please use clean.sh
 
 clear
 echo "#############################################"
@@ -49,7 +49,7 @@ echo "#############################################"
 echo "#   Please type a message for this commit   #"
 echo "#############################################"
 read msg
-git commit -m "$msg"
+git commit -a -m "$msg"
 
 clear
 echo "#############################################"
@@ -62,5 +62,12 @@ echo "#############################################"
 echo "#            Uploading content..            #"
 echo "#############################################"
 git push -u dewitcher master
+
+echo.
+echo "#############################################"
+echo "#            Please run clean.sh            #"
+echo "#  if you moved files to other directories  #"
+echo "#############################################"
+pause
 
 # End of Script
