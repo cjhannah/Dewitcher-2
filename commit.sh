@@ -65,9 +65,8 @@ git push -u dewitcher master
 
 echo.
 echo "#############################################"
-echo "#            Please run clean.sh            #"
-echo "#  if you moved files to other directories  #"
+echo "#                   Done!                   #"
 echo "#############################################"
-pause
+read
 
 # End of Script
