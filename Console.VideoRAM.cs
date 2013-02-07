@@ -60,18 +60,13 @@ namespace dewitcher
                     if (vbufferList[i].id == name)
                     {
                         found = true;
-                        // Delete old content
-                        vbufferList[i].X = 0;
-                        vbufferList[i].Y = 0;
-                        vbufferList[i].id = "";
-                        vbufferList[i].data = new byte[] { };
                         // Set new content
                         byte* vram = (byte*)0xB8000;
                         vbufferList[i].data = new byte[4250];
-                        for (int _i = 0; i < 4250; i++)
+                        for (int j = 0; j < 4250; j++)
                         {
-                            byte b = vram[i];
-                            vbufferList[i].data[_i] = b;
+                            byte b = vram[j];
+                            vbufferList[i].data[j] = b;
                         }
                         vbufferList[i].X = CursorLeft;
                         vbufferList[i].Y = CursorTop;
@@ -105,9 +100,9 @@ namespace dewitcher
                     {
                         // restore content
                         byte* vram = (byte*)0xB8000;
-                        for (int _i = 0; i < 4250; i++)
+                        for (int j = 0; j < 4250; j++)
                         {
-                            vram[_i] = vbufferList[i].data[_i];
+                            vram[j] = vbufferList[i].data[j];
                         }
                         CursorLeft = vbufferList[i].X;
                         CursorTop = vbufferList[i].Y;

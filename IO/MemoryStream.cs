@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+// Splitty was here
 namespace dewitcher.IO
 {
     public unsafe class MemoryStream : Stream
@@ -26,17 +26,16 @@ namespace dewitcher.IO
                 data = ptr;
             }
         }
-        protected override byte ReadByte(uint p)
+        internal override byte ReadByte(uint p)
         {
-            if (p > length)
-                eof = true;
-            return data[p];
+            if (p > length) eof = true; else eof = false;
+            if (!eof) return data[p];
+            else return byte.MinValue;
         }
-        protected override void WriteByte(uint p, byte b)
+        internal override void WriteByte(uint p, byte b)
         {
-            if (p > length)
-                eof = true;
-            data[p] = b;
+            if (p > length) eof = true; else eof = false;
+            if (!eof) data[p] = b;
         }
     }
 }

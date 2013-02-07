@@ -39,7 +39,7 @@ namespace dewitcher
                 }
             }
             Console.ReadLine();
-            ACPI.Shutdown();
+            Core.ACPI.Shutdown();
         }
     }
 }

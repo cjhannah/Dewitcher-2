@@ -22,16 +22,16 @@ namespace dewitcher.Dev.Filesystem
                 if (FindPartition())
                 {
                     FS = new Cosmos.System.Filesystem.FileSystem();
-                    if (!MapFS()) Bluescreen.Init("WitchFS MappingException", "Mapping the filesystem to X drive failed!", false);
+                    if (!MapFS()) Core.Bluescreen.Init("WitchFS MappingException", "Mapping the filesystem to X drive failed!", false);
                 }
                 else
                 {
-                    Bluescreen.Init("WitchFS PartitionException", "WitchFS cannot find a partition on your computer.", false);
+                    Core.Bluescreen.Init("WitchFS PartitionException", "WitchFS cannot find a partition on your computer.", false);
                 }
             }
             else
             {
-                Bluescreen.Init("WitchFS ATAException", "WitchFS cannot find a harddrive on your computer.", false);
+                Core.Bluescreen.Init("WitchFS ATAException", "WitchFS cannot find a harddrive on your computer.", false);
             }
         }
         private bool FindHardDrive()
