@@ -59,7 +59,6 @@
     <Compile Include="Console.ProgressBar.cs" />
     <Compile Include="Console.VideoRAM.cs" />
     <Compile Include="Core\INTs.cs" />
-    <Compile Include="Core\Plugs.cs" />
     <Compile Include="Crypto\Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
     <Compile Include="Console.cs" />

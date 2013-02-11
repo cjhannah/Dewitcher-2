@@ -8,83 +8,105 @@ namespace dewitcher.Core
     [Plug(Target = typeof(Cosmos.Core.INTs))]
     public class INTs
     {
-        internal class STIEnabler
+        public static void HandleInterrupt_Default(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            public void Enable()
-            {
-            }
+            aContext.EFlags = Cosmos.Core.INTs.EFlagsEnum.InterruptEnable;
+            STIEnabler sti = new STIEnabler();
+            sti.Enable();
         }
-        [Plug(Target = typeof(STIEnabler))]
-        public class Enable : AssemblerMethod
+        public static void HandleInterrupt_00(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            public override void AssembleNew(object aAssembler, object aMethodInfo)
-            {
-                new CPUx86.Sti();
-            }
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_00(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_01(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_01(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_02(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_02(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_03(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_03(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_04(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_04(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_05(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_05(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_06(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_06(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_07(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_07(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_08(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_08(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_09(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_09(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0A(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0A(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0B(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0B(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0C(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0C(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0D(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0D(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0E(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0E(ref Cosmos.Core.INTs.IRQContext context)
+        public static void HandleInterrupt_0F(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+            
+            Bluescreen.Panic();
         }
-        public static void HandleInterrupt_0F(ref Cosmos.Core.INTs.IRQContext context)
+    }
+    class STIEnabler
+    {
+        public void Enable()
         {
-            STIEnabler se = new STIEnabler(); se.Enable();
+        }
+    }
+    [Plug(Target = typeof(STIEnabler))]
+    public class Enable : AssemblerMethod
+    {
+        public override void AssembleNew(object aAssembler, object aMethodInfo)
+        {
+            new CPUx86.Sti();
         }
     }
 }
