@@ -70,6 +70,7 @@
     <Compile Include="Extensions\Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
+    <Compile Include="IO\cDDI.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
     <Compile Include="IO\VideoStream.cs" />
