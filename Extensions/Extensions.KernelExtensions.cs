@@ -7,6 +7,7 @@ namespace dewitcher.Extensions
     /// </summary>
     public static class KernelExtensions
     {
+        public static void Reboot(this Cosmos.System.Kernel krnl) { Core.ACPI.Reboot(); }
         public static void Shutdown(this Cosmos.System.Kernel krnl) { Core.ACPI.Shutdown(); }
         public static void SleepTicks(this Cosmos.System.Kernel krnl, int amount) { RTC.SleepTicks(amount); }
         public static void SleepSeconds(this Cosmos.System.Kernel krnl, int amount) { RTC.SleepSeconds(amount); }

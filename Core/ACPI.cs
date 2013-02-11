@@ -242,5 +242,16 @@ namespace dewitcher.Core
             }
             Console.WriteLine("Its now safe to turn off the computer.");
         }
+        /// <summary>
+        /// Reboot
+        /// </summary>
+        public static void Reboot()
+        {
+            byte good = 0x02;
+            while ((good & 0x02) != 0)
+                good = IO.cDDI.inb(0x64);
+            IO.cDDI.outb(0x64, 0xFE);
+            Cosmos.Core.Global.CPU.Halt();
+        }
     }
 }
