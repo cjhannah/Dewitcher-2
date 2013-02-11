@@ -33,6 +33,12 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Cosmos.Assembler">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.dll</HintPath>
+    </Reference>
+    <Reference Include="Cosmos.Assembler.x86">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.x86.dll</HintPath>
+    </Reference>
     <Reference Include="Cosmos.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
     </Reference>
@@ -53,6 +59,7 @@
     <Compile Include="Console.ProgressBar.cs" />
     <Compile Include="Console.VideoRAM.cs" />
     <Compile Include="Core\INTs.cs" />
+    <Compile Include="Core\Plugs.cs" />
     <Compile Include="Crypto\Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
     <Compile Include="Console.cs" />
@@ -60,6 +67,7 @@
     <Compile Include="dev\Filesystem\NoobFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\VFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
+    <Compile Include="dev\Log.cs" />
     <Compile Include="Extensions\Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />

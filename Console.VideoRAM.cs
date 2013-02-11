@@ -52,7 +52,8 @@ namespace dewitcher
             /// Saves the Console content
             /// </summary>
             /// <param name="num"></param>
-            public static void SetContent(string name)
+            /// <returns></returns>
+            public static bool SetContent(string name)
             {
                 bool found = false;
                 for (int i = 0; i < vbufferList.Count; i++)
@@ -71,7 +72,7 @@ namespace dewitcher
                         }
                         vbufferList[i].X = CursorLeft;
                         vbufferList[i].Y = CursorTop;
-                        break;
+                        return true;
                     }
                 }
                 if (!found)
@@ -88,13 +89,16 @@ namespace dewitcher
                     vb.X = CursorLeft;
                     vb.Y = CursorTop;
                     vbufferList.Add(vb);
+                    return true;
                 }
+                return false;
             }
             /// <summary>
             /// Restores the Console content
             /// </summary>
             /// <param name="name"></param>
-            public static void RetContent(string name)
+            /// <returns></returns>
+            public static bool RetContent(string name)
             {
                 for (int i = 0; i < vbufferList.Count; i++)
                 {
@@ -108,9 +112,10 @@ namespace dewitcher
                         }
                         CursorLeft = vbufferList[i].X;
                         CursorTop = vbufferList[i].Y;
-                        break;
+                        return true;
                     }
                 }
+                return false;
             }
         }
     }
