@@ -63,6 +63,7 @@ namespace dewitcher
                         // Set new content
                         byte* vram = (byte*)0xB8000;
                         vbufferList[i].data = new byte[4250];
+                        vbufferList[i].id = name;
                         for (int j = 0; j < 4250; j++)
                         {
                             byte b = vram[j];
@@ -78,6 +79,7 @@ namespace dewitcher
                     VideoBuffer vb = new VideoBuffer();
                     byte* vram = (byte*)0xB8000;
                     vb.data = new byte[4250];
+                    vb.id = name;
                     for (int i = 0; i < 4250; i++)
                     {
                         byte b = vram[i];
