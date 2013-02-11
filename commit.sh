@@ -1,9 +1,12 @@
-#############################################
-#            dewitcher Framework            #
-#               Commit Script               #
-#############################################
-#        Copyright(C) dewitcher Team        #
-#############################################
+clear
+echo "#############################################"
+echo "#            dewitcher Framework            #"
+echo "#               Commit Script               #"
+echo "#############################################"
+echo "#        Copyright(C) dewitcher Team        #"
+echo "#############################################"
+echo "#         Press any key to continue         #"
+read
 
 clear
 echo "#############################################"
