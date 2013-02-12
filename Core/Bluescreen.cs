@@ -39,15 +39,18 @@ namespace dewitcher.Core
             if (!critical)
             {
                 Console.CursorTop = Console.WindowHeight - 1;
-                Console.WriteLineEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.WriteEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
                 Console.ReadLine();
                 Console.Clear();
             }
             else
             {
-                Console.CursorTop = Console.WindowHeight - 2;
+                Console.CursorTop = Console.WindowHeight - 4;
                 Console.WriteLineEx("Press the [Enter]-key to shutdown", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
                 Console.WriteLineEx("If it doesn't work, press the RESET-button on your computer.", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
                 Console.ReadLine();
                 ACPI.Shutdown();
             }
@@ -75,16 +78,19 @@ namespace dewitcher.Core
             }
             if (!critical)
             {
-                Console.CursorTop = Console.WindowHeight - 1;
-                Console.WriteLineEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop = Console.WindowHeight - 3;
+                Console.WriteEx("Press the [Enter]-key to resume", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
                 Console.ReadLine();
                 Console.Clear();
             }
             else
             {
-                Console.CursorTop = Console.WindowHeight - 2;
-                Console.WriteLineEx("Press the [Enter]-key to shutdown", ConsoleColor.White, ConsoleColor.Blue);
-                Console.WriteLineEx("If it doesn't work, press the RESET-button on your computer.", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop = Console.WindowHeight - 4;
+                Console.WriteEx("Press the [Enter]-key to shutdown", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
+                Console.WriteEx("If it doesn't work, press the RESET-button on your computer.", ConsoleColor.White, ConsoleColor.Blue);
+                Console.CursorTop++;
                 Console.ReadLine();
                 ACPI.Shutdown();
             }

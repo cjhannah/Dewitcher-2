@@ -80,7 +80,7 @@
     <Compile Include="Kenneth.cs" />
     <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Core\RTC.cs" />
+    <Compile Include="RTC.cs" />
     <Compile Include="Bootscreen.cs" />
   </ItemGroup>
   <ItemGroup>
