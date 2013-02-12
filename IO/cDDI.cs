@@ -13,7 +13,7 @@ namespace dewitcher.IO
         /// <returns></returns>
         public static byte inb(ushort port)
         {
-            IOPortRead io = new IOPortRead(port);
+            IOPort io = new IOPort(port);
             return io.Byte;
         }
         /// <summary>
@@ -23,7 +23,7 @@ namespace dewitcher.IO
         /// <returns></returns>
         public static ushort inw(ushort port)
         {
-            IOPortRead io = new IOPortRead(port);
+            IOPort io = new IOPort(port);
             return io.Word;
         }
         /// <summary>
@@ -33,7 +33,7 @@ namespace dewitcher.IO
         /// <returns></returns>
         public static uint inl(ushort port)
         {
-            IOPortRead io = new IOPortRead(port);
+            IOPort io = new IOPort(port);
             return io.DWord;
         }
         /// <summary>
@@ -43,7 +43,7 @@ namespace dewitcher.IO
         /// <param name="data"></param>
         public static void outb(ushort port, byte data)
         {
-            IOPortWrite io = new IOPortWrite(port);
+            IOPort io = new IOPort(port);
             io.Byte = data;
         }
         /// <summary>
@@ -53,7 +53,7 @@ namespace dewitcher.IO
         /// <param name="data"></param>
         public static void outw(ushort port, ushort data)
         {
-            IOPortWrite io = new IOPortWrite(port);
+            IOPort io = new IOPort(port);
             io.Word = data;
         }
         /// <summary>
@@ -63,7 +63,7 @@ namespace dewitcher.IO
         /// <param name="data"></param>
         public static void outl(ushort port, uint data)
         {
-            IOPortWrite io = new IOPortWrite(port);
+            IOPort io = new IOPort(port);
             io.DWord = data;
         }
     }

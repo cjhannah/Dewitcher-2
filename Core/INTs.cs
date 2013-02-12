@@ -8,16 +8,18 @@ namespace dewitcher.Core
     [Plug(Target = typeof(Cosmos.Core.INTs))]
     public class INTs
     {
+        public static bool called = false;
         public static void HandleInterrupt_Default(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            aContext.EFlags = Cosmos.Core.INTs.EFlagsEnum.InterruptEnable;
+            //aContext.EFlags = Cosmos.Core.INTs.EFlagsEnum.InterruptEnable;
             STIEnabler sti = new STIEnabler();
             sti.Enable();
         }
         public static void HandleInterrupt_00(ref Cosmos.Core.INTs.IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            // Should be called by the PIT
+            called = true;
+            Console.WriteLine("Interrupt called!");
         }
         public static void HandleInterrupt_01(ref Cosmos.Core.INTs.IRQContext aContext)
         {
