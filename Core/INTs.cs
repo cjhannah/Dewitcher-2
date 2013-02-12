@@ -97,10 +97,11 @@ namespace dewitcher.Core
             Bluescreen.Panic();
         }
     }
-    class STIEnabler
+    public class STIEnabler
     {
         public void Enable()
         {
+
         }
     }
     [Plug(Target = typeof(STIEnabler))]
@@ -108,6 +109,7 @@ namespace dewitcher.Core
     {
         public override void AssembleNew(object aAssembler, object aMethodInfo)
         {
+            Console.WriteLine("STI ENABLED");
             new CPUx86.Sti();
         }
     }

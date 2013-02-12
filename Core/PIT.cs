@@ -8,11 +8,11 @@ namespace dewitcher.Core
 
         // Mode0 AND Mode2 doesn't seem to work.
         // I don't know why..
-        // Please take a look at the methods, Grunt or Aurora
+        // Please take a look at the methods, Grunty or Aurora
 
         public static void Mode0(uint frequency)
         {
-            uint divisor = 1193182 / frequency;
+            uint divisor = 1193180 / frequency;
             IO.cDDI.outb(0x43, 0x30);
             byte l = (byte)(divisor & 0xFF);
             byte h = (byte)(divisor >> 8);

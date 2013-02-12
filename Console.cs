@@ -41,6 +41,28 @@ namespace dewitcher
         /// <summary>
         /// Write Method
         /// </summary>
+        /// <param name="chr">The char to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void Write(char chr = char.MinValue, ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
+        {
+            Write(chr.ToString(), color, xcenter, ycenter);
+        }
+        /// <summary>
+        /// Write Method
+        /// </summary>
+        /// <param name="chr">The char to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void WriteEx(char chr = char.MinValue, ConsoleColor color = ConsoleColor.White, ConsoleColor backColor = ConsoleColor.Black, bool xcenter = false, bool ycenter = false)
+        {
+            WriteEx(chr.ToString(), color, backColor, xcenter, ycenter);
+        }
+        /// <summary>
+        /// Write Method
+        /// </summary>
         /// <param name="text">The text to write</param>
         /// <param name="color">The color of the text</param>
         /// <param name="xcenter">Horizontal centered?</param>
@@ -135,15 +157,9 @@ namespace dewitcher
             Console.Clear();
             ConsoleColor backup = Console.BackgroundColor;
             Console.BackgroundColor = color;
-            for (int ih = 0; ih < Cosmos.Hardware.Global.TextScreen.Rows; ++ih)
+            for (int i = 0; i < (80 * 26); i++)
             {
-                Console.CursorTop = ih;
-                for (int iw = 0; iw < Cosmos.Hardware.Global.TextScreen.Cols; ++iw)
-                {
-                    Console.CursorLeft = iw;
-                    Console.BackgroundColor = color;
-                    Console.Write(" ");
-                }
+                Console.Write(" ");
             }
             Console.BackgroundColor = backup;
             Console.CursorTop = 0;
