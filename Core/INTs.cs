@@ -1,102 +1,136 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Cosmos.IL2CPU.Plugs;
 using CPUx86 = Cosmos.Assembler.x86;
+using Cosmos.Core;
+using IRQContext = Cosmos.Core.INTs.IRQContext;
 // Credits for STIEnabler goes to Grunt =)
 namespace dewitcher.Core
 {
     [Plug(Target = typeof(Cosmos.Core.INTs))]
     public class INTs
     {
-        public static bool called = false;
-        public static void HandleInterrupt_Default(ref Cosmos.Core.INTs.IRQContext aContext)
+        public static bool debug = false;
+        public delegate void IRQ0called();
+        public static IRQ0called onCalled = delegate { RTC.called = true; };
+        public static void HandleInterrupt_Default(ref IRQContext aContext)
         {
-            //aContext.EFlags = Cosmos.Core.INTs.EFlagsEnum.InterruptEnable;
-            STIEnabler sti = new STIEnabler();
-            sti.Enable();
+            if (aContext.Interrupt >= 0x20 && aContext.Interrupt <= 0x2F)
+            {
+                if (aContext.Interrupt >= 0x28)
+                {
+                    Global.PIC.EoiSlave();
+                }
+                else
+                {
+                    Global.PIC.EoiMaster();
+                }
+            }
         }
-        public static void HandleInterrupt_00(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_00(ref IRQContext aContext)
         {
-            // Should be called by the PIT
-            called = true;
-            Console.WriteLine("Interrupt called!");
+            Bluescreen.Init("Divide by zero Exception", "", true); 
         }
-        public static void HandleInterrupt_01(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_01(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Debug Exception", "", true); 
         }
-        public static void HandleInterrupt_02(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_02(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Non Maskable Interrupt Exception", "", true); 
         }
-        public static void HandleInterrupt_03(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_03(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Breakpoint Exception", "", true); 
         }
-        public static void HandleInterrupt_04(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_04(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Into Detected Overflow Exception", "", true); 
         }
-        public static void HandleInterrupt_05(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_05(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Out of Bounds Exception", "", true); 
         }
-        public static void HandleInterrupt_06(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_06(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Invalid Opcode", "", true); 
         }
-        public static void HandleInterrupt_07(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_07(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("No Coprocessor Exception", "", true); 
         }
-        public static void HandleInterrupt_08(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_08(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Double Fault Exception", "", true); 
         }
-        public static void HandleInterrupt_09(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_09(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Coprocessor Segment Overrun Exception", "", true); 
         }
-        public static void HandleInterrupt_0A(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_0A(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Bad TSS Exception", "", true); 
         }
-        public static void HandleInterrupt_0B(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_0B(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Segment not present", "", true); 
         }
-        public static void HandleInterrupt_0C(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_0C(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Stack Fault Exception", "", true); 
         }
-        public static void HandleInterrupt_0D(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_0E(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Page Fault Exception", "", true); 
         }
-        public static void HandleInterrupt_0E(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_0F(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Unknown Interrupt Exception", "", true); 
         }
-        public static void HandleInterrupt_0F(ref Cosmos.Core.INTs.IRQContext aContext)
+
+        public static void HandleInterrupt_10(ref IRQContext aContext)
         {
-            
-            Bluescreen.Panic();
+            Bluescreen.Init("Coprocessor Fault Exception", "", true); 
+        }
+
+        public static void HandleInterrupt_11(ref IRQContext aContext)
+        {
+            Bluescreen.Init("Alignment Exception", "", true); 
+        }
+
+        public static void HandleInterrupt_12(ref IRQContext aContext)
+        {
+            Bluescreen.Init("Machine Check Exception", "", true); 
+        }
+
+        // IRQ0
+        public static void HandleInterrupt_20(ref IRQContext aContext)
+        {
+            if (debug) Console.WriteLine("IRQ0 CALLED");
+            onCalled();
+            Global.PIC.EoiMaster();
         }
     }
+
+
+
+
     public class STIEnabler
     {
         public void Enable()

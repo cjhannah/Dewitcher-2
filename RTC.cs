@@ -1,9 +1,11 @@
 ﻿using System;
+using dewitcher.Extensions;
 
 namespace dewitcher
 {
     public static class RTC
     {
+        internal static bool called = false;
         /// <summary>
         /// NOT RECOMMENDED! Waits for a given amount of ticks. It depends on the CPU speed.
         /// </summary>
@@ -16,12 +18,42 @@ namespace dewitcher
         /// RECOMMENDED! Waits for a given amount of seconds.
         /// </summary>
         /// <param name="seconds">Amount</param>
-        public static void SleepSeconds(int seconds)
+        public static void SleepSeconds(uint seconds)
         {
-            int start = Cosmos.Hardware.RTC.Second; int stop;
-            if (start + seconds > 59) stop = 0;
-            else stop = start + seconds;
-            while (Cosmos.Hardware.RTC.Second != stop) { ;} return;
+            SleepMilliseconds(seconds * 1000);
+        }
+        /// <summary>
+        /// RECOMMENDED! Waits for a given amount of milliseconds
+        /// </summary>
+        /// <param name="milliseconds"></param>
+        public static void SleepMilliseconds(uint milliseconds)
+        {
+            if (milliseconds <= 50)
+            {
+                called = false;
+                Core.PIT.Mode0(milliseconds);
+                while (!called) { }
+                called = false;
+            }
+            else if (milliseconds % 10 == 0)
+            {
+                milliseconds /= 5;
+                for (uint i = 0; i < milliseconds; i++)
+                {
+                    called = false;
+                    Core.PIT.Mode0(50);
+                    while (!called) { }
+                }
+            }
+            else
+            {
+                for (uint i = 0; i < milliseconds; i++)
+                {
+                    called = false;
+                    Core.PIT.Mode0(1000);
+                    while (!called) { }
+                }
+            }
         }
         public static class Now
         {

@@ -42,6 +42,10 @@
     <Reference Include="Cosmos.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Cosmos.Debug.Kernel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Debug.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="Cosmos.Hardware, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Hardware.dll</HintPath>
     </Reference>
@@ -71,6 +75,7 @@
     <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
     <Compile Include="dev\Log.cs" />
     <Compile Include="Extensions\Extensions.KernelExtensions.cs" />
+    <Compile Include="Extensions\Extensions.NumericExtensions.cs" />
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
     <Compile Include="IO\cDDI.cs" />
@@ -89,7 +94,9 @@
   <ItemGroup>
     <Compile Include="Crypto\Crypto.Rot.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Console\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
