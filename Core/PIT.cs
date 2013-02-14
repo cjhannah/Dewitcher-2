@@ -24,8 +24,6 @@ namespace dewitcher.Core
             byte h = (byte)((divisor >> 8) & 0xFF);
             IO.CDDI.outb(0x40, l);
             IO.CDDI.outb(0x40, h);
-            dewitcher.Core.IRQ.ClearMask(0);
-            dewitcher.Core.IRQ.ClearMask(15);
         }
     }
 }

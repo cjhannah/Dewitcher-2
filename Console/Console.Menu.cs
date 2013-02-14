@@ -48,7 +48,6 @@ namespace dewitcher
             public static void AddCategory(Category category) { cat.Add(category); }
             public static void Show()
             {
-                Reset();
                 Console.Clear();
                 Console.Fill(fill);
                 while (true)
