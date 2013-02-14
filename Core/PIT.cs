@@ -9,9 +9,9 @@ namespace dewitcher.Core
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
             uint divisor = 1193182 / frequency;
-            IO.cDDI.outb(0x43, 0x30);
-            IO.cDDI.outb(0x40, (byte)(divisor & 0xFF));
-            IO.cDDI.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IO.CDDI.outb(0x43, 0x30);
+            IO.CDDI.outb(0x40, (byte)(divisor & 0xFF));
+            IO.CDDI.outb(0x40, (byte)((divisor >> 8) & 0xFF));
         }
         public static void Mode2(uint frequency)
         {
@@ -19,11 +19,11 @@ namespace dewitcher.Core
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
             uint divisor = 1193182 / frequency;
-            IO.cDDI.outb(0x43, 0x36);
+            IO.CDDI.outb(0x43, 0x36);
             byte l = (byte)(divisor & 0xFF);
             byte h = (byte)((divisor >> 8) & 0xFF);
-            IO.cDDI.outb(0x40, l);
-            IO.cDDI.outb(0x40, h);
+            IO.CDDI.outb(0x40, l);
+            IO.CDDI.outb(0x40, h);
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
         }

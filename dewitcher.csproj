@@ -58,17 +58,22 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Console.Menu.Category.cs" />
+    <Compile Include="Console\Console.Menu.Commands.Back.cs" />
+    <Compile Include="Console\Console.Menu.cs" />
+    <Compile Include="Console\Console.Menu.Entry.cs" />
+    <Compile Include="Console\Console.Menu.Themepack.cs" />
     <Compile Include="Core\ACPI.cs" />
     <Compile Include="Core\Bluescreen.cs" />
-    <Compile Include="Console.ProgressBar.cs" />
-    <Compile Include="Console.VideoRAM.cs" />
+    <Compile Include="Console\Console.ProgressBar.cs" />
+    <Compile Include="Console\Console.VideoRAM.cs" />
     <Compile Include="Core\IDT.cs" />
     <Compile Include="Core\INTs.cs" />
     <Compile Include="Core\IRQ.cs" />
     <Compile Include="Core\PIT.cs" />
     <Compile Include="Crypto\Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
-    <Compile Include="Console.cs" />
+    <Compile Include="Console\Console.cs" />
     <Compile Include="dev\Filesystem\GLNFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\NoobFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\VFS\ImplementIt.cs" />
@@ -78,7 +83,7 @@
     <Compile Include="Extensions\Extensions.NumericExtensions.cs" />
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
-    <Compile Include="IO\cDDI.cs" />
+    <Compile Include="IO\CDDI.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
     <Compile Include="IO\VideoStream.cs" />
@@ -94,9 +99,7 @@
   <ItemGroup>
     <Compile Include="Crypto\Crypto.Rot.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Console\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

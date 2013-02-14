@@ -19,8 +19,8 @@ namespace dewitcher.Core
                 port = 0xA0 + 1;
                 IRQline -= 8;
             }
-            value = (byte)(IO.cDDI.inb(port) | (1 << IRQline));
-            IO.cDDI.outb(port, value);
+            value = (byte)(IO.CDDI.inb(port) | (1 << IRQline));
+            IO.CDDI.outb(port, value);
         }
         public static void ClearMask(byte IRQline)
         {
@@ -36,8 +36,8 @@ namespace dewitcher.Core
                 port = 0xA0 + 1;
                 IRQline -= 8;
             }
-            value = (byte)(IO.cDDI.inb(port) & ~(1 << IRQline));
-            IO.cDDI.outb(port, value);
+            value = (byte)(IO.CDDI.inb(port) & ~(1 << IRQline));
+            IO.CDDI.outb(port, value);
         }
     }
 }

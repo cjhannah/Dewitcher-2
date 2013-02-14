@@ -4,7 +4,7 @@ using Cosmos.Core;
 
 namespace dewitcher.IO
 {
-    public static class cDDI
+    public static class CDDI
     {
         /// <summary>
         /// Reads a byte
