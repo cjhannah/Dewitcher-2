@@ -6,7 +6,7 @@ namespace dewitcher
     {
         public enum Effect : byte
         { SlideFromLeft, SlideFromRight, SlideFromTop, SlideFromBottom, Typewriter, Matrix }
-        public static void Show(string OSname, Effect efx, ConsoleColor color, int ms_sleep = 200)
+        public static void Show(string OSname, Effect efx, ConsoleColor color, int ms_sleep = 20)
         {
             switch (efx)
             {
