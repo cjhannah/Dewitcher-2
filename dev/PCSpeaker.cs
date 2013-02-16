@@ -6,7 +6,7 @@ using dewitcher.IO;
 
 namespace dewitcher.dev
 {
-    public static class PCSpeaker
+    public class PCSpeaker
     {
         public static void sound_on()
         {
@@ -27,7 +27,7 @@ namespace dewitcher.dev
             RTC.SleepMilliseconds(milliseconds);
             sound_off();
         }
-        struct Notes
+        public struct Notes
         {
             public static uint C1 = 33;
             public static uint CS1 = 35;
