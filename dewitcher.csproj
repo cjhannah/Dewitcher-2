@@ -79,7 +79,7 @@
     <Compile Include="dev\Filesystem\VFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
     <Compile Include="dev\Log.cs" />
-    <Compile Include="dev\NewConsole.cs" />
+    <Compile Include="dev\PCSpeaker.cs" />
     <Compile Include="Extensions\Extensions.KernelExtensions.cs" />
     <Compile Include="Extensions\Extensions.NumericExtensions.cs" />
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
