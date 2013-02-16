@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Runtime.InteropServices;
 using Cosmos.Core;
 
-namespace dewitcher
+namespace dewitcher.Core
 {
-    // You will have so much fun while reading that code xP
+    // You'll have so much fun while reading that code xP
     public static unsafe class ACPI
     {
         internal static int* SMI_CMD;
@@ -243,6 +241,17 @@ namespace dewitcher
                     pm1bIO.Word = (ushort)(SLP_TYPb | SLP_EN);
             }
             Console.WriteLine("Its now safe to turn off the computer.");
+        }
+        /// <summary>
+        /// Reboot
+        /// </summary>
+        public static void Reboot()
+        {
+            byte good = 0x02;
+            while ((good & 0x02) != 0)
+                good = IO.CDDI.inb(0x64);
+            IO.CDDI.outb(0x64, 0xFE);
+            Cosmos.Core.Global.CPU.Halt();
         }
     }
 }

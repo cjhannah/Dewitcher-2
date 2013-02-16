@@ -25,7 +25,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
+    <Optimize>false</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
@@ -33,14 +33,24 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cosmos.Assembler.XSharp">
-      <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.XSharp.dll</HintPath>
+    <Reference Include="Cosmos.Assembler">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.dll</HintPath>
+    </Reference>
+    <Reference Include="Cosmos.Assembler.x86">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.x86.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Cosmos.Debug.Kernel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Debug.Kernel.dll</HintPath>
+    </Reference>
     <Reference Include="Cosmos.Hardware, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Hardware.dll</HintPath>
+    </Reference>
+    <Reference Include="Cosmos.IL2CPU.Plugs">
+      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.IL2CPU.Plugs.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System.dll</HintPath>
@@ -48,30 +58,49 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ACPI.cs" />
-    <Compile Include="Bluescreen.cs" />
-    <Compile Include="Console.ProgressBar.cs" />
-    <Compile Include="Crypto.MD5.cs" />
+    <Compile Include="Console\Console.Menu.Category.cs" />
+    <Compile Include="Console\Console.Menu.Commands.Back.cs" />
+    <Compile Include="Console\Console.Menu.cs" />
+    <Compile Include="Console\Console.Menu.Entry.cs" />
+    <Compile Include="Console\Console.Menu.Themepack.cs" />
+    <Compile Include="Core\ACPI.cs" />
+    <Compile Include="Core\Bluescreen.cs" />
+    <Compile Include="Console\Console.ProgressBar.cs" />
+    <Compile Include="Console\Console.VideoRAM.cs" />
+    <Compile Include="Core\IDT.cs" />
+    <Compile Include="Core\INTs.cs" />
+    <Compile Include="Core\IRQ.cs" />
+    <Compile Include="Core\PIT.cs" />
+    <Compile Include="Crypto\Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
-    <Compile Include="Console.cs" />
-    <Compile Include="Extensions.KernelExtensions.cs" />
-    <Compile Include="Extensions.StringExtensions.cs" />
-    <Compile Include="dev\PLang.Brainfuck.cs" />
+    <Compile Include="Console\Console.cs" />
+    <Compile Include="dev\Filesystem\GLNFS\ImplementIt.cs" />
+    <Compile Include="dev\Filesystem\NoobFS\ImplementIt.cs" />
+    <Compile Include="dev\Filesystem\VFS\ImplementIt.cs" />
+    <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
+    <Compile Include="dev\Log.cs" />
+    <Compile Include="Audio\PCSpeaker.cs" />
+    <Compile Include="Extensions\Extensions.KernelExtensions.cs" />
+    <Compile Include="Extensions\Extensions.NumericExtensions.cs" />
+    <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
+    <Compile Include="IO\CDDI.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
+    <Compile Include="IO\VideoStream.cs" />
     <Compile Include="Kenneth.cs" />
-    <Compile Include="KeyboardLayout.cs" />
+    <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTC.cs" />
     <Compile Include="Bootscreen.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="dev\Filesystem\WitchFS.cs" />
+    <Compile Include="dev\Filesystem\WitchFS\WitchFS.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Crypto.Rot.cs" />
+    <Compile Include="Crypto\Crypto.Rot.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

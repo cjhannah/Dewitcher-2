@@ -2,35 +2,36 @@
 using System.Collections.Generic;
 using Cosmos.Hardware.BlockDevice;
 
-namespace dewitcher.Dev.Filesystem
+namespace dewitcher.dev.Filesystem.WitchFS
 {
 	public class WitchFS
 	{
         private AtaPio ATA = null;
         private Partition OSPartition = null;
-        private Cosmos.System.Filesystem.FAT.FatFileSystem FATFS = null;
-        private List<Cosmos.System.Filesystem.Listing.Base> FATFileList;
+        private Cosmos.System.Filesystem.FileSystem FS = null;
+        private string osname;
         /// <summary>
         /// Initialize the Filesystem
         /// </summary>
         /// <param name="OSname"></param>
         public void Init(string OSname)
         {
+            osname = OSname;
             if (FindHardDrive())
             {
                 if (FindPartition())
                 {
-                    FATFS = new Cosmos.System.Filesystem.FAT.FatFileSystem(OSPartition);
-                    if (!MapFS()) Bluescreen.Init("WitchFS MappingException", "Mapping the filesystem to X drive failed!", false);
+                    FS = new Cosmos.System.Filesystem.FileSystem();
+                    if (!MapFS()) Core.Bluescreen.Init("WitchFS MappingException", "Mapping the filesystem to X drive failed!", false);
                 }
                 else
                 {
-                    Bluescreen.Init("WitchFS PartitionException", "WitchFS cannot find a partition on your computer.", false);
+                    Core.Bluescreen.Init("WitchFS PartitionException", "WitchFS cannot find a partition on your computer.", false);
                 }
             }
             else
             {
-                Bluescreen.Init("WitchFS ATAException", "WitchFS cannot find a harddrive on your computer.", false);
+                Core.Bluescreen.Init("WitchFS ATAException", "WitchFS cannot find a harddrive on your computer.", false);
             }
         }
         private bool FindHardDrive()
@@ -67,8 +68,7 @@ namespace dewitcher.Dev.Filesystem
         {
             try
             {
-                Cosmos.System.Filesystem.FileSystem.AddMapping("X", FATFS);
-                FATFileList = FATFS.GetRoot();
+                Cosmos.System.Filesystem.FileSystem.AddMapping("\\" + osname + "\\", FS);
                 return true;
             }
             catch { return false; }

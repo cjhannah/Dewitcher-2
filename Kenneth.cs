@@ -6,10 +6,32 @@ using System.Text;
 namespace dewitcher
 {
     /// <summary>
-    /// That's the Kenneth class, you see =P
+    /// KENNETH
+    /// Why so serious?
     /// </summary>
     public static class Kenneth
     {
+        /// <summary>
+        /// That's not a joke!
+        /// </summary>
+        public static void CrapLoop()
+        {
+            Console.Clear();
+            while (true) Console.Write("CRAP!", ConsoleColor.DarkRed);
+        }
+        /// <summary>
+        /// Repairs your PC
+        /// Srsly
+        /// </summary>
+        public static unsafe void RepairPC()
+        {
+            // Haha
+            byte* vram = (byte*)0xB8000;
+            for (int i = 0; i >= 0; i++)
+            {
+                vram[i] = (byte)~vram[i];
+            }
+        }
         /// <summary>
         /// Burn the witchcode
         /// </summary>
@@ -39,7 +61,7 @@ namespace dewitcher
                 }
             }
             Console.ReadLine();
-            ACPI.Shutdown();
+            Core.ACPI.Shutdown();
         }
     }
 }

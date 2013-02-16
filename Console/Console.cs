@@ -7,44 +7,8 @@ namespace dewitcher
     /// <summary>
     /// A Console class that contains so much cool features for OS developing ;)
     /// </summary>
-    public unsafe static partial class Console
+    public static partial class Console
     {
-        class VideoBuffer
-        {
-            public byte[] data;
-            public int X, Y;
-        }
-        private static Stack<VideoBuffer> videoBuffers = new Stack<VideoBuffer>();
-        /// <summary>
-        /// Pushes what is in video RAM onto a stack
-        /// </summary>
-        public static void PushContents()
-        {
-            VideoBuffer vb = new VideoBuffer();
-            byte* VideoRam = (byte*)0xB8000;
-            vb.data = new byte[4250];
-            for (int i = 0; i < 4250; i++)
-            {
-                byte b = VideoRam[i];
-                vb.data[i] = b;
-            }
-            vb.X = CursorLeft;
-            vb.Y = CursorTop;
-            videoBuffers.Push(vb);
-        }
-        public static void PopContents()
-        {
-            VideoBuffer vb = videoBuffers.Pop();
-            byte* VideoRam = (byte*)0xB8000;
-  
-            for (int i = 0; i < 4250; i++)
-            {
-                VideoRam[i] = vb.data[i];
-            
-            }
-            CursorLeft = vb.X;
-            CursorTop = vb.Y;
-        }
         private static int indent = 0;
         /// <summary>
         /// ForegroundColor Property
@@ -74,6 +38,28 @@ namespace dewitcher
         /// KeyAvailable Property
         /// </summary>
         public static bool KeyAvailable { get { return System.Console.KeyAvailable; } }
+        /// <summary>
+        /// Write Method
+        /// </summary>
+        /// <param name="chr">The char to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void Write(char chr = char.MinValue, ConsoleColor color = ConsoleColor.White, bool xcenter = false, bool ycenter = false)
+        {
+            Write(chr.ToString(), color, xcenter, ycenter);
+        }
+        /// <summary>
+        /// Write Method
+        /// </summary>
+        /// <param name="chr">The char to write</param>
+        /// <param name="color">The color of the text</param>
+        /// <param name="xcenter">Horizontal centered?</param>
+        /// <param name="ycenter">Vertical centered?</param>
+        public static void WriteEx(char chr = char.MinValue, ConsoleColor color = ConsoleColor.White, ConsoleColor backColor = ConsoleColor.Black, bool xcenter = false, bool ycenter = false)
+        {
+            WriteEx(chr.ToString(), color, backColor, xcenter, ycenter);
+        }
         /// <summary>
         /// Write Method
         /// </summary>
@@ -162,35 +148,26 @@ namespace dewitcher
             ForegroundColor = originalColor;
             BackgroundColor = originalColor2;
         }
+        /// <summary>
+        /// Fills the Console Background with a color
+        /// </summary>
+        /// <param name="color"></param>
         public static void Fill(ConsoleColor color)
         {
             Console.Clear();
             ConsoleColor backup = Console.BackgroundColor;
             Console.BackgroundColor = color;
-            for (int ih = 0; ih < Cosmos.Hardware.Global.TextScreen.Rows; ++ih)
+            for (int i = 0; i < (80 * 26); i++)
             {
-                Console.CursorTop = ih;
-                for (int iw = 0; iw < Cosmos.Hardware.Global.TextScreen.Cols; ++iw)
-                {
-                    Console.CursorLeft = iw;
-                    Console.BackgroundColor = color;
-                    Console.Write(" ");
-                }
+                Console.Write(" ");
             }
             Console.BackgroundColor = backup;
+            Console.CursorTop = 0;
         }
         /// <summary>
         /// Clear Method
         /// </summary>
         public static void Clear() { System.Console.Clear(); }
-        /// <summary>
-        /// Extended Clear Method
-        /// </summary>
-        /// <param name="BackgroundColor"></param>
-        public static void ClearExtended(ConsoleColor BackgroundColor)
-        {
-            Fill(BackgroundColor);
-        }
         /// <summary>
         /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen
         /// </summary>

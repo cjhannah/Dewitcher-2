@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cosmos.Hardware;
 
-namespace dewitcher
+namespace dewitcher.Core
 {
     public static class KeyLayout
     {

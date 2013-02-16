@@ -39,11 +39,11 @@ namespace dewitcher.IO
         {
             Flush();
         }
-        protected virtual byte ReadByte(uint p)
+        internal virtual byte ReadByte(uint p)
         {
             throw new Exception("Read not implemented!");
         }
-        protected virtual void WriteByte(uint p, byte b)
+        internal virtual void WriteByte(uint p, byte b)
         {
             throw new Exception("Write not implemented!");
         }

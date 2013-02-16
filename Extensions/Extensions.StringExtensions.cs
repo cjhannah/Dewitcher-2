@@ -70,7 +70,7 @@ namespace dewitcher.Extensions
                 return __str[__null_based_index];
             else
             {
-                Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
+                Core.Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
                 return char.MinValue;
             }
         }
@@ -91,7 +91,7 @@ namespace dewitcher.Extensions
             }
             else
             {
-                Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
+                Core.Bluescreen.Init("string._GetCharAt", "__null_based_index must be greater then -1 and lower then __str.Length!");
                 return __str;
             }
         }

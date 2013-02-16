@@ -6,8 +6,9 @@ namespace dewitcher
     {
         public enum Effect : byte
         { SlideFromLeft, SlideFromRight, SlideFromTop, SlideFromBottom, Typewriter, Matrix }
-        public static void Show(string OSname, Effect efx, ConsoleColor color, int ticks = 750000)
+        public static void Show(string OSname, Effect efx, ConsoleColor color, int ms_sleep = 20)
         {
+            if (ms_sleep % 2 == 1) ms_sleep++;
             switch (efx)
             {
                 case Effect.SlideFromLeft:
@@ -20,7 +21,7 @@ namespace dewitcher
                         for (int x = 0; x < i; x++) fill += " ";
                         Console.Write(fill);
                         Console.Write(OSname, color, false, true);
-                        RTC.SleepTicks(ticks);
+                        RTC.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromRight:
@@ -31,7 +32,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorLeft = i;
                         Console.Write(OSname, color, false, true);
-                        RTC.SleepTicks(ticks);
+                        RTC.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromTop:
@@ -41,7 +42,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.SleepTicks(ticks);
+                        RTC.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromBottom:
@@ -51,7 +52,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.SleepTicks(ticks);
+                        RTC.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.Typewriter:
@@ -60,7 +61,7 @@ namespace dewitcher
                     foreach (char chr in OSname)
                     {
                         Console.Write(chr.ToString(), color, false, true);
-                        RTC.SleepTicks(ticks);
+                        RTC.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.Matrix:
