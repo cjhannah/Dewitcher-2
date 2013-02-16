@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace dewitcher.Dev
+namespace dewitcher.dev
 {
     public static class ATAPI
     {

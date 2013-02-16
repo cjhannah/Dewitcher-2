@@ -8,6 +8,7 @@ namespace dewitcher
         { SlideFromLeft, SlideFromRight, SlideFromTop, SlideFromBottom, Typewriter, Matrix }
         public static void Show(string OSname, Effect efx, ConsoleColor color, int ms_sleep = 20)
         {
+            if (ms_sleep % 2 == 1) ms_sleep++;
             switch (efx)
             {
                 case Effect.SlideFromLeft:

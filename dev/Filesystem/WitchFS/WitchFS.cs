@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Cosmos.Hardware.BlockDevice;
 
-namespace dewitcher.Dev.Filesystem
+namespace dewitcher.dev.Filesystem.WitchFS
 {
 	public class WitchFS
 	{

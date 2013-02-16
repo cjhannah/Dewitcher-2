@@ -11,7 +11,6 @@ namespace dewitcher.Core
     [Plug(Target = typeof(Cosmos.Core.INTs))]
     public class INTs
     {
-        public static bool debug = false;
         public delegate void IRQ0called();
         public static IRQ0called onCalled = delegate { RTC.called = true; };
         public static void HandleInterrupt_Default(ref IRQContext aContext)
@@ -122,9 +121,9 @@ namespace dewitcher.Core
         // IRQ0
         public static void HandleInterrupt_20(ref IRQContext aContext)
         {
-            if (debug) Console.WriteLine("IRQ0 CALLED");
-            onCalled();
             Global.PIC.EoiMaster();
+            IO.CDDI.outb(0x20, 0x20);
+            onCalled();
         }
     }
 
@@ -143,7 +142,6 @@ namespace dewitcher.Core
     {
         public override void AssembleNew(object aAssembler, object aMethodInfo)
         {
-            Console.WriteLine("STI ENABLED");
             new CPUx86.Sti();
         }
     }
