@@ -55,6 +55,9 @@
     <Reference Include="Cosmos.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System.dll</HintPath>
     </Reference>
+    <Reference Include="GLNFSLib">
+      <HintPath>..\Documents\Visual Studio 2010\Projects\GLNFSLib\GLNFSLib\bin\Debug\GLNFSLib.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
@@ -85,6 +88,9 @@
     <Compile Include="Extensions\Extensions.StringExtensions.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
     <Compile Include="IO\CDDI.cs" />
+    <Compile Include="IO\FileSystem\FileStream.cs" />
+    <Compile Include="IO\FileSystem\FileSystem.cs" />
+    <Compile Include="IO\FileSystem\VirtualFileSystem.cs" />
     <Compile Include="IO\MemoryStream.cs" />
     <Compile Include="IO\Stream.cs" />
     <Compile Include="IO\VideoStream.cs" />
