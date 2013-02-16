@@ -13,3 +13,4 @@ git commit -m "$msg"
  
 # Push
 git push -u dewitcher master
+read
