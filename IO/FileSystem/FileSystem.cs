@@ -20,6 +20,7 @@ namespace dewitcher.IO.FileSystem
                         GruntyOS.HAL.GLNFS fs = new GruntyOS.HAL.GLNFS(((Cosmos.Hardware.BlockDevice.Partition)Cosmos.Hardware.BlockDevice.BlockDevice.Devices[i]));
                         Drive drv = new Drive();
                         GruntyOS.HAL.Devices.device dev = new GruntyOS.HAL.Devices.device();
+                        Console.WriteLine("GLNFS PARTITION FOUND");
                         dev.name = @"?\\Harddrive\Partition" + i.ToString();
                         dev.dev = ((Cosmos.Hardware.BlockDevice.Partition)Cosmos.Hardware.BlockDevice.BlockDevice.Devices[i]);
                         drv.DeviceFile = dev.name;

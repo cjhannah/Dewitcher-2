@@ -77,9 +77,6 @@
     <Compile Include="Crypto\Crypto.MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
     <Compile Include="Console\Console.cs" />
-    <Compile Include="dev\Filesystem\GLNFS\ImplementIt.cs" />
-    <Compile Include="dev\Filesystem\NoobFS\ImplementIt.cs" />
-    <Compile Include="dev\Filesystem\VFS\ImplementIt.cs" />
     <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
     <Compile Include="dev\Log.cs" />
     <Compile Include="Audio\PCSpeaker.cs" />

@@ -74,3 +74,4 @@ C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Assembler.x86.pdb
 C:\Users\Grunt\dewitcherframework\bin\Release\GLNFSLib.dll
 C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.IL2CPU.Plugs.pdb
 C:\Users\Grunt\dewitcherframework\bin\Release\GLNFSLib.pdb
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\GLNFSLib.pdb

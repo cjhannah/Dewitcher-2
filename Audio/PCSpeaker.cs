@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using dewitcher.IO;
 
-namespace dewitcher.dev
+namespace dewitcher.Audio
 {
     public class PCSpeaker
     {
