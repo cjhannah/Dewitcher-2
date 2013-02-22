@@ -10,14 +10,17 @@ namespace dewitcher.Users.UniqOS
         
         //Calulcate how much remaining time there is until the process is completed.
         public static Stopwatch xBTimer;
-
-        //Simple to user
         /* 
          * Use in installations or file copying...
          * e.g
          * CalulcateRemaingTime(50, 100)
          * 50 tasks completed out of 100!
          * */
+        /// <summary>
+        /// CalculateRemainingtime
+        /// </summary>
+        /// <param name="completedCount">Amount of tasks completed</param>
+        /// <param name="totalCount">How many tasks that need to be completed</param>
         public TimeSpan CalculateRemainingTime(int completedCount, int totalCount)
         {
             if (xBTimer == null)
@@ -36,10 +39,55 @@ namespace dewitcher.Users.UniqOS
 
             return new TimeSpan(remaining * 10000);
         }
-
+        /// <summary>
+        /// ByteParse
+        /// </summary>
+        /// <param name="toparse">String you wish to parse to a byte.</param>
         public byte ByteParse(string toparse)
         {
             return (byte)Int32.Parse(toparse);
+        }
+        /// <summary>
+        /// Quick file saving
+        /// </summary>
+        /// <param name="location">Location of file. Must include file name.</param>
+        /// <param name="contents">Contents of file</param>
+        /// <param name="filesystem">Predefined filesystem</param>
+        /// <param name="owner">Owner of file?</param>
+        public void saveFile(string location, string contents, IO.FileSystem.VirtualFileSystem filesystem, string owner = "root")
+        {
+            byte[] dat = new byte[contents.Length];
+            for (int i = 0; i < contents.Length; i++)
+            {
+                dat[i] = (byte)contents[i];
+            }
+            filesystem.saveFile(dat, location, owner);
+        }
+        /// <summary>
+        /// Quick file opening
+        /// </summary>
+        /// <param name="location">Location of file. Must include file name.</param>
+        /// <param name="filesystem">Predefined filesystem</param>
+        public string openFile(string location, IO.FileSystem.VirtualFileSystem filesystem)
+        {
+            byte[] file = null;
+            file = filesystem.readFile(location);
+            string accum = "";
+            for (int i = 0; i < file.Length; i++)
+            {
+                accum += ((char)file[i]).ToString();
+            }
+            return accum;
+        }
+
+        // Coming later!
+        public void saveImage(string image)
+        {
+            
+        }
+        public void loadImage(string image)
+        {
+
         }
     }
 }
