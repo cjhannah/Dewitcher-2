@@ -36,5 +36,10 @@ namespace dewitcher.Users.UniqOS
 
             return new TimeSpan(remaining * 10000);
         }
+
+        public byte ByteParse(string toparse)
+        {
+            return (byte)Int32.Parse(toparse);
+        }
     }
 }
