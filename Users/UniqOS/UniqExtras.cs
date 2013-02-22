@@ -7,8 +7,9 @@ namespace dewitcher.Users.UniqOS
 {
     class UniqExtras
     {
+        
         //Calulcate how much remaining time there is until the process is completed.
-        public static System.Diagnostics.Stopwatch xBTimer;
+        public static Stopwatch xBTimer;
 
         //Simple to user
         /* 
@@ -21,7 +22,7 @@ namespace dewitcher.Users.UniqOS
         {
             if (xBTimer == null)
             {
-                xBTimer = new System.Diagnostics.Stopwatch();
+                xBTimer = new Stopwatch();
                 xBTimer.Start();
             }
 
@@ -30,7 +31,7 @@ namespace dewitcher.Users.UniqOS
             { //DIVIDING BY 0 WILL MEAN DEATH. Should call the burn() method..... xD
                 percentComplete = 1;
             }
-            long remaining = (xBTimer.ElapsedMilliseconds / percentComplete)
+            long remaining = (xBTimer.ElapsedMilliseconds() / percentComplete)
                 * (100 - percentComplete);
 
             return new TimeSpan(remaining * 10000);
