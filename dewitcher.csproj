@@ -96,6 +96,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTC.cs" />
     <Compile Include="Bootscreen.cs" />
+    <Compile Include="Users\UniqOS\Stopwatch.cs" />
+    <Compile Include="Users\UniqOS\UniqExtras.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dev\Filesystem\WitchFS\WitchFS.cs" />
@@ -103,7 +105,12 @@
   <ItemGroup>
     <Compile Include="Crypto\Crypto.Rot.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Users\Aurora01\Info.txt" />
+    <Content Include="Users\GruntXProductions\Info.txt" />
+    <Content Include="Users\SplittyDev\Info.txt" />
+    <Content Include="Users\UniqOS\Info.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
