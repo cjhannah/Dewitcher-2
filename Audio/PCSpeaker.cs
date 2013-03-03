@@ -24,7 +24,7 @@ namespace dewitcher.Audio
         public static void Beep(uint frequency, uint milliseconds)
         {
             Beep(frequency);
-            RTC.SleepMilliseconds(milliseconds);
+            Core.PIT.SleepMilliseconds(milliseconds);
             sound_off();
         }
         public struct Notes

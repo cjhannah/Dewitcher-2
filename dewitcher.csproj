@@ -61,11 +61,14 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Console.Error.cs" />
     <Compile Include="Console\Console.Menu.Category.cs" />
     <Compile Include="Console\Console.Menu.Commands.Back.cs" />
     <Compile Include="Console\Console.Menu.cs" />
     <Compile Include="Console\Console.Menu.Entry.cs" />
     <Compile Include="Console\Console.Menu.Themepack.cs" />
+    <Compile Include="dev\Textscreen.cs" />
+    <Compile Include="dev\TextScreen.Internal.cs" />
     <Compile Include="Core\ACPI.cs" />
     <Compile Include="Core\Bluescreen.cs" />
     <Compile Include="Console\Console.ProgressBar.cs" />

@@ -215,5 +215,17 @@ namespace dewitcher
         {
             indent = _indent;
         }
+        public static void RollUp(uint mspause)
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                for (int j = 0; j < 80; j++)
+                {
+                    Console.Write(" ");
+                }
+                Core.PIT.SleepMilliseconds(mspause);
+            }
+            Console.Clear();
+        }
     }
 }

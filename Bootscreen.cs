@@ -21,7 +21,7 @@ namespace dewitcher
                         for (int x = 0; x < i; x++) fill += " ";
                         Console.Write(fill);
                         Console.Write(OSname, color, false, true);
-                        RTC.SleepMilliseconds((uint)ms_sleep);
+                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromRight:
@@ -32,7 +32,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorLeft = i;
                         Console.Write(OSname, color, false, true);
-                        RTC.SleepMilliseconds((uint)ms_sleep);
+                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromTop:
@@ -42,7 +42,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.SleepMilliseconds((uint)ms_sleep);
+                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromBottom:
@@ -52,7 +52,7 @@ namespace dewitcher
                         Console.Clear();
                         Console.CursorTop = i;
                         Console.WriteLine(OSname, color, true, false);
-                        RTC.SleepMilliseconds((uint)ms_sleep);
+                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.Typewriter:
@@ -61,7 +61,7 @@ namespace dewitcher
                     foreach (char chr in OSname)
                     {
                         Console.Write(chr.ToString(), color, false, true);
-                        RTC.SleepMilliseconds((uint)ms_sleep);
+                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.Matrix:

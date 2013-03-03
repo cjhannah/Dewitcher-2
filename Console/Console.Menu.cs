@@ -6,7 +6,7 @@ namespace dewitcher
 {
     public static partial class Console
     {
-        public static class Menu
+        public partial class Menu
         {
             public static bool recovery = false;
             public static int menu = 0;

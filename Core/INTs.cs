@@ -12,7 +12,7 @@ namespace dewitcher.Core
     public class INTs
     {
         public delegate void IRQ0called();
-        public static IRQ0called onCalled = delegate { RTC.called = true; };
+        public static IRQ0called onCalled = delegate { Core.PIT.called = true; };
         public static void HandleInterrupt_Default(ref IRQContext aContext)
         {
             if (aContext.Interrupt >= 0x20 && aContext.Interrupt <= 0x2F)

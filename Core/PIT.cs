@@ -1,4 +1,5 @@
 ﻿using System;
+using dewitcher.Extensions;
 namespace dewitcher.Core
 {
     public static class PIT
@@ -29,6 +30,37 @@ namespace dewitcher.Core
             IO.CDDI.outb(0x43, 0xB6);
             IO.CDDI.outb(0x42, (byte)(divisor & 0xFF));
             IO.CDDI.outb(0x42, (byte)((divisor >> 8) & 0xFF));
+        }
+        internal static bool called = false;
+        public static void SleepMilliseconds(uint milliseconds)
+        {
+            if (milliseconds <= 50)
+            {
+                called = false;
+                Core.PIT.Mode0(milliseconds.MsToHz());
+                while (!called) { }
+                called = false;
+            }
+            else
+            {
+                uint mod = milliseconds % 100;
+                uint ms = milliseconds - mod;
+                for (int i = 0; i < ms; i += 50)
+                {
+                    called = false;
+                    Core.PIT.Mode0(20);
+                    while (!called) { }
+                }
+                called = false;
+                ms = mod % 2;
+                for (int i = 0; i < ms; i += 2)
+                {
+                    called = false;
+                    Core.PIT.Mode0(500);
+                    while (!called) { }
+                }
+                called = false;
+            }
         }
     }
 }

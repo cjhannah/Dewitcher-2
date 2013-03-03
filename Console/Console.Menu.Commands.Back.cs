@@ -5,12 +5,15 @@ namespace dewitcher
 {
     public static partial class Console
     {
-        internal class Back : Entry
+        public partial class Menu
         {
-            public Back() { this.text = "Back to Main Menu"; }
-            public override void Execute()
+            internal class Back : Entry
             {
-                Menu.menu = 3;
+                public Back() { this.text = "Back to Main Menu"; }
+                public override void Execute()
+                {
+                    Menu.menu = 3;
+                }
             }
         }
     }

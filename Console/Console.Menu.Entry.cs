@@ -4,10 +4,13 @@ namespace dewitcher
 {
     public static partial class Console
     {
-        public abstract class Entry
+        public partial class Menu
         {
-            public string text;
-            public abstract void Execute();
+            public abstract class Entry
+            {
+                public string text;
+                public abstract void Execute();
+            }
         }
     }
 }
