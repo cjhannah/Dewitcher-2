@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using C = dewitcher.IO.CDDI;
+using C = dewitcher.IO.stdio;
 
-namespace dewitcher.Dev
+namespace dewitcher.dev
 {
     public partial class TextScreen
     {

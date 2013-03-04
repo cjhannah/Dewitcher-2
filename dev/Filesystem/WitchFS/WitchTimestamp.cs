@@ -39,7 +39,7 @@ namespace dewitcher.dev.Filesystem.WitchFS
             string s = Second.ToString();
 
             // seed
-            float seed = ((float)RTC.Now.Second) / 100f;
+            float seed = ((float)Second) / 100f;
 
             // calculate and return
             int tmp = int.Parse(Y + M + d + h + m + s);

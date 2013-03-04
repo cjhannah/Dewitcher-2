@@ -249,8 +249,8 @@ namespace dewitcher.Core
         {
             byte good = 0x02;
             while ((good & 0x02) != 0)
-                good = IO.CDDI.inb(0x64);
-            IO.CDDI.outb(0x64, 0xFE);
+                good = IO.stdio.inb(0x64);
+            IO.stdio.outb(0x64, 0xFE);
             Cosmos.Core.Global.CPU.Halt();
         }
     }

@@ -10,9 +10,9 @@ namespace dewitcher.Core
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
             uint divisor = 1193180 / frequency;
-            IO.CDDI.outb(0x43, 0x30);
-            IO.CDDI.outb(0x40, (byte)(divisor & 0xFF));
-            IO.CDDI.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IO.stdio.outb(0x43, 0x30);
+            IO.stdio.outb(0x40, (byte)(divisor & 0xFF));
+            IO.stdio.outb(0x40, (byte)((divisor >> 8) & 0xFF));
         }
         public static void Mode2(uint frequency)
         {
@@ -20,16 +20,16 @@ namespace dewitcher.Core
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
             uint divisor = 1193180 / frequency;
-            IO.CDDI.outb(0x43, 0x36);
-            IO.CDDI.outb(0x40, (byte)(divisor & 0xFF));
-            IO.CDDI.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IO.stdio.outb(0x43, 0x36);
+            IO.stdio.outb(0x40, (byte)(divisor & 0xFF));
+            IO.stdio.outb(0x40, (byte)((divisor >> 8) & 0xFF));
         }
         public static void Beep(uint frequency)
         {
             uint divisor = 1193180 / frequency;
-            IO.CDDI.outb(0x43, 0xB6);
-            IO.CDDI.outb(0x42, (byte)(divisor & 0xFF));
-            IO.CDDI.outb(0x42, (byte)((divisor >> 8) & 0xFF));
+            IO.stdio.outb(0x43, 0xB6);
+            IO.stdio.outb(0x42, (byte)(divisor & 0xFF));
+            IO.stdio.outb(0x42, (byte)((divisor >> 8) & 0xFF));
         }
         internal static bool called = false;
         public static void SleepMilliseconds(uint milliseconds)

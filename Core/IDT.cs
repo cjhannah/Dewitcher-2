@@ -9,16 +9,16 @@ namespace dewitcher.Core
         public static ISR[] idt = new ISR[0xFF];
         public static void Remap()
         {
-            IO.CDDI.outb(0x20, 0x11);
-            IO.CDDI.outb(0xA0, 0x11);
-            IO.CDDI.outb(0x21, 0x20);
-            IO.CDDI.outb(0xA1, 0x28);
-            IO.CDDI.outb(0x21, 0x04);
-            IO.CDDI.outb(0xA1, 0x02);
-            IO.CDDI.outb(0x21, 0x01);
-            IO.CDDI.outb(0xA1, 0x01);
-            IO.CDDI.outb(0x21, 0x0);
-            IO.CDDI.outb(0xA1, 0x0);
+            IO.stdio.outb(0x20, 0x11);
+            IO.stdio.outb(0xA0, 0x11);
+            IO.stdio.outb(0x21, 0x20);
+            IO.stdio.outb(0xA1, 0x28);
+            IO.stdio.outb(0x21, 0x04);
+            IO.stdio.outb(0xA1, 0x02);
+            IO.stdio.outb(0x21, 0x01);
+            IO.stdio.outb(0xA1, 0x01);
+            IO.stdio.outb(0x21, 0x0);
+            IO.stdio.outb(0xA1, 0x0);
         }
         private void idt_handler()
         {

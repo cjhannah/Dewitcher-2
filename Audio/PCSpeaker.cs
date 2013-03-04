@@ -10,11 +10,11 @@ namespace dewitcher.Audio
     {
         public static void sound_on()
         {
-            CDDI.outb(0x61, (byte)(CDDI.inb(0x61) | 3));
+            stdio.outb(0x61, (byte)(stdio.inb(0x61) | 3));
         }
         public static void sound_off()
         {
-            CDDI.outb(0x61, (byte)(CDDI.inb(0x61) & ~3));
+            stdio.outb(0x61, (byte)(stdio.inb(0x61) & ~3));
         }
         public static void Beep(uint frequency)
         {

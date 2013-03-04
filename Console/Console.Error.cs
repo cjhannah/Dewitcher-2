@@ -7,6 +7,10 @@ namespace dewitcher
     {
         public static class Error
         {
+            public static void Write(string text)
+            {
+                Console.Write("[!] ERROR: " + text.ToUpper(), ConsoleColor.Red);
+            }
             public static void WriteLine(string text)
             {
                 Console.WriteLine("[!] ERROR: " + text.ToUpper(), ConsoleColor.Red);

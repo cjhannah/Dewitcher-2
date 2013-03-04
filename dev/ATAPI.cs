@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using C = dewitcher.IO.stdio;
 
 namespace dewitcher.dev
 {
@@ -7,41 +8,6 @@ namespace dewitcher.dev
     {
         /* I/O Port */
         internal static ushort portnum;
-
-        internal static Cosmos.Core.IOPort io = new Cosmos.Core.IOPort(0);
-        internal static int PP = 0, D = 0;
-        internal static void outb(ushort port, byte data)
-        {
-            if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
-            io.Byte = data;
-            PP = port;
-            D = data;
-
-        }
-        internal static void outw(ushort port, ushort data)
-        {
-            if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
-            io.Word = data;
-            PP = port;
-            D = data;
-
-        }
-        internal static byte inb(ushort port)
-        {
-            if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
-            return io.Byte;
-
-        }
-        internal static ushort inw(ushort port)
-        {
-            if (io.Port != port)
-                io = new Cosmos.Core.IOPort(port);
-            return io.Word;
-
-        }
 
         /* ATAPI_READTOC */
         internal static byte[] atapi_readtoc =
@@ -78,10 +44,10 @@ namespace dewitcher.dev
         internal static void ATA_SELECT_DELAY(byte bus)
         {
             portnum = bus;
-            inb(ATA_DCR);
-            inb(ATA_DCR);
-            inb(ATA_DCR);
-            inb(ATA_DCR);
+            C.inb(ATA_DCR);
+            C.inb(ATA_DCR);
+            C.inb(ATA_DCR);
+            C.inb(ATA_DCR);
         }
 
         /* Use the ATAPI protocol to read a single sector from the given
@@ -99,17 +65,17 @@ namespace dewitcher.dev
             // Select drive (only the slave-bit is set)
             portnum = (byte)bus;
             ushort thePort = (ushort)(drive & (1 << 4));
-            outb(thePort, ATA_DRIVE_SELECT);
+            C.outb(thePort, ATA_DRIVE_SELECT);
             ATA_SELECT_DELAY((byte)bus); // 400ns delay
-            outb(0x0, ATA_FEATURES); // PIO mode
-            outb(ATAPI_SECTOR_SIZE & 0xFF, ATA_ADDRESS2);
-            outb(ATAPI_SECTOR_SIZE >> 8, ATA_ADDRESS3);
-            outb(0xA0, ATA_COMMAND); // ATA PACKET command
+            C.outb(0x0, ATA_FEATURES); // PIO mode
+            C.outb(ATAPI_SECTOR_SIZE & 0xFF, ATA_ADDRESS2);
+            C.outb(ATAPI_SECTOR_SIZE >> 8, ATA_ADDRESS3);
+            C.outb(0xA0, ATA_COMMAND); // ATA PACKET command
 
             // while ((status = inb (ATA_COMMAND (bus))) & 0x80)
-            while (((status = inb(ATA_COMMAND)) & 0x80) == 0) {;}
+            while (((status = C.inb(ATA_COMMAND)) & 0x80) == 0) {;}
             // while (!((status = inb (ATA_COMMAND (bus))) & 0x8) && !(status & 0x1))
-            while (((status = inb(ATA_COMMAND)) & 0x8) != 0 && (status & 0x01) != 0) {;}
+            while (((status = C.inb(ATA_COMMAND)) & 0x8) != 0 && (status & 0x01) != 0) {;}
 
             // DRQ or ERROR set
             if ((byte)(status & 0x1) == 0)
@@ -127,13 +93,13 @@ namespace dewitcher.dev
             // Send ATAPI/SCSI command
             //outw(ATA_DATA, read_cmd);
             // WTF? read_cmd is an array!
-            foreach (ushort ush in read_cmd) { outw(ATA_DATA, ush); }
+            foreach (ushort ush in read_cmd) { C.outw(ATA_DATA, ush); }
 
             // Wait for IRQ that says the data is ready
             //schedule(); // ???
 
             // Read actual size
-            size = (((int)inb(ATA_ADDRESS3)) >> 8) | (int)(inb(ATA_ADDRESS2));
+            size = (((int)C.inb(ATA_ADDRESS3)) >> 8) | (int)(C.inb(ATA_ADDRESS2));
 
             /* This code only supports the case where the data transfer
              * of one sector is done in one step. */
@@ -146,11 +112,14 @@ namespace dewitcher.dev
             /* The controller will send another IRQ even though we've read all
             * the data we want.  Wait for it -- so it doesn't interfere with
             * subsequent operations: */
-            // schedule(); // HAS SOMETHING TO DO WITH IRQ.. xD
+
+            ////////////////////////////////////////////////////////////////
+            // schedule(); // HAS SOMETHING TO DO WITH IRQ.. xD ////////////
+            ////////////////////////////////////////////////////////////////
 
             /* Wait for BSY and DRQ to clear, indicating Command Finished */
             // while ((status = inb (ATA_COMMAND (bus))) & 0x88)
-            while (((status = inb(ATA_COMMAND)) & 0x88) == 0) {;}
+            while (((status = C.inb(ATA_COMMAND)) & 0x88) == 0) {;}
 
             cleanup:
                 /* Exit the ATA subsystem */

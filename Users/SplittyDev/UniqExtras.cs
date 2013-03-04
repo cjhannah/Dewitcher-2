@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using Cosmos.IL2CPU.Plugs;
+
 namespace dewitcher.Users.SplittyDev
 {
     class UniqExtras
     {
-        [Plug(Target = typeof(Byte))]
-        public class Byte
+        [Plug(Target = typeof(global::System.Byte))]
+        public class ByteImpl
         {
             public byte Parse(string toparse)
             {

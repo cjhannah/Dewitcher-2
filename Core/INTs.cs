@@ -122,7 +122,7 @@ namespace dewitcher.Core
         public static void HandleInterrupt_20(ref IRQContext aContext)
         {
             Global.PIC.EoiMaster();
-            IO.CDDI.outb(0x20, 0x20);
+            IO.stdio.outb(0x20, 0x20);
             onCalled();
         }
     }
