@@ -24,16 +24,20 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using dewitcher.IO;
+using System.Linq;
+using System.Text;
 
-namespace dewitcher.Users.SplittyDev
+namespace dewitcher.Extensions
 {
-    public unsafe class VideoStreamTest : Stream
+    public static class NumericExtensions
     {
-        private byte* data;
-        public VideoStreamTest()
+        public static uint MsToHz(this int ms)
         {
-            data = (byte*)0xB8000;
+            return (uint)(1000 / ms);
+        }
+        public static uint MsToHz(this uint ms)
+        {
+            return (uint)(1000 / ms);
         }
     }
 }

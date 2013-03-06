@@ -24,16 +24,16 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using dewitcher.IO;
 
-namespace dewitcher.Users.SplittyDev
+// Third Person ftw
+namespace dewitcher.Core
 {
-    public unsafe class VideoStreamTest : Stream
+    public class Random
     {
-        private byte* data;
-        public VideoStreamTest()
+        public void Next(uint min, uint max)
         {
-            data = (byte*)0xB8000;
+            // * Splitty will implement it soon
+            // * Splitty haves the plan in his mind
         }
     }
 }

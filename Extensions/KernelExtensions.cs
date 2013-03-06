@@ -23,17 +23,22 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using System.Collections.Generic;
-using dewitcher.IO;
 
-namespace dewitcher.Users.SplittyDev
+namespace dewitcher.Extensions
 {
-    public unsafe class VideoStreamTest : Stream
+    /// <summary>
+    /// Useful kernel extensions
+    /// </summary>
+    public static class KernelExtensions
     {
-        private byte* data;
-        public VideoStreamTest()
-        {
-            data = (byte*)0xB8000;
-        }
+        public static void Reboot(this Cosmos.System.Kernel krnl) { Core.ACPI.Reboot(); }
+        public static void Shutdown(this Cosmos.System.Kernel krnl) { Core.ACPI.Shutdown(); }
+        public static void SleepTicks(this Cosmos.System.Kernel krnl, int value) { RTC.SleepTicks(value); }
+        public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { Core.PIT.SleepSeconds(value); }
+        public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { Core.PIT.SleepMilliseconds(value); }
+        public static uint GetMemory(this Cosmos.System.Kernel krnl) { return Cosmos.Core.CPU.GetAmountOfRAM() + 1; }
+        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, Bootscreen.Effect efx,
+            ConsoleColor color, int ticks = 10000000) { Bootscreen.Show(OSname, efx, color, ticks); }
+        public static void AllocMemory(this Cosmos.System.Kernel krnl, uint aLength) { Cosmos.Core.Heap.MemAlloc(aLength); }
     }
 }

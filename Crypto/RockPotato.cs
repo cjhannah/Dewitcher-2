@@ -24,16 +24,53 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using dewitcher.IO;
 
-namespace dewitcher.Users.SplittyDev
+namespace dewitcher.Crypto
 {
-    public unsafe class VideoStreamTest : Stream
+    /// <summary>
+    /// A hash developed by Splitty
+    /// </summary>
+    public static class RockPotato
     {
-        private byte* data;
-        public VideoStreamTest()
+        public static string Hash(string input)
         {
-            data = (byte*)0xB8000;
+            if (input == "") input = "RockPotato";
+            byte[] chars = new byte[input.Length + 1];
+
+            // Fill byte array
+            for (int i = 0; i < input.Length; i++)
+            {
+                chars[i] = (byte)(input[i]);
+            }
+
+            uint seed = 0;
+
+            // Calculate the seed
+            for (int i = 0; i < input.Length; i++)
+            {
+                seed += (uint)((chars[i] * chars[i]) >> (i + 1));
+            }
+
+            // Allocate memory
+            Core.Memory.MemAlloc(sizeof(UInt64));
+
+            UInt64 final = 0;
+
+            // Calculate the value
+            for (int i = 0; i < input.Length; i++)
+            {
+                final += seed * chars[i];
+            }
+
+            // Expand the value to a length of 20
+            int attempts = 0;
+            do
+            {
+                final *= 2;
+                final <<= ++attempts + ++attempts;
+            } while (final.ToString().Length < 16);
+
+            return final.ToString();
         }
     }
 }

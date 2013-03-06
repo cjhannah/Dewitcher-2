@@ -1,4 +1,28 @@
-﻿using System;
+/*
+Copyright (c) 2012-2013, dewitcher Team
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice
+   this list of conditions and the following disclaimer.
+
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
+IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
+THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Cosmos.IL2CPU.Plugs;
@@ -30,99 +54,99 @@ namespace dewitcher.Core
 
         public static void HandleInterrupt_00(ref IRQContext aContext)
         {
-            Bluescreen.Init("Divide by zero Exception", "", true); 
+            Bluescreen.Init("Divide by zero Exception", "YOU JUST CREATED A BLACK HOLE!", true); 
         }
 
         public static void HandleInterrupt_01(ref IRQContext aContext)
         {
-            Bluescreen.Init("Debug Exception", "", true); 
+            Bluescreen.Init("Debug Exception", " ", true); 
         }
 
         public static void HandleInterrupt_02(ref IRQContext aContext)
         {
-            Bluescreen.Init("Non Maskable Interrupt Exception", "", true); 
+            Bluescreen.Init("Non Maskable Interrupt Exception", " ", true); 
         }
 
         public static void HandleInterrupt_03(ref IRQContext aContext)
         {
-            Bluescreen.Init("Breakpoint Exception", "", true); 
+            Bluescreen.Init("Breakpoint Exception", " ", true); 
         }
 
         public static void HandleInterrupt_04(ref IRQContext aContext)
         {
-            Bluescreen.Init("Into Detected Overflow Exception", "", true); 
+            Bluescreen.Init("Into Detected Overflow Exception", "" , true); 
         }
 
         public static void HandleInterrupt_05(ref IRQContext aContext)
         {
-            Bluescreen.Init("Out of Bounds Exception", "", true); 
+            Bluescreen.Init("Out of Bounds Exception", " ", true); 
         }
 
         public static void HandleInterrupt_06(ref IRQContext aContext)
         {
-            Bluescreen.Init("Invalid Opcode", "", true); 
+            Bluescreen.Init("Invalid Opcode", " ", true); 
         }
 
         public static void HandleInterrupt_07(ref IRQContext aContext)
         {
-            Bluescreen.Init("No Coprocessor Exception", "", true); 
+            Bluescreen.Init("No Coprocessor Exception", " ", true); 
         }
 
         public static void HandleInterrupt_08(ref IRQContext aContext)
         {
-            Bluescreen.Init("Double Fault Exception", "", true); 
+            Bluescreen.Init("Double Fault Exception", " ", true); 
         }
 
         public static void HandleInterrupt_09(ref IRQContext aContext)
         {
-            Bluescreen.Init("Coprocessor Segment Overrun Exception", "", true); 
+            Bluescreen.Init("Coprocessor Segment Overrun Exception", " ", true); 
         }
 
         public static void HandleInterrupt_0A(ref IRQContext aContext)
         {
-            Bluescreen.Init("Bad TSS Exception", "", true); 
+            Bluescreen.Init("Bad TSS Exception", " ", true); 
         }
 
         public static void HandleInterrupt_0B(ref IRQContext aContext)
         {
-            Bluescreen.Init("Segment not present", "", true); 
+            Bluescreen.Init("Segment not present", " ", true); 
         }
 
         public static void HandleInterrupt_0C(ref IRQContext aContext)
         {
-            Bluescreen.Init("Stack Fault Exception", "", true); 
+            Bluescreen.Init("Stack Fault Exception", " ", true); 
         }
 
         public static void HandleInterrupt_0E(ref IRQContext aContext)
         {
-            Bluescreen.Init("Page Fault Exception", "", true); 
+            Bluescreen.Init("Page Fault Exception", " ", true); 
         }
 
         public static void HandleInterrupt_0F(ref IRQContext aContext)
         {
-            Bluescreen.Init("Unknown Interrupt Exception", "", true); 
+            Bluescreen.Init("Unknown Interrupt Exception", " ", true); 
         }
 
         public static void HandleInterrupt_10(ref IRQContext aContext)
         {
-            Bluescreen.Init("Coprocessor Fault Exception", "", true); 
+            Bluescreen.Init("Coprocessor Fault Exception", " ", true); 
         }
 
         public static void HandleInterrupt_11(ref IRQContext aContext)
         {
-            Bluescreen.Init("Alignment Exception", "", true); 
+            Bluescreen.Init("Alignment Exception", " ", true); 
         }
 
         public static void HandleInterrupt_12(ref IRQContext aContext)
         {
-            Bluescreen.Init("Machine Check Exception", "", true); 
+            Bluescreen.Init("Machine Check Exception", " ", true); 
         }
 
         // IRQ0
         public static void HandleInterrupt_20(ref IRQContext aContext)
         {
             Global.PIC.EoiMaster();
-            IO.stdio.outb(0x20, 0x20);
+            IO.PortIO.outb(0x20, 0x20);
             onCalled();
         }
     }
