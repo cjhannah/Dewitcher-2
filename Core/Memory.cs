@@ -39,7 +39,7 @@ namespace dewitcher.Core
             byte* ptr = (byte*)start;
             for (uint i = offset; i < offset + length; i++ )
             {
-                ptr[i] = 0;
+                ptr[i] = (byte)0;
             }
         }
         public static unsafe void MemCopy(byte source, byte destination, uint offset, uint length)

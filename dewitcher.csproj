@@ -61,12 +61,13 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Console\Console.Animations.cs" />
     <Compile Include="Console\Console.Error.cs" />
-    <Compile Include="Console\Console.Menu.Category.cs" />
-    <Compile Include="Console\Console.Menu.Commands.Back.cs" />
-    <Compile Include="Console\Console.Menu.cs" />
-    <Compile Include="Console\Console.Menu.Entry.cs" />
-    <Compile Include="Console\Console.Menu.Themepack.cs" />
+    <Compile Include="Console\Menu\Console.Menu.Category.cs" />
+    <Compile Include="Console\Menu\Console.Menu.Commands.Back.cs" />
+    <Compile Include="Console\Menu\Console.Menu.cs" />
+    <Compile Include="Console\Menu\Console.Menu.Entry.cs" />
+    <Compile Include="Console\Menu\Console.Menu.Themepack.cs" />
     <Compile Include="Core\Memory.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Crypto\RockPotato.cs" />

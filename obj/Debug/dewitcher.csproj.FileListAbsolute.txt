@@ -19,3 +19,6 @@ C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Debug\Cosmos.Assemb
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Debug\Cosmos.Assembler.XSharp.pdb
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Debug\Cosmos.Assembler.pdb
 C:\Users\Marco\Desktop\Marco Quinten\dewitcher\dewitcher\bin\Debug\Cosmos.Assembler.x86.pdb
+C:\Users\Marco\Desktop\git\dewitcher\obj\Debug\dewitcher.csprojResolveAssemblyReference.cache
+C:\Users\Marco\Desktop\git\dewitcher\obj\Debug\dewitcher.dll
+C:\Users\Marco\Desktop\git\dewitcher\obj\Debug\dewitcher.pdb

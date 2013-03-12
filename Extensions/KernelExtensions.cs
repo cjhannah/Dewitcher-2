@@ -33,7 +33,6 @@ namespace dewitcher.Extensions
     {
         public static void Reboot(this Cosmos.System.Kernel krnl) { Core.ACPI.Reboot(); }
         public static void Shutdown(this Cosmos.System.Kernel krnl) { Core.ACPI.Shutdown(); }
-        public static void SleepTicks(this Cosmos.System.Kernel krnl, int value) { RTC.SleepTicks(value); }
         public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { Core.PIT.SleepSeconds(value); }
         public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { Core.PIT.SleepMilliseconds(value); }
         public static uint GetMemory(this Cosmos.System.Kernel krnl) { return Cosmos.Core.CPU.GetAmountOfRAM() + 1; }

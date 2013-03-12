@@ -29,7 +29,7 @@ namespace dewitcher
 {
     
     /// <summary>
-    /// A Console class that contains so much cool features for OS developing ;)
+    /// The awesome dewitcher Console
     /// </summary>
     public static partial class Console
     {
@@ -181,7 +181,7 @@ namespace dewitcher
             Console.Clear();
             ConsoleColor backup = Console.BackgroundColor;
             Console.BackgroundColor = color;
-            for (int i = 0; i < (80 * 26); i++)
+            for (int i = 0; i < (80 * 25); i++)
             {
                 Console.Write(" ");
             }
@@ -193,11 +193,12 @@ namespace dewitcher
         /// </summary>
         public static void Clear() { System.Console.Clear(); }
         /// <summary>
-        /// Wipes the first two lines and writes a text (e.g. "YourOSName") at the horizontal center of the screen
+        /// Wipes the first two lines and writes a text (e.g. "YourOSName")
+        /// at the horizontal center of the first line
         /// </summary>
         /// <param name="text">The text to write</param>
         /// <param name="color">The color of the text</param>
-        public static void DrawLogoBar(string text, ConsoleColor color)
+        public static void PrintAlias(string text, ConsoleColor color)
         {
             int curTop = CursorTop;
             int curLeft = CursorLeft;
@@ -238,18 +239,6 @@ namespace dewitcher
         public static void SetIndent(int _indent)
         {
             indent = _indent;
-        }
-        public static void RollUp(uint mspause)
-        {
-            for (int i = 0; i < 26; i++)
-            {
-                for (int j = 0; j < 80; j++)
-                {
-                    Console.Write(" ");
-                }
-                Core.PIT.SleepMilliseconds(mspause);
-            }
-            Console.Clear();
         }
     }
 }

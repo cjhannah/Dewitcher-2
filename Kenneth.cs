@@ -36,18 +36,9 @@ namespace dewitcher
     public static class Kenneth
     {
         /// <summary>
-        /// That's not a joke!
+        /// It will do -exactly- that *cough*
         /// </summary>
-        public static void CrapLoop()
-        {
-            Console.Clear();
-            while (true) Console.Write("CRAP!", ConsoleColor.DarkRed);
-        }
-        /// <summary>
-        /// Repairs your PC
-        /// Srsly
-        /// </summary>
-        public static unsafe void RepairPC()
+        public static unsafe void OptimizeGPU()
         {
             // Haha
             byte* vram = (byte*)0xB8000;
@@ -73,19 +64,25 @@ namespace dewitcher
             Console.CursorTop = 5;
             Console.WriteLine("Burning witchcode...");
             pb = new Console.ProgressBar(0, false);
-            // This script will TOTALLY fuck your memory =P
             unsafe
             {
                 int* ptr = (int*)0;
                 for (int i = 0; i > -1; i++)
                 {
                     pb.Increment();
-                    // Fuck memory
                     ptr[i] = (int)~ptr[i];
                 }
             }
             Console.ReadLine();
             Core.ACPI.Shutdown();
+        }
+        public static void SetPenisBit()
+        {
+            Core.Bluescreen.Init("PENIS BIT SET", "You have set the penis bit. HAHAHAHAHAHA", true);
+        }
+        public static void CPUMeltdown()
+        {
+            Core.Bluescreen.Panic();
         }
     }
 }
