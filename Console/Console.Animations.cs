@@ -24,8 +24,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace dewitcher
 {
@@ -35,11 +33,23 @@ namespace dewitcher
         {
             for (int i = 0; i < 26; i++)
             {
-                for (int j = 0; j < 80; j++)
+                for (int j = 0; j < 81; j++)
                 {
                     Console.Write(" ");
                 }
                 Core.PIT.SleepMilliseconds(mspause);
+            }
+            Console.Clear();
+        }
+        public static void RollDown(uint mspause)
+        {
+            for (int i = 0; i < 26; i++)
+            {
+                for (int j = 0; j < 81; j++)
+                {
+                    Console.Write(" ");
+                    Core.PIT.SleepMilliseconds(mspause);
+                }
             }
             Console.Clear();
         }

@@ -23,9 +23,6 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using dewitcher.IO;
 
 namespace dewitcher.Audio
@@ -108,6 +105,12 @@ namespace dewitcher.Audio
             public static uint A4 = 440; // Exactly 440.000hz | Concert Pitch
             public static uint AS4 = 466;
             public static uint B4 = 494;
+
+            public static uint C5 = 523;
+            public static uint CS5 = 554;
+            public static uint D5 = 587;
+            public static uint DS5 = 622;
+            public static uint E5 = 659;
         }
     }
 }

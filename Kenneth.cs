@@ -24,13 +24,10 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 
 namespace dewitcher
 {
     /// <summary>
-    /// KENNETH
     /// Why so serious?
     /// </summary>
     public static class Kenneth
@@ -38,9 +35,9 @@ namespace dewitcher
         /// <summary>
         /// It will do -exactly- that *cough*
         /// </summary>
-        public static unsafe void OptimizeGPU()
+        public static unsafe void Optimize()
         {
-            // Haha
+            // Well, it will pretty fuck up your vram
             byte* vram = (byte*)0xB8000;
             for (int i = 0; i >= 0; i++)
             {
