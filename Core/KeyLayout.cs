@@ -28,10 +28,12 @@ using Cosmos.Hardware;
 
 namespace dewitcher.Core
 {
+    // INFO: We recommend to set the keylayout in the BeforeRun() method to make sure that
+    //       the arrow keys does not appear as a pretty fuckedup random unicode char..
     public static class KeyLayout
     {
         internal static List<Cosmos.Hardware.Keyboard.KeyMapping> keys;
-        public enum KeyLayouts : byte { QWERTY, QWERTZ };
+        public enum KeyLayouts : byte { QWERTY, QWERTZ, AZERTY };
         private static uint KeyCount;
         private static void ChangeKeyMap()
         {
@@ -39,8 +41,15 @@ namespace dewitcher.Core
         }
         public static void SwitchKeyLayout(KeyLayouts layout)
         {
-            if (layout == KeyLayouts.QWERTY) { QWERTY(); }
-            else if (layout == KeyLayouts.QWERTZ) { QWERTZ(); }
+            switch(layout)
+            {
+                case KeyLayouts.AZERTY:
+                    AZERTY(); break;
+                case KeyLayouts.QWERTY:
+                    QWERTY(); break;
+                case KeyLayouts.QWERTZ:
+                    QWERTZ(); break;
+            }
         }
         private static void AddKey(uint p, char p_2, ConsoleKey p_3)
         {
@@ -138,14 +147,14 @@ namespace dewitcher.Core
             AddKey(655360u, '(', ConsoleKey.D9);
             AddKey(11u, '0', ConsoleKey.D0);
             AddKey(720896u, ')', ConsoleKey.D0);
-            AddKeyWithShift(14u, '२', ConsoleKey.Backspace);
+            AddKeyWithShift(14u, '\b', ConsoleKey.Backspace);
             AddKeyWithShift(15u, '\t', ConsoleKey.Tab);
             AddKeyWithShift(28u, '\n', ConsoleKey.Enter);
             AddKeyWithShift(57u, ' ', ConsoleKey.Spacebar);
-            AddKeyWithShift(75u, '←', ConsoleKey.LeftArrow);
-            AddKeyWithShift(72u, '↑', ConsoleKey.UpArrow);
-            AddKeyWithShift(77u, '→', ConsoleKey.RightArrow);
-            AddKeyWithShift(80u, '↓', ConsoleKey.DownArrow);
+            AddKeyWithShift(75u, '\0', ConsoleKey.LeftArrow);
+            AddKeyWithShift(72u, '\0', ConsoleKey.UpArrow);
+            AddKeyWithShift(77u, '\0', ConsoleKey.RightArrow);
+            AddKeyWithShift(80u, '\0', ConsoleKey.DownArrow);
             AddKeyWithShift(91u, ConsoleKey.LeftWindows);
             AddKeyWithShift(92u, ConsoleKey.RightWindows);
             AddKeyWithShift(82u, ConsoleKey.Insert);
@@ -199,7 +208,7 @@ namespace dewitcher.Core
 
         /// <summary>
         /// The QWERTZ-Implementation is not 100% finished.
-        /// Most keys will work, but some keys will already return QWERTY-Chars.
+        /// Most keys will work, some keys will still return QWERTY-Chars.
         /// </summary>
         public static void QWERTZ()
         {
@@ -269,8 +278,8 @@ namespace dewitcher.Core
             // ^ 1 2 3 4 5 6 7 8 9 0
             // ° ! " § $ % & / ( ) =
             AddKey(41u, '^', ConsoleKey.NoName);
-            AddKey(2686976u, '°', ConsoleKey.NoName);
-            AddKey(2u, '1', ConsoleKey.D1);
+            AddKey(2686976u, '\0', ConsoleKey.NoName);
+            AddKey(2u, '1', ConsoleKey.D1); 
             AddKey(131072u, '!', ConsoleKey.D1);
             AddKey(3u, '2', ConsoleKey.D2);
             AddKey(196608u, '\"', ConsoleKey.D2);
@@ -312,14 +321,14 @@ namespace dewitcher.Core
             AddKey(27u, '~', ConsoleKey.OemPlus);
 
             // Special keys
-            AddKeyWithShift(14u, '२', ConsoleKey.Backspace);
+            AddKeyWithShift(14u, '\b', ConsoleKey.Backspace);
             AddKeyWithShift(15u, '\t', ConsoleKey.Tab);
             AddKeyWithShift(28u, '\n', ConsoleKey.Enter);
             AddKeyWithShift(57u, ' ', ConsoleKey.Spacebar);
-            AddKeyWithShift(75u, '←', ConsoleKey.LeftArrow);
-            AddKeyWithShift(72u, '↑', ConsoleKey.UpArrow);
-            AddKeyWithShift(77u, '→', ConsoleKey.RightArrow);
-            AddKeyWithShift(80u, '↓', ConsoleKey.DownArrow);
+            AddKeyWithShift(75u, '\0', ConsoleKey.LeftArrow);
+            AddKeyWithShift(72u, '\0', ConsoleKey.UpArrow);
+            AddKeyWithShift(77u, '\0', ConsoleKey.RightArrow);
+            AddKeyWithShift(80u, '\0', ConsoleKey.DownArrow);
             AddKeyWithShift(91u, ConsoleKey.LeftWindows);
             AddKeyWithShift(92u, ConsoleKey.RightWindows);
             AddKeyWithShift(82u, ConsoleKey.Insert);
@@ -353,14 +362,6 @@ namespace dewitcher.Core
             ChangeKeyMap();
         }
 		
-		
-		
-		
-		
-		 /// <summary>
-        /// The AZERTY-Implementation
-        /// Copyright � zDimension 2013
-        /// </summary>
         public static void AZERTY()
         {
             keys = new List<Keyboard.KeyMapping>(164);

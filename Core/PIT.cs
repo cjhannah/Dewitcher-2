@@ -50,13 +50,10 @@ namespace dewitcher.Core
         }
         public static void Beep(uint frequency)
         {
-            dewitcher.Core.IDT.Remap();
             uint divisor = 1193182 / frequency;
             IO.PortIO.outb(0x43, 0xB6);
             IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
             IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
-            dewitcher.Core.IRQ.ClearMask(0);
-            dewitcher.Core.IRQ.ClearMask(15);
         }
         internal static bool called = false;
         public static void SleepSeconds(uint seconds)

@@ -102,7 +102,7 @@
     <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTC.cs" />
-    <Compile Include="Bootscreen.cs" />
+    <Compile Include="Console\Console.Bootscreen.cs" />
     <Compile Include="Users\SplittyDev\UniqExtras.cs" />
     <Compile Include="Users\SplittyDev\VideoStreamTest.cs" />
     <Compile Include="Users\UniqOS\Stopwatch.cs" />
