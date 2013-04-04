@@ -71,6 +71,9 @@
     <Compile Include="Core\Memory.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Crypto\RockPotato.cs" />
+    <Compile Include="dev\Filesystem\FAT\Enum.cs" />
+    <Compile Include="dev\Filesystem\FAT\FATFileSystem.cs" />
+    <Compile Include="dev\Filesystem\FileSystem.cs" />
     <Compile Include="dev\Textscreen.cs" />
     <Compile Include="dev\TextScreen.Internal.cs" />
     <Compile Include="Core\ACPI.cs" />
@@ -115,12 +118,17 @@
     <Compile Include="Crypto\Rot.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Users\AtomOS\FAT Notes.htm" />
+    <Content Include="Users\AtomOS\Info.txt" />
     <Content Include="Users\Aurora01\Info.txt" />
     <Content Include="Users\GruntXProductions\Info.txt" />
     <Content Include="Users\SplittyDev\Info.txt" />
     <Content Include="Users\UniqOS\Info.txt" />
     <Content Include="Users\UniqOS\Info.txt" />
     <Content Include="Users\zdimension\Info.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="dev\Filesystem\AFS\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

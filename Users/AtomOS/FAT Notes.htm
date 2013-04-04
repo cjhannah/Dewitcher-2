@@ -1,0 +1,189 @@
+﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+    <h5> <span> Source: http://wiki.osdev.org/FAT </span></h5>
+    <h5> <span class="mw-headline" id="FAT_12_and_FAT_16"> FAT 12 and FAT 16 </span></h5>
+	<table border="2" cellpadding="4" cellspacing="0" style="margin-top:1em; margin-bottom:1em; background:#f9f9f9; border:1px #aaa solid; border-collapse:collapse;">
+<tbody><tr>
+<th> Offset (from the start of the standard boot record)
+</th>
+<th> Length (in bytes)
+</th>
+<th> Meaning
+</th></tr>
+<tr>
+<td> 36
+</td>
+<td> 1
+</td>
+<td>	Drive number. The value here should be identical to the value returned by BIOS interrupt 0x13, or passed in the DL register; i.e. 0x00 for a floppy disk and 0x80 for hard disks. This number is useless because the media is likely to be moved to another machine and inserted in a drive with a different drive number.
+</td></tr>
+<tr>
+<td> 37
+</td>
+<td> 1
+</td>
+<td>	Flags in windows NT. Reserved otherwise.
+</td></tr>
+<tr>
+<td> 38
+</td>
+<td> 1
+</td>
+<td>	Signature (must be 0x28 or 0x29).
+</td></tr>
+<tr>
+<td> 39
+</td>
+<td> 4
+</td>
+<td>       VolumeID 'Serial' number. Used for tracking volumes between computers. You can ignore this if you want.
+</td></tr>
+<tr>
+<td> 43
+</td>
+<td> 11
+</td>
+<td>	Volume label string. This field is padded with spaces.
+</td></tr>
+<tr>
+<td> 54
+</td>
+<td> 8
+</td>
+<td>	System identifier string. This field is a string representation of the FAT file system type. It is padded with spaces. The spec says never to trust the contents of this string for any use.
+</td></tr>
+<tr>
+<td> 62
+</td>
+<td> 448
+</td>
+<td>	Boot code.
+</td></tr>
+<tr>
+<td> 510
+</td>
+<td> 2
+</td>
+<td>	0xAA55 bootable partition signature.
+</td></tr></tbody></table>
+<h5> <span class="mw-headline" id="FAT_32_2"> FAT 32 </span></h5>
+<table border="2" cellpadding="4" cellspacing="0" style="margin-top:1em; margin-bottom:1em; background:#f9f9f9; border:1px #aaa solid; border-collapse:collapse;">
+
+<tbody><tr>
+<th> Offset (from the start of the standard boot record)
+</th>
+<th> Length (in bytes)
+</th>
+<th> Meaning
+</th></tr>
+<tr>
+<td> 36
+</td>
+<td> 4
+</td>
+<td>	Sectors per FAT. The size of the FAT in sectors.
+</td></tr>
+<tr>
+<td> 40
+</td>
+<td> 2
+</td>
+<td>	Flags.
+</td></tr>
+<tr>
+<td> 42
+</td>
+<td> 2
+</td>
+<td>       FAT version number. The high byte is the major version and the low byte is the minor version. FAT drivers should respect this field.
+</td></tr>
+<tr>
+<td> 44
+</td>
+<td> 4
+</td>
+<td>	The cluster number of the root directory. Often this field is set to 2.
+</td></tr>
+<tr>
+<td> 48
+</td>
+<td> 2
+</td>
+<td>	The cluster number of the FSInfo structure.
+</td></tr>
+<tr>
+<td> 50
+</td>
+<td> 2
+</td>
+<td>       The cluster number of the backup boot sector.
+</td></tr>
+<tr>
+<td> 52
+</td>
+<td> 12
+</td>
+<td>       Reserved. When the volume is formated these bytes should be zero.
+</td></tr>
+<tr>
+<td> 64
+</td>
+<td> 1
+</td>
+<td>	Drive number. The values here are identical to the values returned by the BIOS interrupt 0x13. 0x00 for a floppy disk and 0x80 for hard disks.
+</td></tr>
+<tr>
+<td> 65
+</td>
+<td> 1
+</td>
+<td>	Flags in windows NT. Reserved otherwise.
+</td></tr>
+<tr>
+<td> 66
+</td>
+<td> 1
+</td>
+<td>	Signature (must be 0x28 or 0x29).
+</td></tr>
+<tr>
+<td> 67
+</td>
+<td> 4
+</td>
+<td>       VolumeID 'Serial' number. Used for tracking volumes between computers. You can ignore this if you want.
+</td></tr>
+<tr>
+<td> 71
+</td>
+<td> 11
+</td>
+<td>	Volume label string. This field is padded with spaces.
+</td></tr>
+<tr>
+<td> 82
+</td>
+<td> 8
+</td>
+<td>	System identifier string. Always "FAT32&nbsp;&nbsp;&nbsp;". The spec says never to trust the contents of this string for any use.
+</td></tr>
+<tr>
+<td> 90
+</td>
+<td> 420
+</td>
+<td>	Boot code.
+</td></tr>
+<tr>
+<td> 510
+</td>
+<td> 2
+</td>
+<td>	0xAA55 bootable partition signature.
+</td></tr></tbody></table>
+	</body>
+</html>
