@@ -68,9 +68,7 @@ C:\Users\Marco\Desktop\git\dewitcher\obj\Release\dewitcher.pdb
 C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.IL2CPU.Plugs.dll
 C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.IL2CPU.Plugs.pdb
 C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Assembler.dll
-C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Assembler.x86.dll
 C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Assembler.pdb
-C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Assembler.x86.pdb
 C:\Users\Grunt\dewitcherframework\bin\Release\GLNFSLib.dll
 C:\Users\Grunt\dewitcherframework\bin\Release\Cosmos.IL2CPU.Plugs.pdb
 C:\Users\Grunt\dewitcherframework\bin\Release\GLNFSLib.pdb
@@ -97,3 +95,10 @@ C:\Users\FL4ME Dev Team\Desktop\git\dewitcher\bin\Release\Cosmos.Common.Extensio
 C:\Users\FL4ME Dev Team\Desktop\git\dewitcher\obj\Release\ResolveAssemblyReference.cache
 C:\Users\FL4ME Dev Team\Desktop\git\dewitcher\obj\Release\dewitcher.dll
 C:\Users\FL4ME Dev Team\Desktop\git\dewitcher\obj\Release\dewitcher.pdb
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Compiler.XSharp.dll
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Build.Common.dll
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\XSharp.Nasm.dll
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Mosa.Utility.IsoImage.dll
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Compiler.XSharp.pdb
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\Cosmos.Build.Common.pdb
+C:\Users\Marco\Desktop\git\dewitcher\bin\Release\XSharp.Nasm.pdb
