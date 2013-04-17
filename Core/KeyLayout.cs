@@ -28,10 +28,12 @@ using Cosmos.Hardware;
 
 namespace dewitcher.Core
 {
+    // INFO: We recommend to set the keylayout in the BeforeRun() method to make sure that
+    //       the arrow keys does not appear as a pretty fuckedup random unicode char..
     public static class KeyLayout
     {
         internal static List<Cosmos.Hardware.Keyboard.KeyMapping> keys;
-        public enum KeyLayouts : byte { QWERTY, QWERTZ };
+        public enum KeyLayouts : byte { QWERTY, QWERTZ, AZERTY };
         private static uint KeyCount;
         private static void ChangeKeyMap()
         {
@@ -39,8 +41,15 @@ namespace dewitcher.Core
         }
         public static void SwitchKeyLayout(KeyLayouts layout)
         {
-            if (layout == KeyLayouts.QWERTY) { QWERTY(); }
-            else if (layout == KeyLayouts.QWERTZ) { QWERTZ(); }
+            switch(layout)
+            {
+                case KeyLayouts.AZERTY:
+                    AZERTY(); break;
+                case KeyLayouts.QWERTY:
+                    QWERTY(); break;
+                case KeyLayouts.QWERTZ:
+                    QWERTZ(); break;
+            }
         }
         private static void AddKey(uint p, char p_2, ConsoleKey p_3)
         {
@@ -138,14 +147,14 @@ namespace dewitcher.Core
             AddKey(655360u, '(', ConsoleKey.D9);
             AddKey(11u, '0', ConsoleKey.D0);
             AddKey(720896u, ')', ConsoleKey.D0);
-            AddKeyWithShift(14u, '‡•®', ConsoleKey.Backspace);
+            AddKeyWithShift(14u, '\b', ConsoleKey.Backspace);
             AddKeyWithShift(15u, '\t', ConsoleKey.Tab);
             AddKeyWithShift(28u, '\n', ConsoleKey.Enter);
             AddKeyWithShift(57u, ' ', ConsoleKey.Spacebar);
-            AddKeyWithShift(75u, '‚Üê', ConsoleKey.LeftArrow);
-            AddKeyWithShift(72u, '‚Üë', ConsoleKey.UpArrow);
-            AddKeyWithShift(77u, '‚Üí', ConsoleKey.RightArrow);
-            AddKeyWithShift(80u, '‚Üì', ConsoleKey.DownArrow);
+            AddKeyWithShift(75u, '\0', ConsoleKey.LeftArrow);
+            AddKeyWithShift(72u, '\0', ConsoleKey.UpArrow);
+            AddKeyWithShift(77u, '\0', ConsoleKey.RightArrow);
+            AddKeyWithShift(80u, '\0', ConsoleKey.DownArrow);
             AddKeyWithShift(91u, ConsoleKey.LeftWindows);
             AddKeyWithShift(92u, ConsoleKey.RightWindows);
             AddKeyWithShift(82u, ConsoleKey.Insert);
@@ -199,7 +208,7 @@ namespace dewitcher.Core
 
         /// <summary>
         /// The QWERTZ-Implementation is not 100% finished.
-        /// Most keys will work, but some keys will already return QWERTY-Chars.
+        /// Most keys will work, some keys will still return QWERTY-Chars.
         /// </summary>
         public static void QWERTZ()
         {
@@ -269,8 +278,8 @@ namespace dewitcher.Core
             // ^ 1 2 3 4 5 6 7 8 9 0
             // ¬∞ ! " ¬ß $ % & / ( ) =
             AddKey(41u, '^', ConsoleKey.NoName);
-            AddKey(2686976u, '¬∞', ConsoleKey.NoName);
-            AddKey(2u, '1', ConsoleKey.D1);
+            AddKey(2686976u, '\0', ConsoleKey.NoName);
+            AddKey(2u, '1', ConsoleKey.D1); 
             AddKey(131072u, '!', ConsoleKey.D1);
             AddKey(3u, '2', ConsoleKey.D2);
             AddKey(196608u, '\"', ConsoleKey.D2);
@@ -312,14 +321,14 @@ namespace dewitcher.Core
             AddKey(27u, '~', ConsoleKey.OemPlus);
 
             // Special keys
-            AddKeyWithShift(14u, '‡•®', ConsoleKey.Backspace);
+            AddKeyWithShift(14u, '\b', ConsoleKey.Backspace);
             AddKeyWithShift(15u, '\t', ConsoleKey.Tab);
             AddKeyWithShift(28u, '\n', ConsoleKey.Enter);
             AddKeyWithShift(57u, ' ', ConsoleKey.Spacebar);
-            AddKeyWithShift(75u, '‚Üê', ConsoleKey.LeftArrow);
-            AddKeyWithShift(72u, '‚Üë', ConsoleKey.UpArrow);
-            AddKeyWithShift(77u, '‚Üí', ConsoleKey.RightArrow);
-            AddKeyWithShift(80u, '‚Üì', ConsoleKey.DownArrow);
+            AddKeyWithShift(75u, '\0', ConsoleKey.LeftArrow);
+            AddKeyWithShift(72u, '\0', ConsoleKey.UpArrow);
+            AddKeyWithShift(77u, '\0', ConsoleKey.RightArrow);
+            AddKeyWithShift(80u, '\0', ConsoleKey.DownArrow);
             AddKeyWithShift(91u, ConsoleKey.LeftWindows);
             AddKeyWithShift(92u, ConsoleKey.RightWindows);
             AddKeyWithShift(82u, ConsoleKey.Insert);
@@ -345,6 +354,159 @@ namespace dewitcher.Core
             AddKeyWithShift(1u, ConsoleKey.Escape);
 
             // √ü ? \
+            // -- Not yet implemented
+
+            // Other keys
+            AddKeyWithShift(76u, '5', ConsoleKey.NumPad5);
+            #endregion
+            ChangeKeyMap();
+        }
+		
+        public static void AZERTY()
+        {
+            keys = new List<Keyboard.KeyMapping>(164);
+            #region Keys
+            // A Z E R T Y U I O P
+            AddKey(16u, 'a', ConsoleKey.A);
+            AddKey(1048576u, 'A', ConsoleKey.A);
+            AddKey(17u, 'z', ConsoleKey.Z);
+            AddKey(1114112u, 'Z', ConsoleKey.Z);
+            AddKey(18u, 'e', ConsoleKey.E);
+            AddKey(1179648u, 'E', ConsoleKey.E);
+            AddKey(19u, 'r', ConsoleKey.R);
+            AddKey(1245184u, 'R', ConsoleKey.R);
+            AddKey(20u, 't', ConsoleKey.T);
+            AddKey(1310720u, 'T', ConsoleKey.T);
+            AddKey(21u, 'y', ConsoleKey.Y);
+            AddKey(1376256u, 'Y', ConsoleKey.Y);
+            AddKey(22u, 'u', ConsoleKey.U);
+            AddKey(1441792u, 'U', ConsoleKey.U);
+            AddKey(23u, 'i', ConsoleKey.I);
+            AddKey(1507328u, 'I', ConsoleKey.I);
+            AddKey(24u, 'o', ConsoleKey.O);
+            AddKey(1572864u, 'O', ConsoleKey.O);
+            AddKey(25u, 'p', ConsoleKey.P);
+            AddKey(1638400u, 'P', ConsoleKey.P);
+
+            // Q S D F G H J K L M
+            AddKey(30u, 'q', ConsoleKey.Q);
+            AddKey(1966080u, 'Q', ConsoleKey.Q);
+            AddKey(31u, 's', ConsoleKey.S);
+            AddKey(2031616u, 'S', ConsoleKey.S);
+            AddKey(32u, 'd', ConsoleKey.D);
+            AddKey(2097152u, 'D', ConsoleKey.D);
+            AddKey(33u, 'f', ConsoleKey.F);
+            AddKey(2162688u, 'F', ConsoleKey.F);
+            AddKey(34u, 'g', ConsoleKey.G);
+            AddKey(2228224u, 'G', ConsoleKey.G);
+            AddKey(35u, 'h', ConsoleKey.H);
+            AddKey(2293760u, 'H', ConsoleKey.H);
+            AddKey(36u, 'j', ConsoleKey.J);
+            AddKey(2359296u, 'J', ConsoleKey.J);
+            AddKey(37u, 'k', ConsoleKey.K);
+            AddKey(2424832u, 'K', ConsoleKey.K);
+            AddKey(38u, 'l', ConsoleKey.L);
+            AddKey(2490368u, 'L', ConsoleKey.L);
+            AddKey(39u, 'm', ConsoleKey.M);
+
+            // W X C V B N
+            AddKey(44u, 'w', ConsoleKey.W);
+            AddKey(2883584u, 'W', ConsoleKey.W);
+            AddKey(45u, 'x', ConsoleKey.X);
+            AddKey(2949120u, 'X', ConsoleKey.X);
+            AddKey(46u, 'c', ConsoleKey.C);
+            AddKey(3014656u, 'C', ConsoleKey.C);
+            AddKey(47u, 'v', ConsoleKey.V);
+            AddKey(3080192u, 'V', ConsoleKey.V);
+            AddKey(48u, 'b', ConsoleKey.B);
+            AddKey(3145728u, 'B', ConsoleKey.B);
+            AddKey(49u, 'n', ConsoleKey.N);
+            AddKey(3211264u, 'N', ConsoleKey.N);
+            
+
+            // ‹÷ƒ
+            // -- Nothing yet
+
+            // ^ 1 2 3 4 5 6 7 8 9 0
+            // ∞ ! " ß $ % & / ( ) =
+            AddKey(41u, '≤', ConsoleKey.NoName);
+            //AddKey(2686976u, '∞', ConsoleKey.NoName);
+            AddKey(2u, '&', ConsoleKey.D1);
+            AddKey(131072u, '1', ConsoleKey.D1);
+            AddKey(3u, 'È', ConsoleKey.D2);
+            AddKey(196608u, '2', ConsoleKey.D2);
+            AddKey(4u, '"', ConsoleKey.D3);
+            AddKey(262144u, '3', ConsoleKey.D3);
+            AddKey(5u, '\'', ConsoleKey.D4);
+            AddKey(327680u, '4', ConsoleKey.D5);
+            AddKey(6u, '(', ConsoleKey.D5);
+            AddKey(393216u, '5', ConsoleKey.D5);
+            AddKey(7u, '-', ConsoleKey.D6);
+            AddKey(458752u, '6', ConsoleKey.D6);
+            AddKey(8u, 'Ë', ConsoleKey.D7);
+            AddKey(524288u, '7', ConsoleKey.Divide);
+            AddKey(9u, '_', ConsoleKey.D8);
+            AddKey(589824u, '8', ConsoleKey.D8);
+            AddKey(10u, 'Á', ConsoleKey.D9);
+            AddKey(655360u, '9', ConsoleKey.D9);
+            AddKey(11u, '‡', ConsoleKey.D0);
+            AddKey(720896u, '0', ConsoleKey.D0);
+
+            // + * # ' - _
+            AddKey(27u, '$', ConsoleKey.OemPlus);
+            AddKey(1769472u, '£', ConsoleKey.Multiply);
+            AddKey(43u, '#', ConsoleKey.NoName);
+            AddKey(2555904u, '\'', ConsoleKey.NoName);
+            AddKey(53u, '-', ConsoleKey.Subtract);
+            AddKey(3473408u, '_', ConsoleKey.Subtract);
+
+            // ; , : .
+            AddKey(50u, ',', ConsoleKey.OemComma);
+            AddKey(3342336u, '.', ConsoleKey.OemComma);
+            AddKey(51u, ';', ConsoleKey.OemComma);
+            AddKey(3407872u, '/', ConsoleKey.OemPeriod);
+            AddKey(52u, ':', ConsoleKey.OemPeriod);
+
+            // < > | ~
+            // -- DOES NOT EXIST
+            // -- DOES NOT EXIST
+            // -- DOES NOT EXIST
+            AddKey(27u, '§', ConsoleKey.OemPlus);
+
+            // Special keys
+            AddKeyWithShift(14u, '?', ConsoleKey.Backspace);
+            AddKeyWithShift(15u, '\t', ConsoleKey.Tab);
+            AddKeyWithShift(28u, '\n', ConsoleKey.Enter);
+            AddKeyWithShift(57u, ' ', ConsoleKey.Spacebar);
+            AddKeyWithShift(75u, '?', ConsoleKey.LeftArrow);
+            AddKeyWithShift(72u, '?', ConsoleKey.UpArrow);
+            AddKeyWithShift(77u, '?', ConsoleKey.RightArrow);
+            AddKeyWithShift(80u, '?', ConsoleKey.DownArrow);
+            AddKeyWithShift(91u, ConsoleKey.LeftWindows);
+            AddKeyWithShift(92u, ConsoleKey.RightWindows);
+            AddKeyWithShift(82u, ConsoleKey.Insert);
+            AddKeyWithShift(71u, ConsoleKey.Home);
+            AddKeyWithShift(73u, ConsoleKey.PageUp);
+            AddKeyWithShift(83u, ConsoleKey.Delete);
+            AddKeyWithShift(79u, ConsoleKey.End);
+            AddKeyWithShift(81u, ConsoleKey.PageDown);
+            AddKeyWithShift(55u, ConsoleKey.PrintScreen);
+            AddKeyWithShift(69u, ConsoleKey.Pause);
+            AddKeyWithShift(59u, ConsoleKey.F1);
+            AddKeyWithShift(60u, ConsoleKey.F2);
+            AddKeyWithShift(61u, ConsoleKey.F3);
+            AddKeyWithShift(62u, ConsoleKey.F4);
+            AddKeyWithShift(63u, ConsoleKey.F5);
+            AddKeyWithShift(64u, ConsoleKey.F6);
+            AddKeyWithShift(65u, ConsoleKey.F7);
+            AddKeyWithShift(66u, ConsoleKey.F8);
+            AddKeyWithShift(67u, ConsoleKey.F9);
+            AddKeyWithShift(68u, ConsoleKey.F10);
+            AddKeyWithShift(87u, ConsoleKey.F11);
+            AddKeyWithShift(88u, ConsoleKey.F12);
+            AddKeyWithShift(1u, ConsoleKey.Escape);
+
+            // ﬂ ? \
             // -- Not yet implemented
 
             // Other keys

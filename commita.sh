@@ -54,20 +54,11 @@ echo "#############################################"
 git commit -a
 
 clear
-echo "#############################################"
-echo "# DONE Initializing Repository              #"
-echo "# DONE Merging contents                     #"
-echo "# DONE Adding content                       #"
-echo "# DONE Cleaning Repository                  #"
-echo "# DONE Committing changes                   #"
-echo "#############################################"
-echo "#            Uploading content..            #"
-echo "#############################################"
-git push -u dewitcher master
-
 echo.
 echo "#############################################"
 echo "#                   Done!                   #"
+echo "#############################################"
+echo "#       Please run SimplePush.sh now!       #"
 echo "#############################################"
 read
 

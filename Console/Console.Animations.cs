@@ -29,29 +29,32 @@ namespace dewitcher
 {
     public static partial class Console
     {
-        public static void RollUp(uint mspause)
+        public static class Animation
         {
-            for (int i = 0; i < 26; i++)
+            public static void RollUp(uint mspause)
             {
-                for (int j = 0; j < 81; j++)
+                for (int i = 0; i < 26; i++)
                 {
-                    Console.Write(" ");
-                }
-                Core.PIT.SleepMilliseconds(mspause);
-            }
-            Console.Clear();
-        }
-        public static void RollDown(uint mspause)
-        {
-            for (int i = 0; i < 26; i++)
-            {
-                for (int j = 0; j < 81; j++)
-                {
-                    Console.Write(" ");
+                    for (int j = 0; j < 81; j++)
+                    {
+                        Console.Write(" ");
+                    }
                     Core.PIT.SleepMilliseconds(mspause);
                 }
+                Console.Clear();
             }
-            Console.Clear();
+            public static void RollDown(uint mspause)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    for (int j = 0; j < 81; j++)
+                    {
+                        Console.Write(" ");
+                        Core.PIT.SleepMilliseconds(mspause);
+                    }
+                }
+                Console.Clear();
+            }
         }
     }
 }
