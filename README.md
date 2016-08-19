@@ -12,34 +12,34 @@ And also because this is built upon the existing dewitcher code there will be so
 
 The most advanced Console class for Cosmos
 -Advanced PIT
--PCAudio driver + musical note frequencies
--Graphical Textmenu with Themepack support
--ACPI for Shutdown/Reboot
--MD5 and Rotation algorithms
--Kernel extensions
--Streams
--ProgressBars
--Advanced RTC
--Bluescreens
--Multiple key layouts (QWERTZ, QWERTY and AZERTY)
+- PCAudio driver + musical note frequencies
+- Graphical Textmenu with Themepack support
+- ACPI for Shutdown/Reboot
+- MD5 and Rotation algorithms
+- Kernel extensions
+- Streams
+- ProgressBars
+- Advanced RTC
+- Bluescreens
+- Multiple key layouts (QWERTZ, QWERTY and AZERTY)
 ..take a look at the source for more ;)
 
 You can find tutorials under the Documentation tab =)
 This will be in the next release:
 
--Atom File System
--Console animations
--Basic memory management
--AZERTY keymapping
--Improved QWERTZ keymapping
+- Atom File System
+- Console animations
+- Basic memory management
+- AZERTY keymapping
+- Improved QWERTZ keymapping
 
 ##Team
 A massive thankyou to the original Dewitcher devs for putting this framework together.  
 In no order they are:  
--SplittyDev
--Aurora01
--GruntXProductions
--UniqOS
--AtomOS
--zdimension
--Kenneth
+- SplittyDev
+- Aurora01
+- GruntXProductions
+- UniqOS
+- AtomOS
+- zdimension
+- Kenneth
