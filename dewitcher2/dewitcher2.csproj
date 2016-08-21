@@ -31,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -47,8 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bluescreen.cs" />
+    <Compile Include="Console\Console.Animations.cs" />
     <Compile Include="Console\Console.Bootscreen.cs" />
     <Compile Include="Console\Console.cs" />
+    <Compile Include="Console\Console.Error.cs" />
+    <Compile Include="Console\Console.ProgressBar.cs" />
+    <Compile Include="Console\Console.VideoRAM.cs" />
     <Compile Include="Console\Menu\Console.Menu.Category.cs" />
     <Compile Include="Console\Menu\Console.Menu.Commands.Back.cs" />
     <Compile Include="Console\Menu\Console.Menu.cs" />

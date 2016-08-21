@@ -53,13 +53,6 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Console\Console.Animations.cs" />
-    <Compile Include="Console\Console.Error.cs" />
-    <Compile Include="Console\Menu\Console.Menu.Category.cs" />
-    <Compile Include="Console\Menu\Console.Menu.Commands.Back.cs" />
-    <Compile Include="Console\Menu\Console.Menu.cs" />
-    <Compile Include="Console\Menu\Console.Menu.Entry.cs" />
-    <Compile Include="Console\Menu\Console.Menu.Themepack.cs" />
     <Compile Include="Core\Memory.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Crypto\RockPotato.cs" />
@@ -69,14 +62,11 @@
     <Compile Include="dev\Textscreen.cs" />
     <Compile Include="dev\TextScreen.Internal.cs" />
     <Compile Include="Core\ACPI.cs" />
-    <Compile Include="Console\Console.ProgressBar.cs" />
-    <Compile Include="Console\Console.VideoRAM.cs" />
     <Compile Include="Core\IDT.cs" />
     <Compile Include="Core\IRQ.cs" />
     <Compile Include="Core\PIT.cs" />
     <Compile Include="Crypto\MD5.cs" />
     <Compile Include="dev\ATAPI.cs" />
-    <Compile Include="Console\Console.cs" />
     <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
     <Compile Include="dev\Log.cs" />
     <Compile Include="Audio\PCSpeaker.cs" />
@@ -87,7 +77,6 @@
     <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTC.cs" />
-    <Compile Include="Console\Console.Bootscreen.cs" />
     <Compile Include="Users\SplittyDev\UniqExtras.cs" />
     <Compile Include="Users\SplittyDev\VideoStreamTest.cs" />
     <Compile Include="Users\UniqOS\Stopwatch.cs" />

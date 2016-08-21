@@ -1,4 +1,4 @@
-/*
+﻿/*
 Copyright (c) 2012-2013, dewitcher Team
 All rights reserved.
 
@@ -23,23 +23,38 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using dewitcher2.Core;
-using dewitcher;
+using System.Collections.Generic;
 
 namespace dewitcher2
 {
-    /// <summary>
-    /// Useful kernel extensions
-    /// </summary>
-    public static class KernelExtensions
+    public static partial class KConsole
     {
-        public static void Reboot(this Cosmos.System.Kernel krnl) { ACPI.Reboot(); }
-        public static void Shutdown(this Cosmos.System.Kernel krnl) { ACPI.Shutdown(); }
-        public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepSeconds(value); }
-        public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepMilliseconds(value); }
-        public static uint GetMemory(this Cosmos.System.Kernel krnl) { return GetRAM.GetAmountOfRAM + 1; }
-        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, Bootscreen.Effect efx,
-            ConsoleColor color, int ticks = 10000000) { Bootscreen.Show(OSname, efx, color, ticks); }
-        public static void AllocMemory(this Cosmos.System.Kernel krnl, uint aLength) { Heap.MemAlloc(aLength); }
+        public static class Animation
+        {
+            public static void RollUp(uint mspause)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    for (int j = 0; j < 81; j++)
+                    {
+                        Console.Write(" ");
+                    }
+                    dewitcher2.Core.PIT.SleepMilliseconds(mspause);
+                }
+                Console.Clear();
+            }
+            public static void RollDown(uint mspause)
+            {
+                for (int i = 0; i < 26; i++)
+                {
+                    for (int j = 0; j < 81; j++)
+                    {
+                        Console.Write(" ");
+                        dewitcher2.Core.PIT.SleepMilliseconds(mspause);
+                    }
+                }
+                Console.Clear();
+            }
+        }
     }
 }

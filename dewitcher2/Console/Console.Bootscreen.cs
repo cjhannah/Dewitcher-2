@@ -30,7 +30,7 @@ using dewitcher2.Core;
 using dewitcher2.Hardware;
 using Console = System.Console;
 
-namespace dewitcher2.KConsole
+namespace dewitcher2
 {
     public static class Bootscreen
     {

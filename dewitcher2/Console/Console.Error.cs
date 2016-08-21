@@ -23,23 +23,22 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using dewitcher2.Core;
-using dewitcher;
+using System.Collections.Generic;
 
-namespace dewitcher2
+namespace dewitcher
 {
-    /// <summary>
-    /// Useful kernel extensions
-    /// </summary>
-    public static class KernelExtensions
+    public static partial class Console
     {
-        public static void Reboot(this Cosmos.System.Kernel krnl) { ACPI.Reboot(); }
-        public static void Shutdown(this Cosmos.System.Kernel krnl) { ACPI.Shutdown(); }
-        public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepSeconds(value); }
-        public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepMilliseconds(value); }
-        public static uint GetMemory(this Cosmos.System.Kernel krnl) { return GetRAM.GetAmountOfRAM + 1; }
-        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, Bootscreen.Effect efx,
-            ConsoleColor color, int ticks = 10000000) { Bootscreen.Show(OSname, efx, color, ticks); }
-        public static void AllocMemory(this Cosmos.System.Kernel krnl, uint aLength) { Heap.MemAlloc(aLength); }
+        public static class Error
+        {
+            public static void Write(string text)
+            {
+                Console.Write("[!] ERROR: " + text.ToUpper(), ConsoleColor.Red);
+            }
+            public static void WriteLine(string text)
+            {
+                Console.WriteLine("[!] ERROR: " + text.ToUpper(), ConsoleColor.Red);
+            }
+        }
     }
 }
