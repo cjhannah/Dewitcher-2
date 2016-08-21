@@ -51,7 +51,7 @@ namespace dewitcher2
                         for (int x = 0; x < i; x++) fill += " ";
                         Console.Write(fill);
                         Console.Write(OSname, color, false, true);
-                        dewitcher2.Core.PIT.SleepMilliseconds((uint)ms_sleep);
+                        PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromRight:

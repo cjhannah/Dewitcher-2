@@ -35,17 +35,29 @@
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Cosmos.Assembler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.dll</HintPath>
-    </Reference>
     <Reference Include="Cosmos.Debug.Kernel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Debug.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.IL2CPU.Plugs">
-      <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.IL2CPU.Plugs.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System.dll</HintPath>
@@ -56,51 +68,23 @@
     <Compile Include="Core\Memory.cs" />
     <Compile Include="Core\Random.cs" />
     <Compile Include="Crypto\RockPotato.cs" />
-    <Compile Include="dev\Filesystem\FAT\Enum.cs" />
-    <Compile Include="dev\Filesystem\FAT\FATFileSystem.cs" />
-    <Compile Include="dev\Filesystem\FileSystem.cs" />
-    <Compile Include="dev\Textscreen.cs" />
-    <Compile Include="dev\TextScreen.Internal.cs" />
     <Compile Include="Core\ACPI.cs" />
     <Compile Include="Core\IDT.cs" />
     <Compile Include="Core\IRQ.cs" />
     <Compile Include="Core\PIT.cs" />
     <Compile Include="Crypto\MD5.cs" />
-    <Compile Include="dev\ATAPI.cs" />
-    <Compile Include="dev\Filesystem\WitchFS\WitchTimestamp.cs" />
-    <Compile Include="dev\Log.cs" />
     <Compile Include="Audio\PCSpeaker.cs" />
     <Compile Include="Extensions\KernelExtensions.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Kenneth.cs" />
     <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RTC.cs" />
-    <Compile Include="Users\SplittyDev\UniqExtras.cs" />
-    <Compile Include="Users\SplittyDev\VideoStreamTest.cs" />
-    <Compile Include="Users\UniqOS\Stopwatch.cs" />
-    <Compile Include="Users\UniqOS\UniqExtras.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="dev\Filesystem\WitchFS\WitchFS.cs" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Crypto\Rot.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Users\AtomOS\FAT Notes.htm" />
-    <Content Include="Users\AtomOS\Info.txt" />
-    <Content Include="Users\Aurora01\Info.txt" />
-    <Content Include="Users\GruntXProductions\Info.txt" />
-    <Content Include="Users\SplittyDev\Info.txt" />
-    <Content Include="Users\UniqOS\Info.txt" />
-    <Content Include="Users\UniqOS\Info.txt" />
-    <Content Include="Users\zdimension\Info.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="dev\Filesystem\AFS\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\dewitcher2.core\dewitcher2.Core.csproj">
       <Project>{1e3de924-9d95-4aa3-9914-c25fd6f495d1}</Project>

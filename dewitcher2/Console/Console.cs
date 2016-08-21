@@ -25,13 +25,13 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 
-namespace dewitcher2.KConsole
+namespace dewitcher2
 {
     
     /// <summary>
     /// The awesome dewitcher Console
     /// </summary>
-    public static partial class Console
+    public static partial class KConsole
     {
         private static int indent = 0;
         /// <summary>

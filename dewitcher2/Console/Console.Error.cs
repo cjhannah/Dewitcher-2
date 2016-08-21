@@ -25,9 +25,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 
-namespace dewitcher
+namespace dewitcher2
 {
-    public static partial class Console
+    public static partial class KConsole
     {
         public static class Error
         {

@@ -27,9 +27,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace dewitcher
+namespace dewitcher2
 {
-    public static partial class Console
+    public static partial class KConsole
     {
         public class ProgressBar
         {
@@ -73,8 +73,8 @@ namespace dewitcher
             /// <param name="value"></param>
             public void Draw()
             {
-                int ct = Console.CursorTop;
-                int cl = Console.CursorLeft;
+                int ct = KConsole.CursorTop;
+                int cl = dewitcher2.KConsole.CursorLeft;
                 Console.WriteLine();
                 string buffer = "[                                                  ] ";
                 Console.Write(buffer);

@@ -33,7 +33,7 @@ namespace dewitcher2
         {
             public static bool recovery = false;
             public static int menu = 0;
-            public static List<KConsole.Console.Menu.Category> cat;
+            public static List<KConsole.Menu.Category> cat;
             public static ConsoleColor fill;
             public static ConsoleColor background;
             public static ConsoleColor normal;
@@ -44,7 +44,7 @@ namespace dewitcher2
             public static void Reset()
             {
                 cat.Clear();
-                cat = new List<KConsole.Console.Menu.Category>();
+                cat = new List<KConsole.Menu.Category>();
                 fill = ConsoleColor.Cyan;
                 background = ConsoleColor.Green;
                 normal = ConsoleColor.Black;
@@ -62,13 +62,13 @@ namespace dewitcher2
                     arrow = colors[4];
                 }
                 else if (colors.Length < 5)
-                    dewitcher2.KConsole.Bluescreen.Init("INVALID_THEME_EXCEPTION",
+                    Bluescreen.Init("INVALID_THEME_EXCEPTION",
                     "Looks like your ConsoleColor-Array contains less than 5 entries");
                 else if (colors.Length > 5)
-                    dewitcher2.KConsole.Bluescreen.Init("INVALID_THEME_EXCEPTION",
+                    Bluescreen.Init("INVALID_THEME_EXCEPTION",
                     "Looks like your ConsoleColor-Array contains more than 5 entries");
             }
-            public static void AddCategory(KConsole.Console.Menu.Category category) { cat.Add(category); }
+            public static void AddCategory(KConsole.Menu.Category category) { cat.Add(category); }
             public static void Show()
             {
                 Console.Clear();

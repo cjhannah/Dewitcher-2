@@ -24,10 +24,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using console = dewitcher.Console;
 
 // That's the super secret dewitcher event log
-namespace dewitcher.dev
+namespace dewitcher2.dev
 {
     public static class Log
     {
@@ -52,9 +51,9 @@ namespace dewitcher.dev
         {
             if (!initialized) init();
             // Save current console state
-            console.VideoRAM.SetContent("__internal:logbackup");
+            KConsole.VideoRAM.SetContent("__internal:logbackup");
             // Write the entries
-            int max = console.WindowHeight - 4;
+            int max = Console.WindowHeight - 4;
             int found = 0;
             bool finished = false;
             while (!finished)
