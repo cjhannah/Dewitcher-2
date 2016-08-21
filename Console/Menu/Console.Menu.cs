@@ -63,10 +63,10 @@ namespace dewitcher
                     arrow = colors[4];
                 }
                 else if (colors.Length < 5)
-                    dewitcher.Core.Bluescreen.Init("INVALID_THEME_EXCEPTION",
+                    dewitcher2.Core.Bluescreen.Init("INVALID_THEME_EXCEPTION",
                     "Looks like your ConsoleColor-Array contains less than 5 entries");
                 else if (colors.Length > 5)
-                    dewitcher.Core.Bluescreen.Init("INVALID_THEME_EXCEPTION",
+                    dewitcher2.Core.Bluescreen.Init("INVALID_THEME_EXCEPTION",
                     "Looks like your ConsoleColor-Array contains more than 5 entries");
             }
             public static void AddCategory(Category category) { cat.Add(category); }

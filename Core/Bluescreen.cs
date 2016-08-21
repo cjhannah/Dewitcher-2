@@ -25,8 +25,10 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 using Console = dewitcher.Console;
+using dewitcher2;
+using dewitcher2.Core;
 
-namespace dewitcher.Core
+namespace dewitcher2.Core
 {
     public static class Bluescreen
     {

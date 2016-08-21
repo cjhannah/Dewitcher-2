@@ -20,19 +20,18 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 
 using System;
 using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using Cosmos.IL2CPU.Plugs;
 using CPUx86 = Cosmos.Assembler.x86;
-using Cosmos.Core;
-using IRQContext = Cosmos.Core.INTs.IRQContext;
+using dewitcher2.Core;
+using IRQContext = dewitcher2.Core.INTs.IRQContext;
 // Credits for STIEnabler goes to Grunt =)
 namespace dewitcher.Core
 {
-    [Plug(Target = typeof(Cosmos.Core.INTs))]
+    [Plug(Target = typeof(dewitcher2.Core.INTs))]
     public class INTs
     {
         public delegate void IRQ0called();
@@ -43,7 +42,7 @@ namespace dewitcher.Core
             {
                 if (aContext.Interrupt >= 0x28)
                 {
-                    Global.PIC.EoiSlave();
+                    Cosmos.System.PIC.EoiSlave();
                 }
                 else
                 {
@@ -170,3 +169,4 @@ namespace dewitcher.Core
         }
     }
 }
+*/

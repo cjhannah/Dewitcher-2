@@ -44,8 +44,8 @@ namespace dewitcher.Core
                 port = 0xA0 + 1;
                 IRQline -= 8;
             }
-            value = (byte)(IO.PortIO.inb(port) | (1 << IRQline));
-            IO.PortIO.outb(port, value);
+            value = (byte)(dewitcher2.Core.IO.PortIO.inb(port) | (1 << IRQline));
+            dewitcher2.Core.IO.PortIO.outb(port, value);
         }
         public static void ClearMask(byte IRQline)
         {
@@ -61,8 +61,8 @@ namespace dewitcher.Core
                 port = 0xA0 + 1;
                 IRQline -= 8;
             }
-            value = (byte)(IO.PortIO.inb(port) & ~(1 << IRQline));
-            IO.PortIO.outb(port, value);
+            value = (byte)(dewitcher2.Core.IO.PortIO.inb(port) & ~(1 << IRQline));
+            dewitcher2.Core.IO.PortIO.outb(port, value);
         }
     }
 }

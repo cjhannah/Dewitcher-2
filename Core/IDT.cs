@@ -25,7 +25,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 using System;
 using System.Collections.Generic;
 // IDT code by Grunt
-namespace dewitcher.Core
+namespace dewitcher2.Core
 {
     public class IDT
     {

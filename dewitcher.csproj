@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -10,8 +10,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>dewitcher</RootNamespace>
     <AssemblyName>dewitcher</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -22,6 +23,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -31,30 +33,22 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Cosmos.Assembler, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Assembler.dll</HintPath>
     </Reference>
-    <Reference Include="Cosmos.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Cosmos.Debug.Kernel, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.Debug.Kernel.dll</HintPath>
-    </Reference>
-    <Reference Include="Cosmos.Hardware, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
-      <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.Hardware.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.IL2CPU.Plugs">
       <HintPath>..\..\..\AppData\Roaming\Cosmos User Kit\Build\VSIP\Cosmos.IL2CPU.Plugs.dll</HintPath>
     </Reference>
     <Reference Include="Cosmos.System, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5ae71220097cb983, processorArchitecture=x86">
       <HintPath>..\..\..\..\AppData\Roaming\Cosmos User Kit\Kernel\Cosmos.System.dll</HintPath>
-    </Reference>
-    <Reference Include="GLNFSLib">
-      <HintPath>..\Documents\Visual Studio 2010\Projects\GLNFSLib\GLNFSLib\bin\Debug\GLNFSLib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
   </ItemGroup>
@@ -91,14 +85,6 @@
     <Compile Include="Extensions\KernelExtensions.cs" />
     <Compile Include="Extensions\NumericExtensions.cs" />
     <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="IO\BinaryWriter.cs" />
-    <Compile Include="IO\PortIO.cs" />
-    <Compile Include="IO\FileSystem\FileStream.cs" />
-    <Compile Include="IO\FileSystem\FileSystem.cs" />
-    <Compile Include="IO\FileSystem\VirtualFileSystem.cs" />
-    <Compile Include="IO\MemoryStream.cs" />
-    <Compile Include="IO\Stream.cs" />
-    <Compile Include="IO\VideoStream.cs" />
     <Compile Include="Kenneth.cs" />
     <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -127,6 +113,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dev\Filesystem\AFS\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\dewitcher2.core\dewitcher2.Core.csproj">
+      <Project>{1e3de924-9d95-4aa3-9914-c25fd6f495d1}</Project>
+      <Name>dewitcher2.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="dewitcher2.Hardware\dewitcher2.Hardware.csproj">
+      <Project>{b4a844a8-358d-49bd-84d4-792641ad906c}</Project>
+      <Name>dewitcher2.Hardware</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -20,11 +20,10 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 
 using System;
 using System.Collections.Generic;
-using Cosmos.Hardware;
+using dewitcher2.Core;
 
 namespace dewitcher.Core
 {
@@ -32,7 +31,7 @@ namespace dewitcher.Core
     //       the arrow keys does not appear as a pretty fuckedup random unicode char..
     public static class KeyLayout
     {
-        internal static List<Cosmos.Hardware.Keyboard.KeyMapping> keys;
+        internal static List<dewitcher2.Hardware.Keyboard.KeyMapping> keys;
         public enum KeyLayouts : byte { QWERTY, QWERTZ, AZERTY };
         private static uint KeyCount;
         private static void ChangeKeyMap()
@@ -516,3 +515,4 @@ namespace dewitcher.Core
         }
     }
 }
+*/

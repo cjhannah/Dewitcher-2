@@ -26,7 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using C = dewitcher.IO.PortIO;
+using C = dewitcher2.Core.IO.PortIO;
 
 namespace dewitcher.dev
 {

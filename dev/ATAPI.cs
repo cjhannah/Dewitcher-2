@@ -24,7 +24,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-using C = dewitcher.IO.PortIO;
+using C = dewitcher2.Core.IO.PortIO;
 
 namespace dewitcher.dev
 {

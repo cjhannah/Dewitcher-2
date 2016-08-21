@@ -24,36 +24,40 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using dewitcher.Extensions;
+using dewitcher2;
+using dewitcher2.Core;
+using IO = dewitcher2.Core.IO;
+
 namespace dewitcher.Core
 {
     public static class PIT
     {
         public static void Mode0(uint frequency)
         {
-            dewitcher.Core.IDT.Remap();
+            IDT.Remap();
             uint divisor = 1193182 / frequency;
-            IO.PortIO.outb(0x43, 0x30);
-            IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
-            IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
-            dewitcher.Core.IRQ.ClearMask(0);
-            dewitcher.Core.IRQ.ClearMask(15);
+            dewitcher2.Core.IO.PortIO.outb(0x43, 0x30);
+            dewitcher2.Core.IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IRQ.ClearMask(0);
+            IRQ.ClearMask(15);
         }
         public static void Mode2(uint frequency)
         {
-            dewitcher.Core.IDT.Remap();
+            dewitcher2.Core.IDT.Remap();
             uint divisor = 1193182 / frequency;
-            IO.PortIO.outb(0x43, 0x36);
-            IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
-            IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x43, 0x36);
+            dewitcher2.Core.IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
             dewitcher.Core.IRQ.ClearMask(0);
             dewitcher.Core.IRQ.ClearMask(15);
         }
         public static void Beep(uint frequency)
         {
             uint divisor = 1193182 / frequency;
-            IO.PortIO.outb(0x43, 0xB6);
-            IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
-            IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x43, 0xB6);
+            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
         }
         internal static bool called = false;
         public static void SleepSeconds(uint seconds)
