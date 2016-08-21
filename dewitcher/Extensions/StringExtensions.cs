@@ -24,14 +24,17 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
+using dewitcher2;
+using dewitcher2.Core;
 
-namespace dewitcher.Extensions
+namespace dewitcher2.Extensions
 {
     /// <summary>
     /// Useful string extensions
     /// </summary>
     public static class StringExtensions
     {
+        /*
         public static string rot13(this string str)
         {
             return Crypto.ROT13.encrypt(str);
@@ -48,6 +51,7 @@ namespace dewitcher.Extensions
         {
             return Crypto.RockPotato.Hash(str);
         }
+        */
         /// <summary>
         /// Checks if the string starts with [string]
         /// </summary>

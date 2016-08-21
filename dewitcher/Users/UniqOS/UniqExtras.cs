@@ -20,7 +20,6 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
 
 using System;
 using System.Collections.Generic;
@@ -34,12 +33,12 @@ namespace dewitcher.Users.UniqOS
         
         //Calulcate how much remaining time there is until the process is completed.
         public static Stopwatch xBTimer;
-        /* 
+        
          * Use in installations or file copying...
          * e.g
          * CalulcateRemaingTime(50, 100)
          * 50 tasks completed out of 100!
-         * */
+         * 
         /// <summary>
         /// CalculateRemainingtime
         /// </summary>
@@ -115,3 +114,4 @@ namespace dewitcher.Users.UniqOS
         }
     }
 }
+*/

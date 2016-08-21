@@ -119,7 +119,7 @@
       <Project>{1e3de924-9d95-4aa3-9914-c25fd6f495d1}</Project>
       <Name>dewitcher2.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="dewitcher2.Hardware\dewitcher2.Hardware.csproj">
+    <ProjectReference Include="..\dewitcher2.Hardware\dewitcher2.Hardware.csproj">
       <Project>{b4a844a8-358d-49bd-84d4-792641ad906c}</Project>
       <Name>dewitcher2.Hardware</Name>
     </ProjectReference>

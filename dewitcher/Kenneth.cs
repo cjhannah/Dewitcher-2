@@ -20,11 +20,12 @@ DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVI
 DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
+
 
 using System;
 using System.Collections.Generic;
-
+using dewitcher2;
+using dewitcher2.Core;
 namespace dewitcher
 {
     /// <summary>
@@ -71,15 +72,16 @@ namespace dewitcher
                 }
             }
             Console.ReadLine();
-            Core.ACPI.Shutdown();
+            ACPI.Shutdown();
         }
         public static void SetPenisBit()
         {
-            Core.Bluescreen.Init("PENIS BIT SET", "You have set the penis bit. HAHAHAHAHAHA", true);
+            Bluescreen.Init("PENIS BIT SET", "You have set the penis bit. HAHAHAHAHAHA", true);
         }
         public static void CPUMeltdown()
         {
-            Core.Bluescreen.Panic();
+            Bluescreen.Panic();
         }
     }
 }
+*/

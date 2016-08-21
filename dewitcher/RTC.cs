@@ -24,6 +24,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using dewitcher.Extensions;
+using dewitcher2.Hardware;
 
 namespace dewitcher
 {
@@ -43,7 +44,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the hour
             /// </summary>
-            public static byte Hour { get { return Cosmos.Hardware.RTC.Hour; } }
+            public static byte Hour { get { return dewitcher2.Hardware.RTC.Now.Hour; } }
             /// <summary>
             /// Returns the hour as string in format hh
             /// </summary>
@@ -52,7 +53,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the minute
             /// </summary>
-            public static byte Minute { get { return Cosmos.Hardware.RTC.Minute; } }
+            public static byte Minute { get { return dewitcher2.Hardware.RTC.Now.Minute; } }
             /// <summary>
             /// Returns the minute as string in format mm
             /// </summary>
@@ -61,7 +62,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the second
             /// </summary>
-            public static byte Second { get { return Cosmos.Hardware.RTC.Second; } }
+            public static byte Second { get { return dewitcher2.Hardware.RTC.Now.Second; } }
             /// /// <summary>
             /// Returns the second as string in format ss
             /// </summary>
@@ -70,7 +71,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the century
             /// </summary>
-            public static byte Century { get { return (byte)(Cosmos.Hardware.RTC.Century); } }
+            public static byte Century { get { return (byte)(dewitcher2.Hardware.RTC.Now.Century); } }
             /// <summary>
             /// Returns the century as string in format xx ( x = any number )
             /// </summary>
@@ -79,16 +80,15 @@ namespace dewitcher
             /// <summary>
             /// Returns the year (e.g. 2012)
             /// </summary>
-            public static int Year { get { return int.Parse(((Century).ToString() + Cosmos.Hardware.RTC.Year.ToString())); } }
+            public static int Year { get { return int.Parse(((Century).ToString() + dewitcher2.Hardware.RTC.Now.Year.ToString())); } }
             /// <summary>
             /// Returns the year as string in format xxxx ( x = any number )
             /// </summary>
-            public static string YearString { get { return (CenturyString + Cosmos.Hardware.RTC.Year.TryAppend()); } }
-
+            public static string YearString = dewitcher2.Hardware.RTC.Now.YearString;
             /// <summary>
             /// Returns the day of the month
             /// </summary>
-            public static byte DayOfTheMonth { get { return Cosmos.Hardware.RTC.DayOfTheMonth; } }
+            public static byte DayOfTheMonth { get { return dewitcher2.Hardware.RTC.Now.DayOfTheMonth; } }
             /// <summary>
             /// Returns the day of the month in format xx ( x = any number )
             /// </summary>
@@ -106,7 +106,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the day of the week
             /// </summary>
-            public static byte DayOfTheWeek { get { return Cosmos.Hardware.RTC.DayOfTheWeek; } }
+            public static byte DayOfTheWeek { get { return dewitcher2.Hardware.RTC.Now.DayOfTheWeek; } }
             /// <summary>
             /// Returns the day of the week in format xx ( x = any number )
             /// </summary>
@@ -115,7 +115,7 @@ namespace dewitcher
             /// <summary>
             /// Returns the month
             /// </summary>
-            public static byte Month { get { return Cosmos.Hardware.RTC.Month; } }
+            public static byte Month { get { return dewitcher2.Hardware.RTC.Now.Month; } }
             /// <summary>
             /// Returns the month in format xx ( x = any number )
             /// </summary>
@@ -133,13 +133,13 @@ namespace dewitcher
             public static string GetDate(DateFormat format, char separator = '.')
             {
                 if (format == DateFormat.DD_MM_YYYY)
-                    return (DayOfTheMonthString + separator + MonthString + separator + YearString);
+                    return (DayOfTheMonthString + separator + MonthString + separator + dewitcher2.Hardware.RTC.Now.YearString);
                 else if (format == DateFormat.YYYY_MM_DD)
-                    return (YearString + separator + MonthString + separator + DayOfTheMonthString);
+                    return (dewitcher2.Hardware.RTC.Now.YearString + separator + MonthString + separator + DayOfTheMonthString);
                 else if (format == DateFormat.YYYY_DD_MM)
-                    return (YearString + "." + DayOfTheMonthString + separator + MonthString);
+                    return (dewitcher2.Hardware.RTC.Now.YearString + "." + DayOfTheMonthString + separator + MonthString);
                 else if (format == DateFormat.MM_DD_YYYY)
-                    return (MonthString + "." + DayOfTheMonthString + separator + YearString);
+                    return (MonthString + "." + DayOfTheMonthString + separator + dewitcher2.Hardware.RTC.Now.YearString);
                 else
                     return "ERROR";
             }
