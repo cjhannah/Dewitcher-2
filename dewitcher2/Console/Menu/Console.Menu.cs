@@ -33,7 +33,7 @@ namespace dewitcher2
         {
             public static bool recovery = false;
             public static int menu = 0;
-            public static List<Console.Menu.Category> cat;
+            public static List<KConsole.Console.Menu.Category> cat;
             public static ConsoleColor fill;
             public static ConsoleColor background;
             public static ConsoleColor normal;
@@ -44,7 +44,7 @@ namespace dewitcher2
             public static void Reset()
             {
                 cat.Clear();
-                cat = new List<KConsole.Menu.Category>();
+                cat = new List<KConsole.Console.Menu.Category>();
                 fill = ConsoleColor.Cyan;
                 background = ConsoleColor.Green;
                 normal = ConsoleColor.Black;
@@ -71,15 +71,15 @@ namespace dewitcher2
             public static void AddCategory(KConsole.Console.Menu.Category category) { cat.Add(category); }
             public static void Show()
             {
-                System.Console.Clear();
-                KConsole.Console.Fill(fill);
+                Console.Clear();
+                KConsole.Fill(fill);
                 while (true)
                 {
                     if (recovery) break;
                     if (menu == 0) ShowCategoryMenu();
-                    else if (menu == 1) { Console.Fill(fill); menu++; }
+                    else if (menu == 1) { KConsole.Fill(fill); menu++; }
                     else if (menu == 2) ShowEntryMenu();
-                    else if (menu == 3) { Console.Fill(fill); menu = 0; }
+                    else if (menu == 3) { KConsole.Fill(fill); menu = 0; }
                 }
             }
             private static void ShowCategoryMenu()
@@ -93,18 +93,18 @@ namespace dewitcher2
                         buffer += " ";
                     }
                     Console.CursorLeft = 10;
-                    Console.WriteEx(buffer, background, background);
+                    KConsole.WriteEx(buffer, background, background);
                 }
                 Console.CursorTop = 11 - (cat.Count / 2);
                 for (int i = 0; i < cat.Count; i++)
                 {
                     if (i == item)
                     {
-                        Console.WriteEx(cat[i].Name, highlighted, background, true);
+                        KConsole.WriteEx(cat[i].Name, highlighted, background, true);
                         Console.CursorLeft = 69;
-                        Console.WriteLineEx(">", arrow, background);
+                        KConsole.WriteLineEx(">", arrow, background);
                     }
-                    else Console.WriteLineEx(cat[i].Name, normal, background, true);
+                    else KConsole.WriteLineEx(cat[i].Name, normal, background, true);
                 }
                 while (true)
                 {
@@ -141,18 +141,18 @@ namespace dewitcher2
                         buffer += " ";
                     }
                     Console.CursorLeft = 10;
-                    Console.WriteEx(buffer, background, background);
+                    KConsole.WriteEx(buffer, background, background);
                 }
                 Console.CursorTop = 11 - (cat[itemcat].entries.Count / 2);
                 for (int i = 0; i < cat[itemcat].entries.Count; i++)
                 {
                     if (i == item)
                     {
-                        Console.WriteEx(cat[itemcat].entries[i].text, highlighted, background, true);
+                        KConsole.WriteEx(cat[itemcat].entries[i].text, highlighted, background, true);
                         Console.CursorLeft = 69;
-                        Console.WriteLineEx(">", arrow, background);
+                        KConsole.WriteLineEx(">", arrow, background);
                     }
-                    else Console.WriteLineEx(cat[itemcat].entries[i].text, normal, background, true);
+                    else KConsole.WriteLineEx(cat[itemcat].entries[i].text, normal, background, true);
                 }
                 while (true)
                 {

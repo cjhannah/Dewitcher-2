@@ -23,29 +23,51 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using dewitcher.Extensions;
 using dewitcher2;
 using dewitcher2.Core;
 using IO = dewitcher2.Core.IO;
 
-namespace dewitcher.Core
+namespace dewitcher2.Core
 {
+    public static class NumericExtensions
+    {
+        public static uint MsToHz(this int ms)
+        {
+            return (uint)(1000 / ms);
+        }
+        public static uint MsToHz(this uint ms)
+        {
+            return (uint)(1000 / ms);
+        }
+    }
     public static class PIT
     {
         public static void Mode0(uint frequency)
         {
-            dewitcher2.Core.PIT.Mode0(frequency);
+            IDT.Remap();
+            uint divisor = 1193182 / frequency;
+            IO.PortIO.outb(0x43, 0x30);
+            IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
+            IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IRQ.ClearMask(0);
+            IRQ.ClearMask(15);
         }
         public static void Mode2(uint frequency)
         {
-            dewitcher2.Core.PIT.Mode2(frequency);
+            IDT.Remap();
+            uint divisor = 1193182 / frequency;
+            IO.PortIO.outb(0x43, 0x36);
+            IO.PortIO.outb(0x40, (byte)(divisor & 0xFF));
+            IO.PortIO.outb(0x40, (byte)((divisor >> 8) & 0xFF));
+            IRQ.ClearMask(0);
+            IRQ.ClearMask(15);
         }
         public static void Beep(uint frequency)
         {
             uint divisor = 1193182 / frequency;
-            dewitcher2.Core.IO.PortIO.outb(0x43, 0xB6);
-            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
-            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
+            IO.PortIO.outb(0x43, 0xB6);
+            IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
+            IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
         }
         internal static bool called = false;
         public static void SleepSeconds(uint seconds)
@@ -54,7 +76,34 @@ namespace dewitcher.Core
         }
         public static void SleepMilliseconds(uint milliseconds)
         {
-            dewitcher2.Core.PIT.SleepMilliseconds(milliseconds);
+            
+            if (milliseconds <= 50)
+            {
+                called = false;
+                Mode0(milliseconds.MsToHz());
+                while (!called) { }
+                called = false;
+            }
+            else
+            {
+                uint mod = milliseconds % 100;
+                uint ms = milliseconds - mod;
+                for (int i = 0; i < ms; i += 50)
+                {
+                    called = false;
+                    Mode0(20);
+                    while (!called) { }
+                }
+                called = false;
+                ms = mod % 2;
+                for (int i = 0; i < ms; i += 2)
+                {
+                    called = false;
+                    Mode0(500);
+                    while (!called) { }
+                }
+                called = false;
+            }
         }
     }
 }

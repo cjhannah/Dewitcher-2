@@ -34,5 +34,9 @@ namespace dewitcher
         {
             ACPI.Shutdown();
         }
+        public static void Reboot()
+        {
+            ACPI.Reboot();
+        }
     }
 }

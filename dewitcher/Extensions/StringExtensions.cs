@@ -102,7 +102,7 @@ namespace dewitcher2.Extensions
                 return str[null_based_index];
             else
             {
-                Core.Bluescreen.Init("string._GetCharAt", "null_based_index must be >= 0 and <= the length of the string");
+                KConsole.Bluescreen.Init("string._GetCharAt", "null_based_index must be >= 0 and <= the length of the string");
                 return char.MinValue;
             }
         }
@@ -123,7 +123,7 @@ namespace dewitcher2.Extensions
             }
             else
             {
-                Core.Bluescreen.Init("string._GetCharAt", "null_based_index must be >= 0 and <= the length of the string");
+                KConsole.Bluescreen.Init("string._GetCharAt", "null_based_index must be >= 0 and <= the length of the string");
                 return str;
             }
         }

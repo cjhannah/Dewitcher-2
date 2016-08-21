@@ -24,26 +24,44 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-// IDT code by Grunt
-namespace dewitcher.Core
+//Some code was used in GruntTheDivine's infinity kernel. He gave permission for it to be made public.
+namespace dewitcher2.Core
 {
-    public class IDT
+    public class IRQ
     {
-        public delegate void ISR();
-        public static ISR[] idt = new ISR[0xFF];
-        public static void Remap()
+        public static void SetMask(byte IRQline)
         {
-            dewitcher2.Core.IDT.Remap();   
-        }
-        private void idt_handler()
-        {
-            dewitcher2.Core.IDT.idt_handler();
-        }
+            ushort port;
+            byte value;
 
-        public static void SetGate(byte int_num, ISR handler)
-        {
-            IDT.SetGate(int_num, handler);
+            if (IRQline < 8)
+            {
+                port = 0x20 + 1;
+            }
+            else
+            {
+                port = 0xA0 + 1;
+                IRQline -= 8;
+            }
+            value = (byte)(IO.PortIO.inb(port) | (1 << IRQline));
+            IO.PortIO.outb(port, value);
         }
+        public static void ClearMask(byte IRQline)
+        {
+            ushort port;
+            byte value;
 
+            if (IRQline < 8)
+            {
+                port = 0x20 + 1;
+            }
+            else
+            {
+                port = 0xA0 + 1;
+                IRQline -= 8;
+            }
+            value = (byte)(IO.PortIO.inb(port) & ~(1 << IRQline));
+            IO.PortIO.outb(port, value);
+        }
     }
 }

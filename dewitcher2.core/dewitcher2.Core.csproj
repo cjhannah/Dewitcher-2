@@ -51,6 +51,7 @@
     <Compile Include="ACPI.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="Heap.cs" />
+    <Compile Include="IDT.cs" />
     <Compile Include="IO\BinaryWriter.cs" />
     <Compile Include="IO\FileSystem\FileStream.cs" />
     <Compile Include="IO\FileSystem\FileSystem.cs" />
@@ -59,6 +60,9 @@
     <Compile Include="IO\PortIO.cs" />
     <Compile Include="IO\Stream.cs" />
     <Compile Include="IO\VideoStream.cs" />
+    <Compile Include="IRQ.cs" />
+    <Compile Include="PCSpeaker.cs" />
+    <Compile Include="PIT.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

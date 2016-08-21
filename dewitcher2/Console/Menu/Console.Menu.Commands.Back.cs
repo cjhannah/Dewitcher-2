@@ -24,26 +24,21 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-// IDT code by Grunt
-namespace dewitcher.Core
+
+namespace dewitcher2
 {
-    public class IDT
+    public static partial class KConsole
     {
-        public delegate void ISR();
-        public static ISR[] idt = new ISR[0xFF];
-        public static void Remap()
+        public partial class Menu
         {
-            dewitcher2.Core.IDT.Remap();   
+            internal class Back : Entry
+            {
+                public Back() { this.text = "Back to Main Menu"; }
+                public override void Execute()
+                {
+                    Menu.menu = 3;
+                }
+            }
         }
-        private void idt_handler()
-        {
-            dewitcher2.Core.IDT.idt_handler();
-        }
-
-        public static void SetGate(byte int_num, ISR handler)
-        {
-            IDT.SetGate(int_num, handler);
-        }
-
     }
 }

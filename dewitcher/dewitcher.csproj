@@ -69,11 +69,9 @@
     <Compile Include="dev\Textscreen.cs" />
     <Compile Include="dev\TextScreen.Internal.cs" />
     <Compile Include="Core\ACPI.cs" />
-    <Compile Include="Core\Bluescreen.cs" />
     <Compile Include="Console\Console.ProgressBar.cs" />
     <Compile Include="Console\Console.VideoRAM.cs" />
     <Compile Include="Core\IDT.cs" />
-    <Compile Include="Core\INTs.cs" />
     <Compile Include="Core\IRQ.cs" />
     <Compile Include="Core\PIT.cs" />
     <Compile Include="Crypto\MD5.cs" />
@@ -122,6 +120,14 @@
     <ProjectReference Include="..\dewitcher2.Hardware\dewitcher2.Hardware.csproj">
       <Project>{b4a844a8-358d-49bd-84d4-792641ad906c}</Project>
       <Name>dewitcher2.Hardware</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dewitcher2.System\dewitcher2.System.csproj">
+      <Project>{de5c72e0-8dcd-45f6-b2c6-9fa7471e43b0}</Project>
+      <Name>dewitcher2.System</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\dewitcher2\dewitcher2.csproj">
+      <Project>{d3f45df6-d6c2-463d-a4ae-1d1b00f6b6cd}</Project>
+      <Name>dewitcher2</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

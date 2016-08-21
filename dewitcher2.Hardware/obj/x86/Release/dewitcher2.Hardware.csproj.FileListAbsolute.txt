@@ -25,6 +25,5 @@ C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\bin\Release\Cosm
 C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\bin\Release\Cosmos.System.pdb
 C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\bin\Release\Cosmos.Debug.Kernel.pdb
 C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\bin\Release\Cosmos.Core.pdb
-C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\obj\x86\Release\dewitcher2.Hardware.csprojResolveAssemblyReference.cache
 C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\obj\x86\Release\dewitcher2.Hardware.dll
 C:\Users\azama\Documents\GitHub\Dewitcher-2\dewitcher2.Hardware\obj\x86\Release\dewitcher2.Hardware.pdb

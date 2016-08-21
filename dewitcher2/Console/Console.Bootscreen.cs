@@ -1,4 +1,6 @@
 /*
+Copyright (C) 2016-      CaveSponge
+
 Copyright (c) 2012-2013, dewitcher Team
 All rights reserved.
 
@@ -23,8 +25,12 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
+using dewitcher2;
+using dewitcher2.Core;
+using dewitcher2.Hardware;
+using Console = System.Console;
 
-namespace dewitcher2
+namespace dewitcher2.KConsole
 {
     public static class Bootscreen
     {
@@ -45,7 +51,7 @@ namespace dewitcher2
                         for (int x = 0; x < i; x++) fill += " ";
                         Console.Write(fill);
                         Console.Write(OSname, color, false, true);
-                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
+                        dewitcher2.Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromRight:
@@ -56,7 +62,7 @@ namespace dewitcher2
                         Console.Clear();
                         Console.CursorLeft = i;
                         Console.Write(OSname, color, false, true);
-                        Core.PIT.SleepMilliseconds((uint)ms_sleep);
+                        dewitcher2.Core.PIT.SleepMilliseconds((uint)ms_sleep);
                     } break;
 
                 case Effect.SlideFromTop:
@@ -90,9 +96,10 @@ namespace dewitcher2
 
                 case Effect.Matrix:
 
-                    int sec1 = Hardware.RTC.Now.Second;
+                    
+                    int sec1 = dewitcher2.Hardware.RTC.Now.Second;
                     int sec2 = sec1;
-                    do { sec2 = Hardware.RTC.Now.Second; } while (sec1 == sec2);
+                    do { sec2 = dewitcher2.Hardware.RTC.Now.Second; } while (sec1 == sec2);
                     int sec3;
                     if (sec2 <= 56) sec3 = sec2 + 3;
                     else if (sec2 == 57) sec3 = 1;

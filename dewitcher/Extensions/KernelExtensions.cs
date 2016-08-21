@@ -24,6 +24,7 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using dewitcher2.Core;
+using dewitcher;
 
 namespace dewitcher2
 {
@@ -37,8 +38,8 @@ namespace dewitcher2
         public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepSeconds(value); }
         public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepMilliseconds(value); }
         public static uint GetMemory(this Cosmos.System.Kernel krnl) { return GetRAM.GetAmountOfRAM + 1; }
-        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, dewitcher.Bootscreen.Effect efx,
-            ConsoleColor color, int ticks = 10000000) { dewitcher.Bootscreen.Show(OSname, efx, color, ticks); }
+        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, dewitcher2.KConsole.Bootscreen.Effect efx,
+            ConsoleColor color, int ticks = 10000000) { dewitcher2.KConsole.Bootscreen.Show(OSname, efx, color, ticks); }
         public static void AllocMemory(this Cosmos.System.Kernel krnl, uint aLength) { Heap.MemAlloc(aLength); }
     }
 }

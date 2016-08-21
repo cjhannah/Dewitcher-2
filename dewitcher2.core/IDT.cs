@@ -24,8 +24,9 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
+using dewitcher2.Core;
 // IDT code by Grunt
-namespace dewitcher.Core
+namespace dewitcher2.Core
 {
     public class IDT
     {
@@ -33,16 +34,29 @@ namespace dewitcher.Core
         public static ISR[] idt = new ISR[0xFF];
         public static void Remap()
         {
-            dewitcher2.Core.IDT.Remap();   
+            IO.PortIO.outb(0x20, 0x11);
+            IO.PortIO.outb(0xA0, 0x11);
+            IO.PortIO.outb(0x21, 0x20);
+            IO.PortIO.outb(0xA1, 0x28);
+            IO.PortIO.outb(0x21, 0x04);
+            IO.PortIO.outb(0xA1, 0x02);
+            IO.PortIO.outb(0x21, 0x01);
+            IO.PortIO.outb(0xA1, 0x01);
+            IO.PortIO.outb(0x21, 0x0);
+            IO.PortIO.outb(0xA1, 0x0);
         }
-        private void idt_handler()
+        public static void idt_handler()
         {
-            dewitcher2.Core.IDT.idt_handler();
+            int num = 0;
+            if (idt[num] != null)
+            {
+                idt[num]();
+            }
         }
 
         public static void SetGate(byte int_num, ISR handler)
         {
-            IDT.SetGate(int_num, handler);
+            idt[int_num] = handler;
         }
 
     }

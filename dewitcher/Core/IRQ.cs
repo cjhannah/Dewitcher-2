@@ -21,48 +21,20 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 using System;
 using System.Collections.Generic;
-// YOU CAN SEE ORIGINAL GRUNTYOS INFINITY CODE HERE!
-// DON'T WORRY, GRUNTY ALLOWED ME TO MAKE THE CODE PUBLIC AVAILABLE
+//Some code was used in GruntTheDivine's infinity kernel. He gave permission for it to be made public.
 namespace dewitcher.Core
 {
     public class IRQ
     {
         public static void SetMask(byte IRQline)
         {
-            ushort port;
-            byte value;
-
-            if (IRQline < 8)
-            {
-                port = 0x20 + 1;
-            }
-            else
-            {
-                port = 0xA0 + 1;
-                IRQline -= 8;
-            }
-            value = (byte)(dewitcher2.Core.IO.PortIO.inb(port) | (1 << IRQline));
-            dewitcher2.Core.IO.PortIO.outb(port, value);
+            dewitcher2.Core.IRQ.SetMask(IRQline);
         }
         public static void ClearMask(byte IRQline)
         {
-            ushort port;
-            byte value;
-
-            if (IRQline < 8)
-            {
-                port = 0x20 + 1;
-            }
-            else
-            {
-                port = 0xA0 + 1;
-                IRQline -= 8;
-            }
-            value = (byte)(dewitcher2.Core.IO.PortIO.inb(port) & ~(1 << IRQline));
-            dewitcher2.Core.IO.PortIO.outb(port, value);
+            dewitcher2.Core.IRQ.ClearMask(IRQline);
         }
     }
 }
