@@ -23,10 +23,10 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using dewitcher.Extensions;
+using dewitcher2.Extensions;
 using dewitcher2.Hardware;
 
-namespace dewitcher
+namespace dewitcher2
 {
     public static class RTC
     {

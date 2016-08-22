@@ -23,21 +23,37 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using dewitcher2;
+using dewitcher2.Core;
+using IO = dewitcher2.Core.IO;
 
-namespace dewitcher.Extensions
+namespace dewitcher2
 {
-    public static class NumericExtensions
+    public static class PIT
     {
-        public static uint MsToHz(this int ms)
+        public static void Mode0(uint frequency)
         {
-            return (uint)(1000 / ms);
+            dewitcher2.Core.PIT.Mode0(frequency);
         }
-        public static uint MsToHz(this uint ms)
+        public static void Mode2(uint frequency)
         {
-            return (uint)(1000 / ms);
+            dewitcher2.Core.PIT.Mode2(frequency);
+        }
+        public static void Beep(uint frequency)
+        {
+            uint divisor = 1193182 / frequency;
+            dewitcher2.Core.IO.PortIO.outb(0x43, 0xB6);
+            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)(divisor & 0xFF));
+            dewitcher2.Core.IO.PortIO.outb(0x42, (byte)((divisor >> 8) & 0xFF));
+        }
+        internal static bool called = false;
+        public static void SleepSeconds(uint seconds)
+        {
+            SleepMilliseconds(seconds * 1000);
+        }
+        public static void SleepMilliseconds(uint milliseconds)
+        {
+            dewitcher2.Core.PIT.SleepMilliseconds(milliseconds);
         }
     }
 }

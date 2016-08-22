@@ -65,24 +65,7 @@
     <Reference Include="System" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\Memory.cs" />
-    <Compile Include="Core\Random.cs" />
-    <Compile Include="Crypto\RockPotato.cs" />
-    <Compile Include="Core\ACPI.cs" />
-    <Compile Include="Core\IDT.cs" />
-    <Compile Include="Core\IRQ.cs" />
-    <Compile Include="Core\PIT.cs" />
-    <Compile Include="Crypto\MD5.cs" />
-    <Compile Include="Audio\PCSpeaker.cs" />
-    <Compile Include="Extensions\KernelExtensions.cs" />
-    <Compile Include="Extensions\NumericExtensions.cs" />
-    <Compile Include="Extensions\StringExtensions.cs" />
-    <Compile Include="Core\KeyLayout.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RTC.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Crypto\Rot.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

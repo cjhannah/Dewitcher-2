@@ -26,7 +26,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace dewitcher.Crypto
+namespace dewitcher2.Crypto
 {
     /// <summary>
     /// Thanks to Aurora01!

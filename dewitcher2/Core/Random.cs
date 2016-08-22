@@ -21,20 +21,19 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 using System;
 using System.Collections.Generic;
-//Some code was used in GruntTheDivine's infinity kernel. He gave permission for it to be made public.
-namespace dewitcher.Core
+
+// Third Person ftw
+namespace dewitcher2
 {
-    public class IRQ
+    public class Random
     {
-        public static void SetMask(byte IRQline)
+        public void Next(uint min, uint max)
         {
-            dewitcher2.Core.IRQ.SetMask(IRQline);
-        }
-        public static void ClearMask(byte IRQline)
-        {
-            dewitcher2.Core.IRQ.ClearMask(IRQline);
+            // * Splitty will implement it soon
+            // * Splitty haves the plan in his mind
         }
     }
 }

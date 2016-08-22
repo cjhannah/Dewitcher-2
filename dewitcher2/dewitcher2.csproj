@@ -68,6 +68,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ACPI.cs" />
     <Compile Include="Bluescreen.cs" />
     <Compile Include="Console\Console.Animations.cs" />
     <Compile Include="Console\Console.Bootscreen.cs" />
@@ -80,8 +81,19 @@
     <Compile Include="Console\Menu\Console.Menu.cs" />
     <Compile Include="Console\Menu\Console.Menu.Entry.cs" />
     <Compile Include="Console\Menu\Console.Menu.Themepack.cs" />
+    <Compile Include="Core\ACPI.cs" />
+    <Compile Include="Core\IDT.cs" />
+    <Compile Include="Core\IRQ.cs" />
+    <Compile Include="Core\Memory.cs" />
+    <Compile Include="Core\PIT.cs" />
+    <Compile Include="Core\Random.cs" />
+    <Compile Include="Crypto\MD5.cs" />
+    <Compile Include="Crypto\RockPotato.cs" />
+    <Compile Include="Crypto\Rot.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="PCSpeaker.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RTC.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

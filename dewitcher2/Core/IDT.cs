@@ -23,23 +23,27 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using dewitcher2.Core;
-using dewitcher;
-
+using System.Collections.Generic;
+// IDT code by Grunt
 namespace dewitcher2
 {
-    /// <summary>
-    /// Useful kernel extensions
-    /// </summary>
-    public static class KernelExtensions
+    public class IDT
     {
-        public static void Reboot(this Cosmos.System.Kernel krnl) { ACPI.Reboot(); }
-        public static void Shutdown(this Cosmos.System.Kernel krnl) { ACPI.Shutdown(); }
-        public static void SleepSeconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepSeconds(value); }
-        public static void SleepMilliseconds(this Cosmos.System.Kernel krnl, uint value) { dewitcher.Core.PIT.SleepMilliseconds(value); }
-        public static uint GetMemory(this Cosmos.System.Kernel krnl) { return GetRAM.GetAmountOfRAM + 1; }
-        public static void ShowBootscreen(this Cosmos.System.Kernel krnl, string OSname, Bootscreen.Effect efx,
-            ConsoleColor color, int ticks = 10000000) { Bootscreen.Show(OSname, efx, color, ticks); }
-        public static void AllocMemory(this Cosmos.System.Kernel krnl, uint aLength) { Heap.MemAlloc(aLength); }
+        public delegate void ISR();
+        public static ISR[] idt = new ISR[0xFF];
+        public static void Remap()
+        {
+            dewitcher2.Core.IDT.Remap();   
+        }
+        private void idt_handler()
+        {
+            dewitcher2.Core.IDT.idt_handler();
+        }
+
+        public static void SetGate(byte int_num, ISR handler)
+        {
+            IDT.SetGate(int_num, handler);
+        }
+
     }
 }

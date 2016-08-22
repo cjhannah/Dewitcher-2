@@ -23,17 +23,20 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 using System;
-using System.Collections.Generic;
+using System.Text;
+using dewitcher2.Core;
 
-// Third Person ftw
-namespace dewitcher.Core
+namespace dewitcher2
 {
-    public class Random
+    public class userACPI
     {
-        public void Next(uint min, uint max)
+        public static void Shutdown()
         {
-            // * Splitty will implement it soon
-            // * Splitty haves the plan in his mind
+            ACPI.Shutdown();
+        }
+        public static void Reboot()
+        {
+            ACPI.Reboot();
         }
     }
 }

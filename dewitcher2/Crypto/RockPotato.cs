@@ -24,26 +24,53 @@ THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 using System;
 using System.Collections.Generic;
-// IDT code by Grunt
-namespace dewitcher.Core
+
+namespace dewitcher2.Crypto
 {
-    public class IDT
+    /// <summary>
+    /// A hash developed by Splitty
+    /// </summary>
+    public static class RockPotato
     {
-        public delegate void ISR();
-        public static ISR[] idt = new ISR[0xFF];
-        public static void Remap()
+        public static string Hash(string input)
         {
-            dewitcher2.Core.IDT.Remap();   
-        }
-        private void idt_handler()
-        {
-            dewitcher2.Core.IDT.idt_handler();
-        }
+            if (input == "") input = "RockPotato";
+            byte[] chars = new byte[input.Length + 1];
 
-        public static void SetGate(byte int_num, ISR handler)
-        {
-            IDT.SetGate(int_num, handler);
-        }
+            // Fill byte array
+            for (int i = 0; i < input.Length; i++)
+            {
+                chars[i] = (byte)(input[i]);
+            }
 
+            uint seed = 0;
+
+            // Calculate the seed
+            for (int i = 0; i < input.Length; i++)
+            {
+                seed += (uint)((chars[i] * chars[i]) >> (i + 1));
+            }
+
+            // Allocate memory
+            Core.Heap.MemAlloc(sizeof(UInt64));
+
+            UInt64 final = 0;
+
+            // Calculate the value
+            for (int i = 0; i < input.Length; i++)
+            {
+                final += seed * chars[i];
+            }
+
+            // Expand the value to a length of 20
+            int attempts = 0;
+            do
+            {
+                final *= 2;
+                final <<= ++attempts + ++attempts;
+            } while (final.ToString().Length < 16);
+
+            return final.ToString();
+        }
     }
 }

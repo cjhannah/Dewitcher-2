@@ -27,7 +27,7 @@ using System.Collections.Generic;
 using dewitcher2;
 using dewitcher2.Core;
 
-namespace dewitcher.Core
+namespace dewitcher2
 {
     public static unsafe class Memory
     {

@@ -21,56 +21,20 @@ DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF 
 IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF
 THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
 using System;
 using System.Collections.Generic;
-
-namespace dewitcher.Crypto
+//Some code was used in GruntTheDivine's infinity kernel. He gave permission for it to be made public.
+namespace dewitcher2
 {
-    /// <summary>
-    /// A hash developed by Splitty
-    /// </summary>
-    public static class RockPotato
+    public class IRQ
     {
-        public static string Hash(string input)
+        public static void SetMask(byte IRQline)
         {
-            if (input == "") input = "RockPotato";
-            byte[] chars = new byte[input.Length + 1];
-
-            // Fill byte array
-            for (int i = 0; i < input.Length; i++)
-            {
-                chars[i] = (byte)(input[i]);
-            }
-
-            uint seed = 0;
-
-            // Calculate the seed
-            for (int i = 0; i < input.Length; i++)
-            {
-                seed += (uint)((chars[i] * chars[i]) >> (i + 1));
-            }
-
-            // Allocate memory
-            Core.Memory.MemAlloc(sizeof(UInt64));
-
-            UInt64 final = 0;
-
-            // Calculate the value
-            for (int i = 0; i < input.Length; i++)
-            {
-                final += seed * chars[i];
-            }
-
-            // Expand the value to a length of 20
-            int attempts = 0;
-            do
-            {
-                final *= 2;
-                final <<= ++attempts + ++attempts;
-            } while (final.ToString().Length < 16);
-
-            return final.ToString();
+            dewitcher2.Core.IRQ.SetMask(IRQline);
+        }
+        public static void ClearMask(byte IRQline)
+        {
+            dewitcher2.Core.IRQ.ClearMask(IRQline);
         }
     }
 }
